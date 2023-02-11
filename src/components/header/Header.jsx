@@ -45,7 +45,7 @@ export default function Header() {
           </li>
         </ul>
         <div className="d-flex align-items-center">
-          <i class="fa fa-user user-icon"></i>
+          <i className="fa fa-user user-icon"></i>
           <button className="sign-in mr-3">Đăng nhập | Đăng ký</button>
         </div>
       </div>

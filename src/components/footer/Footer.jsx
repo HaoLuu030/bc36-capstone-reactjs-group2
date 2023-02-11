@@ -55,23 +55,23 @@ export default function Footer() {
             <ul className="row p-0">
               <li className="col-2">
                 <a href="#">
-                  <i class="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square"></i>
                 </a>
               </li>
               <li className="col-2">
                 <a href="#">
-                  <i class="fab fa-youtube"></i>
+                  <i className="fab fa-youtube"></i>
                 </a>
               </li>
               <li className="col-2">
                 <a href="#">
                   {" "}
-                  <i class="fa-brands fa-tiktok"></i>
+                  <i className="fa-brands fa-tiktok"></i>
                 </a>
               </li>
               <li className="col-2">
                 <a href="#">
-                  <i class="fab fa-instagram"></i>
+                  <i className="fab fa-instagram"></i>
                 </a>
               </li>
             </ul>
@@ -82,8 +82,8 @@ export default function Footer() {
         </div>
         <div className="copy-right text-center mt-4">
           <p>
-            <i class="fa-regular fa-copyright"></i> 2022-2023 | Ticket Play all
-            rights reserved
+            <i className="fa-regular fa-copyright"></i> 2022-2023 | Ticket Play
+            all rights reserved
           </p>
         </div>
       </div>

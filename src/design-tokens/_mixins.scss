@@ -2,3 +2,10 @@
   font-size: $fontSize;
   color: $color;
 }
+
+@mixin Button($basePadding, $fontSize, $color, $backgroundColor) {
+  padding: $basePadding * 1px $basePadding * 3px;
+  font-size: $fontSize;
+  color: $color;
+  background-color: $backgroundColor;
+}

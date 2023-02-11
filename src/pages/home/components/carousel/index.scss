@@ -1,0 +1,51 @@
+@import "../../../../design-tokens/variables";
+.carousel-top {
+  height: 600px;
+  width: 100%;
+  .img-container {
+    width: 100%;
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  opacity: 1;
+  width: 10%;
+  top: 22px;
+  height: 100%;
+  font-weight: bold;
+  transition: all 0.5s;
+  background-color: rgba(0, 0, 0, 0);
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.9;
+    &::after {
+      color: $c1-500;
+    }
+  }
+  &::after {
+    font-size: $text-3xl;
+    color: $c1-50;
+  }
+}
+.swiper-button-prev {
+  left: 0;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5) 0,
+    rgba(0, 0, 0, 0.0001) 100%
+  );
+}
+
+.swiper-button-next {
+  right: 0;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.0001) 0,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
