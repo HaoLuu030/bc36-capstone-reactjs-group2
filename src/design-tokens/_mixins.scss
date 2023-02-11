@@ -1,4 +1,4 @@
-@mixin Icon($fs, $c) {
-  font-size: $fs;
-  color: $c;
+@mixin Icon($fontSize, $color) {
+  font-size: $fontSize;
+  color: $color;
 }
