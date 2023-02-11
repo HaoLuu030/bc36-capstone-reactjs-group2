@@ -1,0 +1,4 @@
+@mixin Icon($fontSize, $color) {
+  font-size: $fontSize;
+  color: $color;
+}

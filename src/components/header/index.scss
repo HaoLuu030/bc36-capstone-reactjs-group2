@@ -1,0 +1,45 @@
+@import "../../design-tokens/_variables.scss";
+@import "../../design-tokens/mixins";
+.navbar-movie {
+  background-color: $c1-800;
+  .nav-items {
+    .nav-item {
+      position: relative;
+      a {
+        font-size: $text-md;
+        font-weight: $text-semiBold;
+        color: $c1-50;
+        &:hover {
+          color: $c1-500;
+        }
+      }
+      &.active {
+        a {
+          color: $c1-500;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          height: 2px;
+          width: 80%;
+          background-color: $c1-500;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 5px;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+  .sign-in {
+    color: $c1-50;
+    background-color: transparent;
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  .user-icon {
+    @include Icon($text-sm, $c1-50);
+  }
+}
