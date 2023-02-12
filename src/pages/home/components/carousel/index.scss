@@ -1,6 +1,7 @@
 @import "../../../../design-tokens/variables";
+@import "../../../../design-tokens/mixins";
 .carousel-top {
-  height: 600px;
+  min-height: 400px;
   width: 100%;
   .img-container {
     width: 100%;
@@ -16,7 +17,7 @@
   opacity: 1;
   width: 10%;
   top: 22px;
-  height: 100%;
+  min-height: 80%;
   font-weight: bold;
   transition: all 0.5s;
   background-color: rgba(0, 0, 0, 0);

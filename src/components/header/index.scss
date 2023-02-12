@@ -1,7 +1,39 @@
 @import "../../design-tokens/_variables.scss";
 @import "../../design-tokens/mixins";
+
 .navbar-movie {
   background-color: $c1-800;
+  .navbar-toggler {
+    .fa-bars,
+    .fa-times {
+      color: $c1-50;
+      font-size: $text-3xl;
+      transition: all 0.5s;
+    }
+    .fa-bars {
+      display: block;
+    }
+    .fa-times {
+      display: none;
+    }
+    &.opening {
+      .fa-bars {
+        display: none;
+      }
+      .fa-times {
+        display: block;
+      }
+    }
+    &:hover {
+      i {
+        $color: $c1-500;
+      }
+    }
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
   .nav-items {
     .nav-item {
       position: relative;
@@ -42,4 +74,53 @@
   .user-icon {
     @include Icon($text-sm, $c1-50);
   }
+}
+
+@include Responsive($LG) {
+  .navbar-movie {
+    .navbar-collapse {
+      padding: 0 3rem 2rem;
+      .nav-items {
+        .nav-item {
+          text-align: left;
+          &:hover {
+            background-color: $c1-500;
+            border-radius: 5px;
+            a {
+              color: $c1-50;
+            }
+          }
+          &.active {
+            &::after {
+              display: none;
+            }
+            &:hover {
+              background-color: transparent;
+              a {
+                color: $c1-500;
+              }
+            }
+          }
+        }
+      }
+      .sign-in-module {
+        .user-icon {
+          display: none;
+        }
+        .sign-in {
+          font-size: $text-md;
+          font-weight: $text-semiBold;
+          color: $c1-50;
+          padding: 0.5rem 0;
+        }
+        &:hover {
+          background-color: $c1-500;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
+
+@include Responsive($MD) {
 }

@@ -2,8 +2,11 @@ import React from "react";
 import "./index.scss";
 
 export default function Header() {
+  const toggleCollapseIcon = () => {
+    document.querySelector(".navbar-toggler").classList.toggle("opening");
+  };
   return (
-    <nav className="navbar navbar-expand-sm navbar-movie">
+    <nav className="navbar navbar-expand-lg navbar-movie">
       <a className="navbar-brand" href="#">
         <img src="/logo_white.png" alt="logo" style={{ width: "250px" }} />
       </a>
@@ -15,8 +18,10 @@ export default function Header() {
         aria-controls="collapsibleNavId"
         aria-expanded="false"
         aria-label="Toggle navigation"
+        onClick={toggleCollapseIcon}
       >
-        <span className="navbar-toggler-icon" />
+        <i className="fa fa-bars"></i>
+        <i className="fa fa-times"></i>
       </button>
       <div
         className="collapse navbar-collapse justify-content-between mt-3"
@@ -44,9 +49,9 @@ export default function Header() {
             </a>
           </li>
         </ul>
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center justify-content-md-start sign-in-module">
           <i className="fa fa-user user-icon"></i>
-          <button className="sign-in mr-3">Đăng nhập | Đăng ký</button>
+          <button className="sign-in">Đăng nhập | Đăng ký</button>
         </div>
       </div>
     </nav>

@@ -15,3 +15,23 @@
   height: $height;
   width: $width;
 }
+
+@mixin Responsive($breakPoint) {
+  @if $breakPoint == $SM {
+    @media screen and (max-width: $SM) {
+      @content;
+    }
+  } @else if $breakPoint == $MD {
+    @media screen and (max-width: $MD) {
+      @content;
+    }
+  } @else if $breakPoint == $LG {
+    @media screen and (max-width: $LG) {
+      @content;
+    }
+  } @else if $breakPoint == $XL {
+    @media screen and (max-width: $XL) {
+      @content;
+    }
+  }
+}
