@@ -9,3 +9,9 @@
   color: $color;
   background-color: $backgroundColor;
 }
+
+@mixin Seperator($backgroundColor, $width, $height) {
+  background-color: $backgroundColor;
+  height: $height;
+  width: $width;
+}

@@ -2,12 +2,24 @@
 @import "../../../../design-tokens/variables";
 @import "../../../../design-tokens/mixins";
 
+//background
+.background {
+  background-color: $c1-100;
+}
+
 //css for movie items
 .card-movie {
   text-align: center;
   cursor: pointer;
   overflow: hidden;
   position: relative;
+
+  img {
+    height: 400px;
+    object-fit: fill;
+    transform: scale(1);
+    transition: all 1s;
+  }
   .overlay {
     position: absolute;
     top: 100%;
@@ -17,34 +29,50 @@
     height: 100%;
     transition: all 0.5s;
     .button-movie-item {
-      @include Button(10, $text-base, $c1-50, $c1-500);
-      border: 1px solid transparent;
-      border-radius: 0.25rem;
-      box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-      cursor: pointer;
-      font-weight: 600;
-      line-height: 1.25;
-      min-height: 3rem;
-      text-decoration: none;
-      transition: all 250ms;
-      width: auto;
-      &:hover,
-      &:focus {
-        background-color: $c1-600;
-        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-        outline: none;
+      width: 4rem;
+      height: 4rem;
+      line-height: 4rem;
+      font-size: $text-md;
+      text-align: center;
+      border-radius: 50%;
+      outline: none;
+      border: none;
+      background-color: #e91e63;
+      color: #fafafa;
+      font-weight: bold;
+      transition: all 0.5s;
+      &:hover {
+        background-color: #fafafa;
+        color: #e91e63;
+      }
+    }
+    .movie-detail {
+      position: absolute;
+      bottom: 0;
+      background-color: $c1-500;
+      width: 100%;
+      min-height: 15%;
+      transition: all 0.5s;
+      a {
+        width: 100%;
+        text-decoration: none;
+        font-size: $text-lg;
+        font-weight: $text-bold;
+        color: $c1-50;
+        transition: all 0.5s;
       }
       &:hover {
-        transform: translateY(-1%);
-      }
-      &:active {
-        background-color: $c1-600;
-        box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-        transform: translateY(0);
+        background-color: $c1-800;
+        a {
+          color: $c1-500;
+        }
       }
     }
   }
   &:hover {
+    img {
+      transform: scale(1.2);
+    }
     .overlay {
       top: 0;
     }
@@ -56,19 +84,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: $c1-600;
-    width: 100%;
-    height: 5px;
-  }
   h4 {
     font-size: $text-2xl;
-    color: $c1-600;
+    color: $c1-500;
     font-weight: $text-bold;
     font-style: italic;
   }
@@ -82,4 +100,9 @@
       text-decoration: none;
     }
   }
+}
+//seperator
+.seperator-title {
+  @include Seperator($c1-500, 100%, 5px);
+  border-radius: 5px;
 }

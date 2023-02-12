@@ -12,27 +12,31 @@ export default function MovieList() {
           .filter((element) => (element.dangChieu ? true : false))
           .slice(0, 8)
           .map((element) => {
-            return <Movie movie={element} />;
+            return <Movie key={element.maPhim} movie={element} />;
           })
       : movieList
           .filter((element) => (element.sapChieu ? true : false))
           .slice(0, 8)
           .map((element) => {
-            return <Movie movie={element} />;
+            return <Movie key={element.maPhim} movie={element} />;
           });
   };
   return (
-    <div className="container pt-5">
-      <div className="title-status pb-3">
-        <h4>Phim đang chiếu</h4>
-        <a href="#">Xem thêm</a>
+    <div className="background">
+      <div className="container pt-5">
+        <div className="title-status">
+          <h4>Phim đang chiếu</h4>
+          <a href="#">Xem thêm</a>
+        </div>
+        <div className="seperator-title"></div>
+        <div className="row mt-4">{renderMovieList("dangChieu")}</div>
+        <div className="title-status pt-5">
+          <h4>Phim sắp chiếu</h4>
+          <a href="#">Xem thêm</a>
+        </div>
+        <div className="seperator-title"></div>
+        <div className="row mt-4">{renderMovieList("sapChieu")}</div>
       </div>
-      <div className="row mt-4">{renderMovieList("dangChieu")}</div>
-      <div className="title-status pt-5">
-        <h4>Phim sắp chiếu</h4>
-        <a href="#">Xem thêm</a>
-      </div>
-      <div className="row mt-4">{renderMovieList("sapChieu")}</div>
     </div>
   );
 }

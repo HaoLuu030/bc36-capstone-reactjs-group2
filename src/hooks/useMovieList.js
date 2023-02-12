@@ -5,7 +5,6 @@ export function useMovieList() {
   const [movieList, setMovieList] = useState([]);
   const getMovieList = async () => {
     const result = await fetchMovieList();
-    console.log(result.data.content);
     setMovieList(result.data.content);
   };
   useEffect(() => {

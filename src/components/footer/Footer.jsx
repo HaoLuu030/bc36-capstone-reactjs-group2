@@ -3,7 +3,7 @@ import "./index.scss";
 
 export default function Footer() {
   return (
-    <footer>
+    <footer className="pt-3">
       <div className="container">
         <div className="row">
           <div className="footer-item col-3">

@@ -1,0 +1,38 @@
+@import "../../../../design-tokens/base";
+@import "../../../../design-tokens/variables";
+@import "../../../../design-tokens/mixins";
+
+.background-carousel-bottom {
+  background-color: $c1-750;
+  .container-carousel-bottom {
+    h4 {
+      text-align: center;
+      color: white;
+      color: $c1-500;
+      font-size: $text-2xl;
+      font-weight: $text-bold;
+      i {
+        color: #ff1744;
+      }
+    }
+    .carousel-bottom {
+      .card {
+        border: none;
+        outline: none;
+        border-radius: none;
+        background-color: transparent;
+        img {
+          height: 400px;
+          object-fit: fill;
+        }
+      }
+    }
+  }
+  .seperator-title {
+    width: 40%;
+    margin: 5px auto;
+  }
+  .seperator-full {
+    @include Seperator($c1-500, 100%, 5px);
+  }
+}

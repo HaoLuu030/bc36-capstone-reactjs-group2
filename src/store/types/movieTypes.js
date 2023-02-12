@@ -1,0 +1,1 @@
+export const SET_TRAILER_LINK = "SET_TRAILER_LINK";
