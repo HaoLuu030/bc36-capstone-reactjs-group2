@@ -1,6 +1,8 @@
 import { Navigate, useRoutes } from "react-router-dom";
 import HomeLayout from "../layouts/homeLayout/HomeLayout";
 import Home from "../pages/home/Home";
+import MovieDetail from "../pages/movie-detail/MovieDetail";
+
 
 export default function Router() {
   const routing = useRoutes([
@@ -16,6 +18,10 @@ export default function Router() {
           path: "/home",
           element: <Home />,
         },
+        {
+          path: "/movie-detail/:id",
+          element: <MovieDetail/>
+        }
       ],
     },
   ]);
