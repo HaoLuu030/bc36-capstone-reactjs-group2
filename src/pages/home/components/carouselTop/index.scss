@@ -1,0 +1,45 @@
+@import "../../../../design-tokens/variables";
+@import "../../../../design-tokens/mixins";
+
+.carousel-top {
+  position: relative;
+  .carousel-items {
+    .carousel-item {
+      height: 80vh;
+      img {
+        object-fit: shrink;
+        width: 100%;
+      }
+    }
+  }
+  .button-carousel {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    line-height: 100%;
+    font-size: $text-2xl;
+    text-align: center;
+    border: none;
+    outline: none;
+    background-color: $c1-745;
+    color: $c1-495;
+    transition: all 0.5s;
+    &:focus {
+      border: none;
+      outline: none;
+    }
+    &:hover {
+      background-color: $c1-750;
+      color: $c1-500;
+    }
+    &.button-left {
+      left: 0;
+    }
+    &.button-right {
+      right: 0;
+    }
+  }
+}
