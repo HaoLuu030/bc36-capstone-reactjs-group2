@@ -5,6 +5,4 @@ export const CarouselImage = styled.div`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  width: 100vw;
-  height: 40vw;
 `;

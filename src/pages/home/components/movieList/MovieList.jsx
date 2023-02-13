@@ -29,13 +29,15 @@ export default function MovieList() {
           <a href="#">Xem thêm</a>
         </div>
         <div className="seperator-title"></div>
-        <div className="row mt-4">{renderMovieList("dangChieu")}</div>
-        <div className="title-status pt-5">
+        <div className="row mt-md-2 mt-lg-4">
+          {renderMovieList("dangChieu")}
+        </div>
+        <div className="title-status pt-md-3 pt-lg-5">
           <h4>Phim sắp chiếu</h4>
           <a href="#">Xem thêm</a>
         </div>
         <div className="seperator-title"></div>
-        <div className="row mt-4">{renderMovieList("sapChieu")}</div>
+        <div className="row mt-md-2 mt-lg-4">{renderMovieList("sapChieu")}</div>
       </div>
     </div>
   );

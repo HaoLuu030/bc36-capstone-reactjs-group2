@@ -2,14 +2,12 @@
 @import "../../../../design-tokens/mixins";
 
 .carousel-top {
+  min-width: 200px;
   position: relative;
   .carousel-items {
     .carousel-item {
       height: 80vh;
-      img {
-        object-fit: shrink;
-        width: 100%;
-      }
+      width: 100vw;
     }
   }
   .button-carousel {

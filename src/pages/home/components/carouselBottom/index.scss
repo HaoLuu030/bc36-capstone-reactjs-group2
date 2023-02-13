@@ -36,3 +36,46 @@
     @include Seperator($c1-500, 100%, 5px);
   }
 }
+
+@include Responsive($XL) {
+  .background-carousel-bottom {
+    .container-carousel-bottom {
+      .carousel-bottom {
+        .card {
+          img {
+            height: 380px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include Responsive($LG) {
+  .background-carousel-bottom {
+    .container-carousel-bottom {
+      .carousel-bottom {
+        .card {
+          img {
+            height: 300px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include Responsive($MD) {
+  .background-carousel-bottom {
+    .container-carousel-bottom {
+      .carousel-bottom {
+        .card {
+          img {
+            height: 250px;
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -8,13 +8,6 @@ import { fetchMovieBanners } from "../../../../services/banner";
 
 export default function CarouselTop() {
   const carouselRef = useRef();
-  const contentStyle = {
-    height: "160px",
-    color: "#fff",
-    lineHeight: "160px",
-    textAlign: "center",
-    background: "#364d79",
-  };
   const [movieBanners, setMovieBanners] = useState([]);
   const getMovieBanner = async () => {
     const result = await fetchMovieBanners();
@@ -27,9 +20,11 @@ export default function CarouselTop() {
   const renderBanner = () => {
     return movieBanners.map((elem) => {
       return (
-        <div key={elem.maBanner} className="carousel-item">
-          <CarouselImage backgroundImage={elem.hinhAnh}></CarouselImage>
-        </div>
+        <CarouselImage
+          key={elem.maBanner}
+          className="carousel-item"
+          backgroundImage={elem.hinhAnh}
+        ></CarouselImage>
       );
     });
   };
@@ -44,6 +39,7 @@ export default function CarouselTop() {
         pauseOnHover={true}
         draggable
         ref={carouselRef}
+        effect="fade"
         className="carousel-items"
       >
         {renderBanner()}

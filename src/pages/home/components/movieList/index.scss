@@ -8,11 +8,13 @@
 }
 
 //css for movie items
-.card-movie {
+.card.card-movie {
+  background-color: transparent;
   text-align: center;
   cursor: pointer;
   overflow: hidden;
   position: relative;
+  border: none;
 
   img {
     height: 400px;
@@ -105,4 +107,39 @@
 .seperator-title {
   @include Seperator($c1-500, 100%, 5px);
   border-radius: 5px;
+}
+
+@include Responsive($XL) {
+  .card-movie {
+    img {
+      height: 350px;
+    }
+  }
+}
+
+@include Responsive($LG) {
+  .card.card-movie {
+    img {
+      height: 300px;
+    }
+  }
+  .title-status {
+    h4 {
+      font-size: $text-lg;
+    }
+    a {
+      font-size: $text-sm;
+    }
+  }
+}
+
+@include Responsive($MD) {
+  .title-status {
+    h4 {
+      font-size: $text-md;
+    }
+    a {
+      font-size: $text-base;
+    }
+  }
 }
