@@ -10,7 +10,7 @@ export default function Movie(props) {
     dispatch(setTrailerLinkAction(trailer));
   };
   return (
-    <div key={props.movie.maPhim} className="p-lg-2 py-3 col-6 col-md-4 col-lg-3">
+    <div key={props.movie.maPhim} className="pt-3 px-2 p-lg-2 col-6 col-md-4 col-lg-3">
       <div className="card card-movie">
         <img className="card-img-top" src={props.movie.hinhAnh} />
         <div className="overlay d-flex justify-content-center align-items-center">

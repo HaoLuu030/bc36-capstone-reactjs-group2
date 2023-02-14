@@ -2,11 +2,11 @@ import React from "react";
 import "./index.scss";
 
 export default function Header() {
-  const toggleCollapseIcon = () => {
+  const handleToggleCollapseIcon = () => {
     document.querySelector(".navbar-toggler").classList.toggle("opening");
   };
   return (
-    <nav className="navbar navbar-expand-lg navbar-movie">
+    <nav className="navbar navbar-expand-lg navbar-movie px-0 align-items-lg-center">
       <a className="navbar-brand" href="#">
         <img src="/logo_white.png" alt="logo" style={{ width: "250px" }} />
       </a>
@@ -18,13 +18,14 @@ export default function Header() {
         aria-controls="collapsibleNavId"
         aria-expanded="false"
         aria-label="Toggle navigation"
-        onClick={toggleCollapseIcon}
+        onClick={handleToggleCollapseIcon}
       >
         <i className="fa fa-bars"></i>
         <i className="fa fa-times"></i>
       </button>
+
       <div
-        className="collapse navbar-collapse justify-content-between mt-3"
+        className="collapse navbar-collapse justify-content-center mt-3"
         id="collapsibleNavId"
       >
         <ul className="navbar-nav nav-items">
@@ -48,11 +49,16 @@ export default function Header() {
               Phim sắp chiếu
             </a>
           </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">
+              Rạp
+            </a>
+          </li>
         </ul>
-        <div className="d-flex align-items-center justify-content-md-start sign-in-module">
-          <i className="fa fa-user user-icon"></i>
-          <button className="sign-in">Đăng nhập | Đăng ký</button>
-        </div>
+      </div>
+      <div className="d-flex align-items-center justify-content-md-start sign-in-module">
+        <i className="fa fa-user user-icon"></i>
+        <button className="sign-in pt-1">Đăng nhập | Đăng ký</button>
       </div>
     </nav>
   );

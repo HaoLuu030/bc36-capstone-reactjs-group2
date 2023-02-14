@@ -9,6 +9,7 @@ footer {
   .footer-item {
     h4 {
       margin: 0;
+      font-size: $text-sm;
       position: relative;
       &::before {
         content: "";
@@ -29,6 +30,7 @@ footer {
         a {
           text-decoration: none;
           color: $c1-50;
+          font-size: $text-xs;
           &:hover {
             color: $c1-500;
           }
@@ -76,6 +78,40 @@ footer {
       width: 100%;
       height: 1px;
       background-color: $c1-50;
+    }
+  }
+}
+
+@include Responsive($MD) {
+  footer {
+    .footer-item {
+      h4 {
+        font-size: $text-md;
+      }
+      ul {
+        li {
+          a {
+            font-size: $text-base;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include Responsive($LG) {
+  footer {
+    .footer-item {
+      h4 {
+        font-size: $text-lg;
+      }
+      ul {
+        li {
+          a {
+            font-size: $text-sm;
+          }
+        }
+      }
     }
   }
 }

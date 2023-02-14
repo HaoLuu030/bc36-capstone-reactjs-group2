@@ -16,21 +16,30 @@
   width: $width;
 }
 
+@mixin Overlay() {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: $c1-745;
+  width: 100%;
+  height: 100%;
+}
+
 @mixin Responsive($breakPoint) {
   @if $breakPoint == $SM {
-    @media screen and (max-width: $SM) {
+    @media screen and (min-width: $SM) {
       @content;
     }
   } @else if $breakPoint == $MD {
-    @media screen and (max-width: $MD) {
+    @media screen and (min-width: $MD) {
       @content;
     }
   } @else if $breakPoint == $LG {
-    @media screen and (max-width: $LG) {
+    @media screen and (min-width: $LG) {
       @content;
     }
   } @else if $breakPoint == $XL {
-    @media screen and (max-width: $XL) {
+    @media screen and (min-width: $XL) {
       @content;
     }
   }
