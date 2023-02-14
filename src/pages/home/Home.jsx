@@ -1,4 +1,5 @@
 import React from "react";
+import LoginModule from "../../components/loginModule/LoginModule";
 
 import CarouselBottom from "./components/carouselBottom/CarouselBottom";
 import CarouselTop from "./components/carouselTop/CarouselTop";
@@ -13,6 +14,7 @@ export default function Home() {
       <MovieList />
       <CarouselBottom />
       <Trailer />
+      <LoginModule />
     </>
   );
 }

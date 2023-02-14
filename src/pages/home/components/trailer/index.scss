@@ -3,16 +3,7 @@
 @import "../../../../design-tokens/mixins";
 
 .trailer-background {
-  visibility: hidden;
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  background-color: $c1-745;
-  opacity: 0;
+  @include ModuleBackground();
   &.active {
     opacity: 1;
     visibility: visible;

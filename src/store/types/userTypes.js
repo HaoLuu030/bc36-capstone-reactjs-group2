@@ -1,0 +1,1 @@
+export const SET_USER_IFO = "SET_USER_IFO";

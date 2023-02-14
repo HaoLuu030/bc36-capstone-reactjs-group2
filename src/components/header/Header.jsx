@@ -1,9 +1,15 @@
 import React from "react";
 import "./index.scss";
+import { Button } from "antd";
+import { useSelector } from "react-redux";
 
 export default function Header() {
+  const userState = useSelector((state) => state.userReducer);
   const handleToggleCollapseIcon = () => {
     document.querySelector(".navbar-toggler").classList.toggle("opening");
+  };
+  const handleOpenLoginModule = () => {
+    document.querySelector(".background-login-module").classList.add("active");
   };
   return (
     <nav className="navbar navbar-expand-lg navbar-movie px-0 align-items-lg-center">
@@ -57,8 +63,18 @@ export default function Header() {
         </ul>
       </div>
       <div className="d-flex align-items-center justify-content-md-start sign-in-module">
-        <i className="fa fa-user user-icon"></i>
-        <button className="sign-in pt-1">Đăng nhập | Đăng ký</button>
+        {userState.userInfo ? (
+          <Button type="primary" danger>
+            Đăng xuất
+          </Button>
+        ) : (
+          <>
+            <i className="fa fa-user user-icon"></i>
+            <button onClick={handleOpenLoginModule} className="sign-in pt-1">
+              Đăng nhập | Đăng ký
+            </button>
+          </>
+        )}
       </div>
     </nav>
   );
