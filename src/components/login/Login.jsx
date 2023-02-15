@@ -1,6 +1,6 @@
 import React from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, notification } from "antd";
 import "./index.scss";
 import { loginApi } from "../../services/user";
 import { useDispatch } from "react-redux";
@@ -8,11 +8,14 @@ import { setUserInfoAction } from "../../store/action/userAction";
 
 const Login = () => {
   const dispatch = useDispatch();
+  //after clicking submit/login
   const onFinish = async (values) => {
     try {
       await loginApi(values);
-    } catch {
-      alert("Sai TK hoặc mật khẩu");
+    } catch (error) {
+      notification.error({
+        message: error.response.data.content,
+      });
     }
     const result = await loginApi(values);
     localStorage.setItem("USER_INFO_KEY", JSON.stringify(result.data.content));
@@ -20,6 +23,9 @@ const Login = () => {
     document
       .querySelector(".background-login-module")
       .classList.remove("active");
+    notification.success({
+      message: "Đăng nhập thành công!",
+    });
   };
   return (
     <Form

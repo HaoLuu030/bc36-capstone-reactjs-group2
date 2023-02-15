@@ -58,21 +58,29 @@
       }
     }
   }
-  .sign-in-module {
+  .sign-in-module,
+  .log-out-module {
     position: absolute;
+    color: $c1-50;
+    font-size: $text-xs;
+    .user-icon {
+      @include Icon($text-xs, $c1-50);
+    }
+  }
+  .sign-in-module {
     top: 46px;
     right: 45px;
-    .sign-in {
+    .sign-in,
+    .sign-out {
       color: $c1-50;
       background-color: transparent;
       border: none;
-      font-size: $text-xs;
       &:focus {
         outline: none;
       }
     }
-    .user-icon {
-      @include Icon($text-xs, $c1-50);
+    .sign-out:hover, .sign-in:hover {
+      color: $c1-500;
     }
   }
 }
@@ -108,7 +116,7 @@
       top: 42px;
       right: 65px;
       .sign-in,
-      .user-icon {
+      .user-icon, .sign-out, .welcome-user {
         font-size: $text-base;
       }
       margin: 0 15px 45px 0;

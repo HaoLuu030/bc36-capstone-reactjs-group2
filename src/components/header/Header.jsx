@@ -1,15 +1,24 @@
 import React from "react";
 import "./index.scss";
-import { Button } from "antd";
-import { useSelector } from "react-redux";
+import { Button, notification } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteUserInfoAction } from "../../store/action/userAction";
 
 export default function Header() {
   const userState = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
   const handleToggleCollapseIcon = () => {
     document.querySelector(".navbar-toggler").classList.toggle("opening");
   };
   const handleOpenLoginModule = () => {
     document.querySelector(".background-login-module").classList.add("active");
+  };
+  const handleLogout = () => {
+    localStorage.removeItem("USER_INFO_KEY");
+    dispatch(deleteUserInfoAction());
+    notification.success({
+      message: "Đã đăng xuất.",
+    });
   };
   return (
     <nav className="navbar navbar-expand-lg navbar-movie px-0 align-items-lg-center">
@@ -31,7 +40,7 @@ export default function Header() {
       </button>
 
       <div
-        className="collapse navbar-collapse justify-content-center mt-3"
+        className="collapse navbar-collapse justify-content-start mt-3"
         id="collapsibleNavId"
       >
         <ul className="navbar-nav nav-items">
@@ -63,15 +72,20 @@ export default function Header() {
         </ul>
       </div>
       <div className="d-flex align-items-center justify-content-md-start sign-in-module">
+        {" "}
         {userState.userInfo ? (
-          <Button type="primary" danger>
-            Đăng xuất
-          </Button>
+          <>
+            <span className="d-flex align-items-center welcome-user">
+              <i className="fa fa-user user-icon pr-1"></i> Xin chào,{" "}
+              {userState.userInfo.hoTen} |
+            </span>
+            <button onClick={handleLogout} className="sign-out">Đăng xuất</button>
+          </>
         ) : (
           <>
-            <i className="fa fa-user user-icon"></i>
+            {" "}
             <button onClick={handleOpenLoginModule} className="sign-in pt-1">
-              Đăng nhập | Đăng ký
+              <i className="fa fa-user user-icon"></i> Đăng nhập | Đăng ký
             </button>
           </>
         )}
