@@ -1,0 +1,111 @@
+@import "../../../../design-tokens/base";
+@import "../../../../design-tokens/variables";
+@import "../../../../design-tokens/mixins";
+
+.background-carousel-bottom {
+  background-color: $c1-750;
+  width: 100%;
+  .container-carousel-bottom {
+    h4 {
+      text-align: center;
+      color: white;
+      color: $c1-500;
+      font-size: $text-2xl;
+      font-weight: $text-bold;
+      i {
+        color: #ff1744;
+      }
+    }
+    .card {
+      position: relative;
+      border: none;
+      outline: none;
+      border-radius: none;
+      background-color: transparent;
+      &::before {
+        content: "";
+        @include Overlay();
+        transition: all 0.3s;
+        z-index: 1;
+      }
+      img {
+        height: 420px;
+        object-fit: fill;
+      }
+      .get-ticket-carousel-bottom {
+        background-color: $c1-500;
+        color: $c1-50;
+        line-height: 60px;
+        text-align: center;
+        border-radius: 5px;
+        width: 120px;
+        height: 60px;
+        position: absolute;
+        font-weight: $text-bold;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        visibility: hidden;
+        opacity: 0;
+        z-index: 1;
+        transition: all 0.5s;
+        &:hover {
+          background-color: $c1-750;
+          color: $c1-500;
+        }
+      }
+      &:hover {
+        &::before {
+          top: 0;
+        }
+        .get-ticket-carousel-bottom {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .seperator-title {
+    width: 40%;
+    margin: 5px auto;
+  }
+  .seperator-full {
+    @include Seperator($c1-500, 100%, 5px);
+  }
+}
+// @include Responsive($MD) {
+//   .background-carousel-bottom {
+//     .container-carousel-bottom {
+//       .carousel-bottom {
+//         .card {
+//           img {
+//             height: 250px;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// @include Responsive($LG) {
+//   .background-carousel-bottom {
+//     .container-carousel-bottom {
+//       .card {
+//         img {
+//           height: 330px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @include Responsive($XL) {
+//   .background-carousel-bottom {
+//     .container-carousel-bottom {
+//       .card {
+//         img {
+//           height: 420px;
+//         }
+//       }
+//     }
+//   }
+// }

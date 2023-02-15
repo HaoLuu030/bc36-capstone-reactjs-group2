@@ -3,10 +3,10 @@ import "./index.scss";
 
 export default function Footer() {
   return (
-    <footer>
+    <footer className="pt-3">
       <div className="container">
         <div className="row">
-          <div className="footer-item col-3">
+          <div className="footer-item col-4 col-md-3">
             <h4>Giới thiệu</h4>
             <ul>
               <li>
@@ -20,7 +20,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="footer-item col-3">
+          <div className="footer-item col-4 col-md-3">
             {" "}
             <h4>Góc điện ảnh</h4>
             <ul>
@@ -35,7 +35,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="footer-item col-3">
+          <div className="footer-item col-4 col-md-3">
             {" "}
             <h4>Hỗ trợ</h4>
             <ul>
@@ -50,28 +50,28 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="footer-item col-3">
+          <div className="footer-item col-12 col-md-3 text-center text-md-left">
             <h4>Kết nối với chúng tôi</h4>
-            <ul className="row p-0">
+            <ul className="row justify-content-center justify-content-md-between p-0 my-2">
               <li className="col-2">
                 <a href="#">
-                  <i class="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square"></i>
                 </a>
               </li>
               <li className="col-2">
                 <a href="#">
-                  <i class="fab fa-youtube"></i>
+                  <i className="fab fa-youtube"></i>
                 </a>
               </li>
               <li className="col-2">
                 <a href="#">
                   {" "}
-                  <i class="fa-brands fa-tiktok"></i>
+                  <i className="fa-brands fa-tiktok"></i>
                 </a>
               </li>
               <li className="col-2">
                 <a href="#">
-                  <i class="fab fa-instagram"></i>
+                  <i className="fab fa-instagram"></i>
                 </a>
               </li>
             </ul>
@@ -82,8 +82,8 @@ export default function Footer() {
         </div>
         <div className="copy-right text-center mt-4">
           <p>
-            <i class="fa-regular fa-copyright"></i> 2022-2023 | Ticket Play all
-            rights reserved
+            <i className="fa-regular fa-copyright"></i> 2022-2023 | Ticket Play
+            all rights reserved
           </p>
         </div>
       </div>

@@ -1,0 +1,28 @@
+@import "../../design-tokens/variables";
+@import "../../design-tokens/mixins";
+@import "../../design-tokens/base";
+
+.background-login-module {
+  @include ModuleBackground();
+  visibility: hidden;
+  opacity: 0;
+  .login-module-container {
+    width: 100%;
+    height: 100%;
+  }
+  .login-module {
+    z-index: 99999;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 50px;
+    border-radius: 25px;
+  }
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+}

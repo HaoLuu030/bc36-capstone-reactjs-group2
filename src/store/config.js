@@ -1,6 +1,8 @@
 import { combineReducers, createStore } from "redux";
+import { movieReducer } from "./reducers/movieReducer";
+import { userReducer } from "./reducers/userReducer";
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({ movieReducer, userReducer });
 
 export const store = createStore(
   rootReducer,
