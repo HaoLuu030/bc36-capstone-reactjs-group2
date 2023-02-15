@@ -1,4 +1,4 @@
-import { useMovieList } from "../../../../hooks/useMovieList";
+import { useMovieList } from "../../hooks/useMovieList";
 //main CSS
 import "./index.scss";
 import { Carousel } from "antd";

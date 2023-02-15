@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setTrailerLinkAction } from "../../../../store/action/movieActions";
+import { NavLink } from "react-router-dom";
 
 export default function Movie(props) {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ export default function Movie(props) {
             <i className="fa fa-play"></i>
           </button>
           <div className="movie-detail d-flex align-items-center">
-            <a href="#">Chi tiết</a>
+            <NavLink to={`/movie-detail/${props.movie.maPhim}`}>Chi tiết</NavLink>
           </div>
         </div>
       </div>

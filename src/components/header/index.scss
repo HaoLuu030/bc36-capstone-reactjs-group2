@@ -49,9 +49,7 @@
           &:hover {
             color: $c1-500;
           }
-        }
-        &.active {
-          a {
+          &.active {
             color: $c1-500;
           }
         }
@@ -79,7 +77,8 @@
         outline: none;
       }
     }
-    .sign-out:hover, .sign-in:hover {
+    .sign-out:hover,
+    .sign-in:hover {
       color: $c1-500;
     }
   }
@@ -116,7 +115,9 @@
       top: 42px;
       right: 65px;
       .sign-in,
-      .user-icon, .sign-out, .welcome-user {
+      .user-icon,
+      .sign-out,
+      .welcome-user {
         font-size: $text-base;
       }
       margin: 0 15px 45px 0;
