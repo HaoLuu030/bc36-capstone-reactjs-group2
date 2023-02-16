@@ -1,8 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { setTrailerLinkAction } from "../../../../store/action/movieActions";
 
 export default function Movie(props) {
+  //navigate to MovieDetail
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const openTrailer = (trailer) => {
 
@@ -23,7 +27,7 @@ export default function Movie(props) {
             <i className="fa fa-play"></i>
           </button>
           <div className="movie-detail d-flex align-items-center">
-            <a href="#">Chi tiết</a>
+            <a onClick={() => navigate(`/movie-detail/${props.maPhim}`)} href="#">Chi tiết</a>
           </div>
         </div>
       </div>
