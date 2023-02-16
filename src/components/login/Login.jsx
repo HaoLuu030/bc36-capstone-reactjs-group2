@@ -47,7 +47,7 @@ const Login = () => {
       >
         <Input
           prefix={<UserOutlined className="site-form-item-icon" />}
-          placeholder="Username"
+          placeholder="Tài khoản"
         />
       </Form.Item>
       <Form.Item
@@ -62,12 +62,12 @@ const Login = () => {
         <Input
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
-          placeholder="Password"
+          placeholder="Mật khẩu"
         />
       </Form.Item>
       <Form.Item>
         <Button type="primary" htmlType="submit" className="login-form-button">
-          Log in
+          Đăng nhập
         </Button>
       </Form.Item>
     </Form>

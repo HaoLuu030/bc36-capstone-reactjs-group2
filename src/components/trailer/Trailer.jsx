@@ -30,7 +30,7 @@ export default function Trailer() {
           <iframe
             title="movie-trailer"
             src={trailerLink}
-            frameborder="0"
+            frameBorder="0"
           ></iframe>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { useMovieList } from "../../../../hooks/useMovieList";
-import Movie from "../movie/Movie";
+import Movie from "../../../../components/movie/Movie";
 import "./index.scss";
 
 export default function MovieList() {

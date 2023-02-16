@@ -1,0 +1,43 @@
+@import "../../../../design-tokens/base";
+@import "../../../../design-tokens/mixins";
+@import "../../../../design-tokens/variables";
+
+.side-bar {
+  background-color: $c1-800;
+  border-radius: 5px;
+  color: $c1-50;
+  .hot-movie-item {
+   padding: 1rem 0;
+    border-bottom: 1px solid $c1-500;
+    cursor: pointer;
+    .img-container {
+      width: 25%;
+      margin-right: 1rem;
+      img {
+        width: 100%;
+      }
+    }
+    .hot-movie-item-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      p {
+        margin: 0;
+        color: $c1-50;
+        font-size: $text-base;
+      }
+      p:nth-of-type(1) {
+        color: $c1-500;
+        font-size: $text-sm;
+      }
+      .star-rating {
+        font-size: 20px;
+        .fa-star {
+          &.checked {
+            color: $c1-500;
+          }
+        }
+      }
+    }
+  }
+}

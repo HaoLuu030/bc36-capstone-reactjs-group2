@@ -32,13 +32,13 @@ export default function CarouselBottom() {
       },
     },
     {
-      breakpoint: 992,
+      breakpoint: 991,
       settings: {
         slidesToShow: 3,
       },
     },
     {
-      breakpoint: 768,
+      breakpoint: 767,
       settings: {
         slidesToShow: 2,
       },
@@ -47,7 +47,7 @@ export default function CarouselBottom() {
 
   return (
     <div className="background-carousel-bottom">
-      <div className="container-carousel-bottom py-3">
+      <div className="container-carousel-bottom py-1 container-fluid">
         <h4>
           <i name="fa fa-fire"></i> Phim Hot <i className="fa fa-fire"></i>
         </h4>
