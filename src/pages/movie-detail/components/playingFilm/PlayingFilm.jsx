@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function PlayingFilm() {
+    
     return (
         <div className="row mt-5">
             <div className="col-12">
