@@ -30,7 +30,7 @@ const Login = () => {
   return (
     <Form
       name="normal_login"
-      className="login-form"
+      className="login-form login-form-movie"
       initialValues={{
         remember: true,
       }}

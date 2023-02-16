@@ -21,6 +21,21 @@
     padding: 50px;
     border-radius: 25px;
   }
+  .ant-tabs {
+    & .ant-tabs-tab {
+      &.ant-tabs-tab-active {
+        & .ant-tabs-tab-btn {
+          color: $c1-500;
+        }
+      }
+      &:hover {
+        color: $c1-500;
+      }
+    }
+    .ant-tabs-ink-bar {
+      background-color: $c1-500;
+    }
+  }
   &.active {
     visibility: visible;
     opacity: 1;
