@@ -24,12 +24,14 @@ export default function Detail() {
     <div className="row">
       <div className="col-12">
         <div className="row">
-          <div className="col-lg-4 col-md-12">
-            <img width={320} height={420} src={movieDetail.hinhAnh} alt="" />
+          <div className="image col-md-12 col-lg-4">
+            <img width={320} height={480} src={movieDetail.hinhAnh} alt="" />
           </div>
-          <div className="title col-lg-8 col-md-12">
+          <div className="title col-md-12 col-lg-6">
             <h1>{movieDetail.tenPhim}</h1>
-            <h5>Đánh giá: {movieDetail.danhGia}/10</h5>
+            <h5>Đánh giá: {movieDetail.danhGia}/10
+            <i class="fa-solid fa-star"></i>
+            </h5>
             <h3>Nội dung:</h3>
             <p >{movieDetail.moTa}</p>
           </div>
