@@ -9,7 +9,9 @@ export default function MovieList(props) {
     return movieList
       ?.filter((element) => (element.dangChieu ? true : false))
       ?.map((element) => {
-        return <Movie movie={element} sideBar = {props.sideBar} />;
+        return (
+          <Movie movie={element} sideBar={props.sideBar} key={element.maPhim} />
+        );
       });
   };
   return (

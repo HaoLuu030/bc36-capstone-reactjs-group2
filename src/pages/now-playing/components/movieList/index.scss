@@ -2,6 +2,16 @@
 @import "../../../../design-tokens/mixins";
 @import "../../../../design-tokens/variables";
 
+.now-playing {
+  h4 {
+    font-size: $text-2xl;
+    color: $c1-500;
+    font-weight: bold;
+    text-decoration: underline;
+    font-style: italic;
+  }
+}
+
 @include Responsive($SM) {
   .now-playing {
     .card.card-movie {

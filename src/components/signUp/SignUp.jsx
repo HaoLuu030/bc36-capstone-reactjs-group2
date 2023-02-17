@@ -1,32 +1,44 @@
-import { Button, Checkbox, Form, Input } from "antd";
-import { useState } from "react";
-const formItemLayout = {
-  wrapperCol: {
-    span: 24,
-    offset: 0,
-  },
-};
+import { Button, Checkbox, Form, Input, notification } from "antd";
+import { signUpApi } from "../../services/user";
+import "./index.scss";
+// const formItemLayout = {
+//   wrapperCol: {
+//     span: 24,
+//     offset: 0,
+//   },
+// };
 
 const SignUp = () => {
   const [form] = Form.useForm();
   //on submit
-  const onFinish = (values) => {
-    console.log(values);
+  const onFinish = async (values) => {
+    const { email, hoTen, matKhau, soDt, taiKhoan } = values;
+    console.log({ email, hoTen, matKhau, soDt, taiKhoan, maNhom: "GP03" });
+    try {
+      await signUpApi({
+        taiKhoan,
+        matKhau,
+        email,
+        soDt,
+        maNhom: "GP03",
+        hoTen,
+      });
+      notification.success({
+        message: "Đăng ký thành công!",
+      });
+    } catch (error) {
+      notification.error({
+        message: error.response.data.content,
+      });
+    }
   };
   return (
     <Form
-      {...formItemLayout}
+      // {...formItemLayout}
+      className="sign-up-form"
       form={form}
-      name="register"
+      name="normal-login"
       onFinish={onFinish}
-      initialValues={{
-        residence: ["zhejiang", "hangzhou", "xihu"],
-        prefix: "86",
-      }}
-      style={{
-        minWidth: 300,
-        maxWidth: 600,
-      }}
       scrollToFirstError
     >
       <Form.Item
@@ -74,7 +86,7 @@ const SignUp = () => {
           <Input placeholder="Nhập tên tài khoản" />
         </Form.Item>
         <Form.Item
-          name="soDT"
+          name="soDt"
           style={{
             display: "inline-block",
             width: "calc(50% - 8px)",
@@ -150,14 +162,18 @@ const SignUp = () => {
                   ),
           },
         ]}
-        {...formItemLayout}
+        // {...formItemLayout}
       >
         <Checkbox>
           Tôi đồng ý với <a href="">điều khoản sử dụng</a>
         </Checkbox>
       </Form.Item>
-      <Form.Item {...formItemLayout}>
-        <Button type="primary" htmlType="submit">
+      <Form.Item>
+        <Button
+          className="sign-up-form-button"
+          type="primary"
+          htmlType="submit"
+        >
           Register
         </Button>
       </Form.Item>

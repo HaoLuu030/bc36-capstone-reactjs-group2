@@ -11,15 +11,13 @@ export default function Sidebar() {
   const renderStar = (score) => {
     let numOfStars = Math.floor(score / 2);
     const starList = [];
-    console.log(numOfStars);
     for (let i = 0; i < 5; i++, numOfStars--) {
       if (numOfStars > 0) {
-        starList.push(<span class="fa fa-star checked"></span>);
+        starList.push(<span key={i} className="fa fa-star checked"></span>);
       } else {
-        starList.push(<span class="fa fa-star"></span>);
+        starList.push(<span key={i} className="fa fa-star"></span>);
       }
     }
-    console.log(starList);
     return starList;
   };
   const renderHotMovies = () => {
