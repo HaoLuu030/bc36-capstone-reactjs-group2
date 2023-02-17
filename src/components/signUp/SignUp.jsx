@@ -1,56 +1,18 @@
-import { Button, Checkbox, Form, Input, Select } from "antd";
+import { Button, Checkbox, Form, Input } from "antd";
 import { useState } from "react";
-const { Option } = Select;
 const formItemLayout = {
-  labelCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 8,
-    },
-  },
   wrapperCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 16,
-    },
+    span: 24,
+    offset: 0,
   },
 };
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
+
 const SignUp = () => {
   const [form] = Form.useForm();
+  //on submit
   const onFinish = (values) => {
-    console.log("Received values of form: ", values);
+    console.log(values);
   };
-
-  const [autoCompleteResult, setAutoCompleteResult] = useState([]);
-  const onWebsiteChange = (value) => {
-    if (!value) {
-      setAutoCompleteResult([]);
-    } else {
-      setAutoCompleteResult(
-        [".com", ".org", ".net"].map((domain) => `${value}${domain}`)
-      );
-    }
-  };
-  const websiteOptions = autoCompleteResult.map((website) => ({
-    label: website,
-    value: website,
-  }));
   return (
     <Form
       {...formItemLayout}
@@ -62,79 +24,117 @@ const SignUp = () => {
         prefix: "86",
       }}
       style={{
+        minWidth: 300,
         maxWidth: 600,
       }}
       scrollToFirstError
     >
       <Form.Item
-        name="email"
-        label="E-mail"
-        rules={[
-          {
-            type: "email",
-            message: "The input is not valid E-mail!",
-          },
-          {
-            required: true,
-            message: "Please input your E-mail!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        name="password"
-        label="Password"
+        name="hoTen"
         rules={[
           {
             required: true,
-            message: "Please input your password!",
-          },
-        ]}
-        hasFeedback
-      >
-        <Input.Password />
-      </Form.Item>
-
-      <Form.Item
-        name="confirm"
-        label="Confirm Password"
-        dependencies={["password"]}
-        hasFeedback
-        rules={[
-          {
-            required: true,
-            message: "Please confirm your password!",
-          },
-          ({ getFieldValue }) => ({
-            validator(_, value) {
-              if (!value || getFieldValue("password") === value) {
-                return Promise.resolve();
-              }
-              return Promise.reject(
-                new Error("The two passwords that you entered do not match!")
-              );
-            },
-          }),
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
-
-      <Form.Item
-        name="nickname"
-        label="Nickname"
-        tooltip="What do you want others to call you?"
-        rules={[
-          {
-            required: true,
-            message: "Please input your nickname!",
+            message: "Vui lòng nhập họ tên",
             whitespace: true,
           },
         ]}
       >
-        <Input />
+        <Input placeholder="Nhập Họ tên" />
+      </Form.Item>
+      <Form.Item
+        name="email"
+        rules={[
+          {
+            type: "email",
+            message: "Email không đúng định dạng",
+          },
+          {
+            required: true,
+            message: "Vui lòng nhập email",
+          },
+        ]}
+      >
+        <Input placeholder="Nhập Email" />
+      </Form.Item>
+      <Form.Item style={{ marginBottom: "0" }}>
+        <Form.Item
+          name="taiKhoan"
+          style={{
+            display: "inline-block",
+            width: "calc(50% - 8px)",
+          }}
+          rules={[
+            {
+              required: true,
+              message: "Vui lòng nhập tên tài khoản",
+              whitespace: true,
+            },
+          ]}
+        >
+          <Input placeholder="Nhập tên tài khoản" />
+        </Form.Item>
+        <Form.Item
+          name="soDT"
+          style={{
+            display: "inline-block",
+            width: "calc(50% - 8px)",
+            margin: "0 8px",
+          }}
+          rules={[
+            {
+              required: true,
+              message: "Vui lòng nhập số điện thoại",
+            },
+          ]}
+        >
+          <Input placeholder="Nhập số điện thoại" />
+        </Form.Item>
+      </Form.Item>
+
+      <Form.Item style={{ marginBottom: "0" }}>
+        <Form.Item
+          name="matKhau"
+          rules={[
+            {
+              required: true,
+              message: "Vui lòng nhập mật khẩu",
+            },
+          ]}
+          hasFeedback
+          style={{
+            display: "inline-block",
+            width: "calc(50% - 8px)",
+          }}
+        >
+          <Input.Password placeholder="Nhập Mật khẩu" />
+        </Form.Item>
+
+        <Form.Item
+          name="xacNhanMatKhau"
+          dependencies={["matKhau"]}
+          hasFeedback
+          rules={[
+            {
+              required: true,
+              message: "Vui lòng xác nhận mật khẩu",
+            },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue("matKhau") === value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error("Mật khẩu không trùng khớp"));
+              },
+            }),
+          ]}
+          style={{
+            display: "inline-block",
+            width: "calc(50% - 8px)",
+            margin: "0 8px",
+          }}
+        >
+          <Input.Password placeholder="Nhập lại mật khẩu" />
+        </Form.Item>
       </Form.Item>
 
       <Form.Item
@@ -145,16 +145,18 @@ const SignUp = () => {
             validator: (_, value) =>
               value
                 ? Promise.resolve()
-                : Promise.reject(new Error("Should accept agreement")),
+                : Promise.reject(
+                    new Error("Vui lòng chọn đồng ý với điều khoản sử dụng")
+                  ),
           },
         ]}
-        {...tailFormItemLayout}
+        {...formItemLayout}
       >
         <Checkbox>
-          I have read the <a href="">agreement</a>
+          Tôi đồng ý với <a href="">điều khoản sử dụng</a>
         </Checkbox>
       </Form.Item>
-      <Form.Item {...tailFormItemLayout}>
+      <Form.Item {...formItemLayout}>
         <Button type="primary" htmlType="submit">
           Register
         </Button>

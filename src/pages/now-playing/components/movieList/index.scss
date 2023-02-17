@@ -2,11 +2,32 @@
 @import "../../../../design-tokens/mixins";
 @import "../../../../design-tokens/variables";
 
-
-.now-playing{
-    .card.card-movie{
-        img{
-            height: 250px;
-        }
+@include Responsive($SM) {
+  .now-playing {
+    .card.card-movie {
+      img {
+        height: $h-md;
+      }
     }
+  }
+}
+
+@include Responsive($MD) {
+  .now-playing {
+    .card.card-movie {
+      img {
+        height: $h-sm;
+      }
+    }
+  }
+}
+
+@include Responsive($LG) {
+  .now-playing {
+    .card.card-movie {
+      img {
+        height: $h-xs;
+      }
+    }
+  }
 }

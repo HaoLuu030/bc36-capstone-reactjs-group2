@@ -1,32 +1,26 @@
 import { useMovieList } from "../../../../hooks/useMovieList";
 import Movie from "../../../../components/movie/Movie";
 import "./index.scss";
+import { NavLink } from "react-router-dom";
 
 export default function MovieList() {
   //get the movie list from a custom hook
   const movieList = useMovieList();
   const renderMovieList = (type) => {
     //render movies based on premire status, using slice to limit the amount of movies shown
-    return type === "dangChieu"
-      ? movieList
-          .filter((element) => (element.dangChieu ? true : false))
-          .slice(0, 8)
-          .map((element) => {
-            return <Movie key={element.maPhim} movie={element} />;
-          })
-      : movieList
-          .filter((element) => (element.sapChieu ? true : false))
-          .slice(0, 8)
-          .map((element) => {
-            return <Movie key={element.maPhim} movie={element} />;
-          });
+    return movieList
+      .filter((element) => (element[type] ? true : false))
+      .slice(0, 4)
+      .map((element) => {
+        return <Movie key={element.maPhim} movie={element} />;
+      });
   };
   return (
     <div className="background">
       <div className="container pt-5">
         <div className="title-status">
           <h4>Phim đang chiếu</h4>
-          <a href="#">Xem thêm</a>
+          <NavLink to={"/now-playing"}>Xem thêm</NavLink>
         </div>
         <div className="seperator-title"></div>
         <div className="row mt-md-2 mt-lg-4">

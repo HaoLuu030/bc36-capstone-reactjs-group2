@@ -8,12 +8,9 @@ export default function NowPlaying() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-8">
-          <MovieList />
-        </div>
-        <div className="col-4">
-          <Sidebar />
-        </div>
+        {/* pass sideBar as a prop for conditionl rendering for movie items in other pages */}
+        <MovieList sideBar={true} />
+        <Sidebar />
       </div>
       <LoginModule />
       <Trailer />
