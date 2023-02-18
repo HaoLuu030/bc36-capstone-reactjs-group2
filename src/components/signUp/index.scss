@@ -1,12 +1,18 @@
 @import "../../design-tokens/variables";
-#components-form-demo-normal-login .login-form {
-  max-width: 300px;
-}
-#components-form-demo-normal-login .login-form-button {
-  width: 100%;
-}
 
-.login-form-movie {
+.sign-up-form {
+  // normal input
+  input {
+    &:hover,
+    &:focus {
+      border-color: $c1-500;
+      box-shadow: none;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  //fix input with wrapper outside
   .ant-input-affix-wrapper {
     &:hover,
     &.ant-input-affix-wrapper-focused {
@@ -14,7 +20,7 @@
       border-color: $c1-500;
     }
   }
-  .login-form-button {
+  .sign-up-form-button {
     background-color: $c1-500;
     // height: 50px;
     // span {

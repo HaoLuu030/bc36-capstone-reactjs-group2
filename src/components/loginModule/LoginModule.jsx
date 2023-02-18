@@ -3,9 +3,6 @@ import Login from "../login/Login";
 import SignUp from "../signUp/SignUp";
 import "./index.scss";
 const LoginModule = () => {
-  const onChange = (key) => {
-    console.log(key);
-  };
   const handleCloseLoginModule = () => {
     document
       .querySelector(".background-login-module")
@@ -29,12 +26,7 @@ const LoginModule = () => {
         onClick={handleCloseLoginModule}
         className="login-module-container"
       ></div>
-      <Tabs
-        className="login-module"
-        defaultActiveKey="1"
-        items={items}
-        onChange={onChange}
-      />
+      <Tabs className="login-module" defaultActiveKey="1" items={items} />
     </div>
   );
 };

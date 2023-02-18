@@ -2,7 +2,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 import HomeLayout from "../layouts/homeLayout/HomeLayout";
 import Home from "../pages/home/Home";
 import MovieDetail from "../pages/movie-detail/MovieDetail";
-
+import NowPlaying from "../pages/now-playing/NowPlaying";
 
 export default function Router() {
   const routing = useRoutes([
@@ -20,8 +20,12 @@ export default function Router() {
         },
         {
           path: "/movie-detail/:id",
-          element: <MovieDetail/>
-        }
+          element: <MovieDetail />,
+        },
+        {
+          path: "/now-playing",
+          element: <NowPlaying />,
+        },
       ],
     },
   ]);

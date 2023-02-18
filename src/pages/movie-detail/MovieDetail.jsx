@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Detail from './components/detail/Detail'
 import PlayingFilm from './components/playingFilm/PlayingFilm'
 

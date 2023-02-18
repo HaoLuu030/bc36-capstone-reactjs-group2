@@ -1,6 +1,6 @@
-@import "../../../../design-tokens/base";
-@import "../../../../design-tokens/variables";
-@import "../../../../design-tokens/mixins";
+@import "../../design-tokens/base";
+@import "../../design-tokens/mixins";
+@import "../../design-tokens/variables";
 
 .background-carousel-bottom {
   background-color: $c1-750;
@@ -29,7 +29,6 @@
         z-index: 1;
       }
       img {
-        height: 420px;
         object-fit: fill;
       }
       .get-ticket-carousel-bottom {
@@ -73,39 +72,38 @@
     @include Seperator($c1-500, 100%, 5px);
   }
 }
-// @include Responsive($MD) {
-//   .background-carousel-bottom {
-//     .container-carousel-bottom {
-//       .carousel-bottom {
-//         .card {
-//           img {
-//             height: 250px;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-// @include Responsive($LG) {
-//   .background-carousel-bottom {
-//     .container-carousel-bottom {
-//       .card {
-//         img {
-//           height: 330px;
-//         }
-//       }
-//     }
-//   }
-// }
+@include Responsive($SM) {
+  .background-carousel-bottom {
+    .container-carousel-bottom {
+      .card {
+        img {
+          height: 330px;
+        }
+      }
+    }
+  }
+}
 
-// @include Responsive($XL) {
-//   .background-carousel-bottom {
-//     .container-carousel-bottom {
-//       .card {
-//         img {
-//           height: 420px;
-//         }
-//       }
-//     }
-//   }
-// }
+@include Responsive($LG) {
+  .background-carousel-bottom {
+    .container-carousel-bottom {
+      .card {
+        img {
+          height: 350px;
+        }
+      }
+    }
+  }
+}
+
+@include Responsive($XL) {
+  .background-carousel-bottom {
+    .container-carousel-bottom {
+      .card {
+        img {
+          height: 420px;
+        }
+      }
+    }
+  }
+}
