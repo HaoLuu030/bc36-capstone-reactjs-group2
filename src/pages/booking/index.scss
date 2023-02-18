@@ -1,0 +1,16 @@
+@import "../../design-tokens/base";
+@import "../../design-tokens/mixins";
+@import "../../design-tokens/variables";
+
+.screen {
+    color: #fff;;
+    font-weight: $text-bold;
+    border: 2px solid;
+    background-color: #969696;
+    width: 60%;
+    text-align: center;
+    margin: 30px 0;
+    border: 1px solid #fff;
+    box-shadow: 5px 5px 0 rgb(0 0 0 / 10%);
+    border-radius: 30px;
+}

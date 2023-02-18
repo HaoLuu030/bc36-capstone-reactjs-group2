@@ -1,5 +1,6 @@
 import { Navigate, useRoutes } from "react-router-dom";
 import HomeLayout from "../layouts/homeLayout/HomeLayout";
+import Booking from "../pages/booking/Booking";
 import Home from "../pages/home/Home";
 import MovieDetail from "../pages/movie-detail/MovieDetail";
 import NowPlaying from "../pages/now-playing/NowPlaying";
@@ -26,6 +27,10 @@ export default function Router() {
           path: "/now-playing",
           element: <NowPlaying />,
         },
+        {
+          path: "/booking/:id",
+          element: <Booking />
+        }
       ],
     },
   ]);
