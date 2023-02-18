@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieDetailApi } from "../../../../services/movie";
-import Trailer from "../../../home/components/trailer/Trailer";
+
 import "./index.scss";
 
 export default function Detail() {
@@ -55,7 +55,7 @@ export default function Detail() {
             </div>
           </div>
         </div> */}
-        <Trailer />
+       
       </div>
     </div>
   );
