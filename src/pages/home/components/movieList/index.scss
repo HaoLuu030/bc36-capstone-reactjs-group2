@@ -45,24 +45,24 @@
     .movie-detail {
       position: absolute;
       bottom: 0;
-      background-color: $c1-500;
+      // background-color: $c1-500;
       width: 100%;
       min-height: 15%;
-      transition: all 0.5s;
-      a {
-        width: 100%;
-        text-decoration: none;
-        font-size: $text-lg;
-        font-weight: $text-bold;
-        color: $c1-50;
-        transition: all 0.5s;
-      }
-      &:hover {
-        background-color: $c1-800;
-        a {
-          color: $c1-500;
-        }
-      }
+      // transition: all 0.5s;
+      // a {
+      //   width: 100%;
+      //   text-decoration: none;
+      //   font-size: $text-lg;
+      //   font-weight: $text-bold;
+      //   color: $c1-50;
+      //   transition: all 0.5s;
+      // }
+      // &:hover {
+      //   background-color: $c1-800;
+      //   a {
+      //     color: $c1-500;
+      //   }
+      // }
     }
   }
   &:hover {
