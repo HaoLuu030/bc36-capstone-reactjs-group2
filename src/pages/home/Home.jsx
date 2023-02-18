@@ -1,5 +1,6 @@
 import React from "react";
-import CarouselBottom from "../../components/carouselBottom/CarouselBottom";
+import CarouselSlide from "../../components/carouselSlide/CarouselSlide";
+
 import LoginModule from "../../components/loginModule/LoginModule";
 import Trailer from "../../components/trailer/Trailer";
 import CarouselTop from "./components/carouselTop/CarouselTop";
@@ -12,7 +13,7 @@ export default function Home() {
       <CarouselTop />
       <MovieList />
       <Trailer />
-      <CarouselBottom />
+      <CarouselSlide type="hot" />
       <LoginModule />
     </>
   );
