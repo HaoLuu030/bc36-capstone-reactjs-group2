@@ -11,21 +11,23 @@ const Login = () => {
   //after clicking submit/login
   const onFinish = async (values) => {
     try {
-      await loginApi(values);
+      const result = await loginApi(values);
+      localStorage.setItem(
+        "USER_INFO_KEY",
+        JSON.stringify(result.data.content)
+      );
+      dispatch(setUserInfoAction(result.data.content));
+      document
+        .querySelector(".background-login-module")
+        .classList.remove("active");
+      notification.success({
+        message: "Đăng nhập thành công!",
+      });
     } catch (error) {
       notification.error({
         message: error.response.data.content,
       });
     }
-    const result = await loginApi(values);
-    localStorage.setItem("USER_INFO_KEY", JSON.stringify(result.data.content));
-    dispatch(setUserInfoAction(result.data.content));
-    document
-      .querySelector(".background-login-module")
-      .classList.remove("active");
-    notification.success({
-      message: "Đăng nhập thành công!",
-    });
   };
   return (
     <Form
@@ -41,13 +43,13 @@ const Login = () => {
         rules={[
           {
             required: true,
-            message: "Please input your Username!",
+            message: "Vui lòng nhập tài khoản",
           },
         ]}
       >
         <Input
           prefix={<UserOutlined className="site-form-item-icon" />}
-          placeholder="Username"
+          placeholder="Tài khoản"
         />
       </Form.Item>
       <Form.Item
@@ -55,19 +57,19 @@ const Login = () => {
         rules={[
           {
             required: true,
-            message: "Please input your Password!",
+            message: "Vui lòng nhập mật khẩu",
           },
         ]}
       >
         <Input
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
-          placeholder="Password"
+          placeholder="Mật khẩu"
         />
       </Form.Item>
       <Form.Item>
         <Button type="primary" htmlType="submit" className="login-form-button">
-          Log in
+          Đăng nhập
         </Button>
       </Form.Item>
     </Form>

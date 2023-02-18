@@ -7,7 +7,18 @@ export const loginApi = (information) => {
     method: "POST",
     data: information,
     headers: {
-        TokenCybersoft: TOKEN_CYBERSOFT,
-    }
+      TokenCybersoft: TOKEN_CYBERSOFT,
+    },
+  });
+};
+
+export const signUpApi = (information) => {
+  return axios({
+    url: `${BASE_URL}/QuanLyNguoiDung/DangKy`,
+    method: "POST",
+    data: information,
+    headers: {
+      TokenCybersoft: TOKEN_CYBERSOFT,
+    },
   });
 };

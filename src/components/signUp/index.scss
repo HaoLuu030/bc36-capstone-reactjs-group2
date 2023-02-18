@@ -1,0 +1,33 @@
+@import "../../design-tokens/variables";
+
+.sign-up-form {
+  // normal input
+  input {
+    &:hover,
+    &:focus {
+      border-color: $c1-500;
+      box-shadow: none;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  //fix input with wrapper outside
+  .ant-input-affix-wrapper {
+    &:hover,
+    &.ant-input-affix-wrapper-focused {
+      box-shadow: none;
+      border-color: $c1-500;
+    }
+  }
+  .sign-up-form-button {
+    background-color: $c1-500;
+    // height: 50px;
+    // span {
+    //   line-height: 50px;
+    // }
+    &:hover {
+      background-color: $c1-600;
+    }
+  }
+}

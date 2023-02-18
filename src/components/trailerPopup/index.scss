@@ -1,7 +1,6 @@
-@import "../../../../design-tokens/base";
-@import "../../../../design-tokens/variables";
-@import "../../../../design-tokens/mixins";
-
+@import "../../design-tokens/base";
+@import "../../design-tokens/mixins";
+@import "../../design-tokens/variables";
 .trailer-background {
   @include ModuleBackground();
   &.active {

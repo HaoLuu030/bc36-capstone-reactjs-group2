@@ -3,14 +3,14 @@ import { useMovieList } from "../../hooks/useMovieList";
 import "./index.scss";
 import { Carousel } from "antd";
 
-export default function CarouselBottom() {
-  //get and filter hot movies
-  const hotMovies = useMovieList()?.filter((elem) =>
-    elem.hot && elem.trailer !== "demo" ? true : false
+export default function CarouselSlide(props) {
+  //get and filter hot movies by types
+  const movieList = useMovieList()?.filter((elem) =>
+    elem[props.type] && elem.trailer !== "demo" ? true : false
   );
-  //render hot movies
+  //render movies
   const renderHotMovies = () => {
-    return hotMovies.map((elem) => {
+    return movieList.map((elem) => {
       return (
         <div className="px-2 py-2" key={elem.maPhim}>
           <div className="card card-movie">
@@ -23,6 +23,32 @@ export default function CarouselBottom() {
       );
     });
   };
+  //map title by type
+  const handleMapTitle = () => {
+    switch (props.type) {
+      case "hot": {
+        return (
+          <>
+            <h4>
+              <i name="fa fa-fire"></i> Phim Hot <i className="fa fa-fire"></i>
+            </h4>
+            a<div clssName="seperator-title"></div>
+          </>
+        );
+      }
+      case "dangChieu": {
+        return (
+          <>
+            <h4>
+              <i name="fa fa-fire"></i> Dang chieu{" "}
+              <i className="fa fa-fire"></i>
+            </h4>
+            a<div clssName="seperator-title"></div>
+          </>
+        );
+      }
+    }
+  };
   // responsive breakpoint for carousel
   const carouselResponsive = [
     {
@@ -32,13 +58,13 @@ export default function CarouselBottom() {
       },
     },
     {
-      breakpoint: 992,
+      breakpoint: 991,
       settings: {
         slidesToShow: 3,
       },
     },
     {
-      breakpoint: 768,
+      breakpoint: 767,
       settings: {
         slidesToShow: 2,
       },
@@ -47,11 +73,8 @@ export default function CarouselBottom() {
 
   return (
     <div className="background-carousel-bottom">
-      <div className="container-carousel-bottom py-3">
-        <h4>
-          <i name="fa fa-fire"></i> Phim Hot <i className="fa fa-fire"></i>
-        </h4>
-        <div className="seperator-title"></div>
+      <div className="container-carousel-bottom py-1 container-fluid">
+        {handleMapTitle()}
         <Carousel
           lazyLoad="ondemand"
           autoplaySpeed={2000}
