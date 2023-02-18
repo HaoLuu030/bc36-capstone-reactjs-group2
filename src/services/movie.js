@@ -10,3 +10,13 @@ export const fetchMovieList = () => {
     },
   });
 };
+
+export const fetchMovieDetailApi = (id) => {
+  return axios({
+    url: `${BASE_URL}/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`,
+    method: "GET",
+    headers: {
+      TokenCybersoft: TOKEN_CYBERSOFT,
+    },
+  });
+};
