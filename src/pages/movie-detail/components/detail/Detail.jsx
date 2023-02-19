@@ -8,6 +8,7 @@ import Trailer from "../../../../components/trailer/Trailer";
 import "./index.scss";
 
 export default function Detail() {
+
   const [movieDetail, setMovieDetail] = useState({});
   const params = useParams();
 
@@ -21,6 +22,7 @@ export default function Detail() {
     console.log(result);
     setMovieDetail(result.data.content);
   };
+
   return (
     <div className="row">
       <div className="col-12">
@@ -28,7 +30,7 @@ export default function Detail() {
           <div className="image col-md-12 col-lg-4">
             <img width={320} height={480} src={movieDetail.hinhAnh} alt="" />
           </div>
-          <div className="title pl-5 col-md-12 col-lg-4">
+          <div className="title pl-5 pt-0 col-md-12 col-lg-4">
             <h1>{movieDetail.tenPhim}</h1>
             <h5>Đánh giá: {movieDetail.danhGia}/10
               <i class="fa-solid fa-star"></i>

@@ -14,3 +14,24 @@
     box-shadow: 5px 5px 0 rgb(0 0 0 / 10%);
     border-radius: 30px;
 }
+.choose-seat li {
+    list-style: none;
+    display: inline;
+    padding: 20px;
+}
+.booked i {
+    color: $c1-750;
+}
+.not-booked i {
+    color: green;
+}
+.being-booking i {
+    color: red;
+}
+.vip i {
+    color: rgb(214, 214, 58);
+}
+.detail-booking h4 {
+    font-weight: $text-semiBold;
+    color: $c1-650;
+}
