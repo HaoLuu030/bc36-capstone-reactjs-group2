@@ -32,7 +32,7 @@ export default function CarouselSlide(props) {
             <h4>
               <i name="fa fa-fire"></i> Phim Hot <i className="fa fa-fire"></i>
             </h4>
-            a<div clssName="seperator-title"></div>
+            <div clssName="seperator-title"></div>
           </>
         );
       }
@@ -43,7 +43,6 @@ export default function CarouselSlide(props) {
               <i name="fa fa-fire"></i> Dang chieu{" "}
               <i className="fa fa-fire"></i>
             </h4>
-            a<div clssName="seperator-title"></div>
           </>
         );
       }
@@ -84,7 +83,8 @@ export default function CarouselSlide(props) {
           dots={false}
           draggable={true}
           responsive={carouselResponsive}
-          className="pt-3 pb-5"
+          className="pb-5"
+          autoplay
         >
           {renderHotMovies()}
         </Carousel>

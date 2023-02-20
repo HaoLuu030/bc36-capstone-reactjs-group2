@@ -16,7 +16,7 @@ export default function MovieList() {
       });
   };
   return (
-    <div className="background">
+    <div className="background-home">
       <div className="container pt-5">
         <div className="title-status">
           <h4>Phim đang chiếu</h4>
@@ -28,7 +28,7 @@ export default function MovieList() {
         </div>
         <div className="title-status pt-md-3 pt-lg-5">
           <h4>Phim sắp chiếu</h4>
-          <a href="#">Xem thêm</a>
+          <NavLink to="/coming-soon">Xem thêm</NavLink>
         </div>
         <div className="seperator-title"></div>
         <div className="row mt-md-2 mt-lg-4">{renderMovieList("sapChieu")}</div>

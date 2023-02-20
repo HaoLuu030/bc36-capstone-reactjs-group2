@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useMovieList } from "../../../../hooks/useMovieList";
-import { formatTimeDate } from "../../../../utils";
+import { useMovieList } from "../../hooks/useMovieList";
+import { formatTimeDate } from "../../utils";
 import "./index.scss";
 
 export default function Sidebar() {
