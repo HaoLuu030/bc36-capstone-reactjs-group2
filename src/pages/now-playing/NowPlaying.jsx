@@ -2,7 +2,8 @@ import React from "react";
 import Sidebar from "./components/sideBar/Sidebar";
 import MovieList from "./components/movieList/MovieList";
 import LoginModule from "../../components/loginModule/LoginModule";
-import Trailer from "../../components/trailer/Trailer";
+import TrailerPopUp from "../../components/trailerPopup/TrailerPopUp";
+
 
 export default function NowPlaying() {
   return (
@@ -13,7 +14,7 @@ export default function NowPlaying() {
         <Sidebar />
       </div>
       <LoginModule />
-      <Trailer />
+      <TrailerPopUp />
     </div>
   );
 }
