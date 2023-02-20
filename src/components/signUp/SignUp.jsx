@@ -174,7 +174,7 @@ const SignUp = () => {
           type="primary"
           htmlType="submit"
         >
-          Register
+          Đăng ký
         </Button>
       </Form.Item>
     </Form>

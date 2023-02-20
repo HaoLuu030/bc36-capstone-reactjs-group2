@@ -1,6 +1,6 @@
-@import "../../../../design-tokens/base";
-@import "../../../../design-tokens/mixins";
-@import "../../../../design-tokens/variables";
+@import "../../design-tokens/base";
+@import "../../design-tokens/mixins";
+@import "../../design-tokens/variables";
 
 .now-playing {
   h4 {
@@ -11,6 +11,8 @@
     font-style: italic;
   }
 }
+
+
 
 @include Responsive($SM) {
   .now-playing {
@@ -26,7 +28,7 @@
   .now-playing {
     .card.card-movie {
       img {
-        height: $h-sm;
+        height: $h-2xs;
       }
     }
   }

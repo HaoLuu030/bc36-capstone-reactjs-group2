@@ -63,9 +63,9 @@ export default function Header() {
             </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <NavLink className="nav-link" to="/coming-soon">
               Phim sắp chiếu
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">
