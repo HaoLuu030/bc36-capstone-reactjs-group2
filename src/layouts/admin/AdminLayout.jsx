@@ -1,7 +1,6 @@
-import { UserOutlined, CameraOutlined } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import { useState } from "react";
-import { Link, NavLink, Outlet, Route, Router } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 const AdminLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -20,20 +19,31 @@ const AdminLayout = () => {
         onCollapse={(value) => setCollapsed(value)}
       >
         <div
+          className="logo"
           style={{
             height: 32,
             margin: 16,
-            background: "rgba(255, 255, 255, 0.2)",
           }}
-        />
+        >
+          <img
+            src="/logo_white.png"
+            alt="logo"
+            style={{
+              width: "100%",
+            }}
+          />
+        </div>
         <Menu
           theme="dark"
           defaultSelectedKeys={["user-management"]}
           mode="inline"
+          forceSubMenuRender={true}
         >
-          <Menu.Item key="user-management">
-            <NavLink to="/admin/user-management">User</NavLink>
-          </Menu.Item>
+          <Menu.SubMenu key="user" title="Người dùng">
+            <Menu.Item key="user-management">
+              <NavLink to="/admin/user-management">Quản lý người dùng</NavLink>
+            </Menu.Item>
+          </Menu.SubMenu>
         </Menu>
       </Sider>
       <Layout className="site-layout">
