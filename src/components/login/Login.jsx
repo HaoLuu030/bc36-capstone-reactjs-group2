@@ -27,7 +27,7 @@ const Login = () => {
       }
       // navigate to admin if the one logged in is admin
       else {
-        navigate("/admin/user-managment");
+        navigate("/admin");
       }
       notification.success({
         message: "Đăng nhập thành công!",

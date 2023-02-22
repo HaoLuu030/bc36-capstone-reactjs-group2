@@ -2,6 +2,7 @@ import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Table, Tag } from "antd";
 import { useEffect, useState } from "react";
 import { fetchUserListApi } from "../../services/user";
+import UserForm from "./components/userForm/UserForm";
 
 const UserManagement = () => {
   const [userList, setUserList] = useState([]);
@@ -67,11 +68,18 @@ const UserManagement = () => {
   useEffect(() => {
     getUserList();
   }, []);
+  //bring up the user form when clicking add or edit
+  const handleOpenUserForm = () => {
+    document.querySelector(".form-background").classList.add("active");
+  };
 
   return (
     <>
-      <Button type="primary">Thêm</Button>
+      <Button onClick={handleOpenUserForm} type="primary">
+        Thêm
+      </Button>
       <Table columns={columns} dataSource={userList} />
+      <UserForm />
     </>
   );
 };

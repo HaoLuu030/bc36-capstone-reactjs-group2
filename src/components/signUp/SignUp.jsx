@@ -1,19 +1,12 @@
 import { Button, Checkbox, Form, Input, notification } from "antd";
 import { signUpApi } from "../../services/user";
 import "./index.scss";
-// const formItemLayout = {
-//   wrapperCol: {
-//     span: 24,
-//     offset: 0,
-//   },
-// };
 
 const SignUp = () => {
   const [form] = Form.useForm();
   //on submit
   const onFinish = async (values) => {
     const { email, hoTen, matKhau, soDt, taiKhoan } = values;
-    console.log({ email, hoTen, matKhau, soDt, taiKhoan, maNhom: "GP03" });
     try {
       await signUpApi({
         taiKhoan,

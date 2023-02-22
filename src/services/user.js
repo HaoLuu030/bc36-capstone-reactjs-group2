@@ -1,34 +1,32 @@
-import axios from "axios";
-import { BASE_URL, TOKEN_CYBERSOFT } from "../constants";
+import { axiosRequest } from "../configs/axios.config";
 
 export const loginApi = (information) => {
-  return axios({
-    url: `${BASE_URL}/QuanLyNguoiDung/DangNhap`,
+  return axiosRequest({
+    url: "/QuanLyNguoiDung/DangNhap",
     method: "POST",
     data: information,
-    headers: {
-      TokenCybersoft: TOKEN_CYBERSOFT,
-    },
   });
 };
 
 export const signUpApi = (information) => {
-  return axios({
-    url: `${BASE_URL}/QuanLyNguoiDung/DangKy`,
+  return axiosRequest({
+    url: "/QuanLyNguoiDung/DangKy",
     method: "POST",
     data: information,
-    headers: {
-      TokenCybersoft: TOKEN_CYBERSOFT,
-    },
   });
 };
 
 export const fetchUserListApi = () => {
-  return axios({
-    url: `${BASE_URL}/QuanLyNguoiDung/LayDanhSachNguoiDung`,
+  return axiosRequest({
+    url: "/QuanLyNguoiDung/LayDanhSachNguoiDung",
     method: "GET",
-    headers: {
-      TokenCybersoft: TOKEN_CYBERSOFT,
-    },
+  });
+};
+
+export const addUserApi = (information) => {
+  return axiosRequest({
+    url: "/QuanLyNguoiDung/ThemNguoiDung",
+    method: "POST",
+    data: information,
   });
 };

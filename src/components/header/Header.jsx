@@ -1,27 +1,27 @@
 import React from "react";
 import "./index.scss";
-import { notification } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteUserInfoAction } from "../../store/action/userAction";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { deleteUserInfoAction } from "../../store/action/userAction";
+import { notification } from "antd";
 
 export default function Header() {
-  const userState = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
-  //switch between collapse icon in smaller screen
-  const handleToggleCollapseIcon = () => {
-    document.querySelector(".navbar-toggler").classList.toggle("opening");
-  };
-  // bring up login module when clicked
-  const handleOpenLoginModule = () => {
-    document.querySelector(".background-login-module").classList.add("active");
-  };
+  const userState = useSelector((state) => state.userReducer);
   const handleLogout = () => {
     localStorage.removeItem("USER_INFO_KEY");
     dispatch(deleteUserInfoAction());
     notification.success({
       message: "Đã đăng xuất.",
     });
+  };
+  //switch between collapse icons in smaller screen
+  const handleToggleCollapseIcon = () => {
+    document.querySelector(".navbar-toggler").classList.toggle("opening");
+  };
+  // bring up login module when clicked
+  const handleOpenLoginModule = () => {
+    document.querySelector(".background-login-module").classList.add("active");
   };
   return (
     <nav className="navbar navbar-expand-lg navbar-movie px-0 align-items-lg-center">
