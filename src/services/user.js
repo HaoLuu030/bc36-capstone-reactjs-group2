@@ -22,3 +22,13 @@ export const signUpApi = (information) => {
     },
   });
 };
+
+export const fetchUserListApi = () => {
+  return axios({
+    url: `${BASE_URL}/QuanLyNguoiDung/LayDanhSachNguoiDung`,
+    method: "GET",
+    headers: {
+      TokenCybersoft: TOKEN_CYBERSOFT,
+    },
+  });
+};

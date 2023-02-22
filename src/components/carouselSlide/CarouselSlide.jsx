@@ -32,7 +32,7 @@ export default function CarouselSlide(props) {
             <h4>
               <i name="fa fa-fire"></i> Phim Hot <i className="fa fa-fire"></i>
             </h4>
-            <div clssName="seperator-title"></div>
+            <div className="seperator-title"></div>
           </>
         );
       }

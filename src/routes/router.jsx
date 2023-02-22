@@ -1,4 +1,5 @@
 import { Navigate, useRoutes } from "react-router-dom";
+import AuthGuard from "../guards/AuthGuard";
 import AdminLayout from "../layouts/admin/AdminLayout";
 import HomeLayout from "../layouts/home/HomeLayout";
 import ComingSoon from "../pages/coming-soon/ComingSoon";
@@ -40,8 +41,14 @@ export default function Router() {
       element: <AdminLayout />,
       children: [
         {
-          path: "/admin/user-management",
-          element: <UserManagement />,
+          path: "/admin",
+          element: <AuthGuard />,
+          children: [
+            {
+              path: "/admin/user-management",
+              element: <UserManagement />,
+            },
+          ],
         },
       ],
     },
