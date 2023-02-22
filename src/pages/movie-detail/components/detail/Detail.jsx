@@ -1,17 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { fetchMovieDetailApi } from "../../../../services/movie";
 import Trailer from "../../../../components/trailer/Trailer";
-
 import "./index.scss";
 
-export default function Detail() {
+export default function Detail(props) {
 
   const [movieDetail, setMovieDetail] = useState({});
   const params = useParams();
-
+  const navigate = useNavigate();
   useEffect(() => {
     getMovieDetail();
   }, []);
@@ -37,17 +36,18 @@ export default function Detail() {
             </h5>
             <h3>Nội dung:</h3>
             <p >{movieDetail.moTa}</p>
+            <button onClick={() => navigate(`/booking/${props.maPhim}`)} className="btn btn-success">ĐẶT VÉ</button>
           </div>
           <div className="trailer col-lg-4">
-          <h4 className="mb-3">Trailer:</h4>
-          <div className="trailer-inner">
-            <div className="trailer-wrapper">
-              <Trailer />
+            <h4 className="mb-3">Trailer:</h4>
+            <div className="trailer1 trailer-inner">
+              <div className="trailer-wrapper">
+                <Trailer />
+              </div>
             </div>
           </div>
         </div>
-        </div>
-        
+
       </div>
 
     </div>

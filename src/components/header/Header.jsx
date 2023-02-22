@@ -25,76 +25,77 @@ export default function Header() {
   };
   return (
     <nav className="navbar navbar-expand-lg navbar-movie px-0 align-items-lg-center">
-      <NavLink className="navbar-brand" to={"/home"}>
-        <img src="/logo_white.png" alt="logo" style={{ width: "250px" }} />
-      </NavLink>
-      <button
-        className="navbar-toggler d-lg-none"
-        type="button"
-        data-toggle="collapse"
-        data-target="#collapsibleNavId"
-        aria-controls="collapsibleNavId"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-        onClick={handleToggleCollapseIcon}
-      >
-        <i className="fa fa-bars"></i>
-        <i className="fa fa-times"></i>
-      </button>
+        <NavLink className="navbar-brand" to={"/home"}>
+          <img src="/logo_white.png" alt="logo" style={{ width: "250px" }} />
+        </NavLink>
+        <button
+          className="navbar-toggler d-lg-none"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapsibleNavId"
+          aria-controls="collapsibleNavId"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          onClick={handleToggleCollapseIcon}
+        >
+          <i className="fa fa-bars"></i>
+          <i className="fa fa-times"></i>
+        </button>
 
-      <div
-        className="collapse navbar-collapse justify-content-start mt-3"
-        id="collapsibleNavId"
-      >
-        <ul className="navbar-nav nav-items">
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/home">
-              Trang chủ
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/movie-detail/1234">
-              Mua vé
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/now-playing">
-              Phim đang chiếu
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Phim sắp chiếu
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Rạp
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div className="d-flex align-items-center justify-content-md-start sign-in-module">
-        {" "}
-        {userState.userInfo ? (
-          <>
-            <span className="d-flex align-items-center welcome-user">
-              <i className="fa fa-user user-icon pr-1"></i> Xin chào,{" "}
-              {userState.userInfo.hoTen} |
-            </span>
-            <button onClick={handleLogout} className="sign-out">
-              Đăng xuất
-            </button>
-          </>
-        ) : (
-          <>
-            {" "}
-            <button onClick={handleOpenLoginModule} className="sign-in pt-1">
-              <i className="fa fa-user user-icon"></i> Đăng nhập | Đăng ký
-            </button>
-          </>
-        )}
-      </div>
-    </nav>
+        <div
+          className="collapse navbar-collapse justify-content-start mt-3"
+          id="collapsibleNavId"
+        >
+          <ul className="navbar-nav nav-items">
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/home">
+                Trang chủ
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/movie-detail/1234">
+                Mua vé
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/now-playing">
+                Phim đang chiếu
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                Phim sắp chiếu
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                Rạp
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="d-flex align-items-center justify-content-md-start sign-in-module">
+          {" "}
+          {userState.userInfo ? (
+            <>
+              <span className="d-flex align-items-center welcome-user">
+                <i className="fa fa-user user-icon pr-1"></i> Xin chào,{" "}
+                {userState.userInfo.hoTen} |
+              </span>
+              <button onClick={handleLogout} className="sign-out">
+                Đăng xuất
+              </button>
+            </>
+          ) : (
+            <>
+              {" "}
+              <button onClick={handleOpenLoginModule} className="sign-in pt-1">
+                <i className="fa fa-user user-icon"></i> Đăng nhập | Đăng ký
+              </button>
+            </>
+          )}
+        </div>
+      </nav>
+
   );
 }
