@@ -1,16 +1,18 @@
 //React hook
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 //Ant design
 import { UserOutlined } from "@ant-design/icons";
 import { Button, Layout, Menu, theme, notification } from "antd";
 //React router
-import { Outlet, useNavigate, NavLink } from "react-router-dom";
+import { Outlet, NavLink, useLocation } from "react-router-dom";
 //reducer
 import { useSelector } from "react-redux";
 
 import BreadCrumbsCustom from "../../components/breadCrumbs/BreadCrumbs";
+import Admin from "../../pages/admin/Admin";
 
 export default function AuthGuard() {
+  const location = useLocation();
   //layout code --start
   const { Header, Content, Footer, Sider } = Layout;
   const [collapsed, setCollapsed] = useState(false);
@@ -19,22 +21,7 @@ export default function AuthGuard() {
   } = theme.useToken();
   //layout code --end
   const userState = useSelector((state) => state.userReducer);
-  const navigate = useNavigate();
-  //authentication --start
-  useEffect(() => {
-    if (!userState.userInfo) {
-      notification.warning({
-        message: "Vui lòng đăng nhập để vào trang",
-      });
-      navigate("/");
-    } else if (userState.userInfo.maLoaiNguoiDung !== "QuanTri") {
-      notification.warning({
-        message: "Không đủ thẩm quyền truy cập",
-      });
-      navigate("/");
-    }
-  }, []);
-  //authentication --end
+
   return (
     <Layout
       style={{
@@ -110,7 +97,7 @@ export default function AuthGuard() {
               background: colorBgContainer,
             }}
           >
-            <Outlet />
+            {location.pathname === "/admin" ? <Admin /> : <Outlet />}
           </div>
         </Content>
         <Footer

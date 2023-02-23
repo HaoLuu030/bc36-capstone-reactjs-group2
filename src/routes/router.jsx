@@ -1,7 +1,7 @@
 import { Navigate, useRoutes } from "react-router-dom";
+import AuthGuard from "../guards/AuthGuard";
 import AdminLayout from "../layouts/admin/AdminLayout";
 import HomeLayout from "../layouts/home/HomeLayout";
-import Admin from "../pages/admin/Admin";
 import ComingSoon from "../pages/coming-soon/ComingSoon";
 import Home from "../pages/home/Home";
 import MovieDetail from "../pages/movie-detail/MovieDetail";
@@ -38,15 +38,17 @@ export default function Router() {
     },
     {
       path: "/admin",
-      element: <AdminLayout />,
+      element: <AuthGuard />,
       children: [
         {
           path: "/admin",
-          element: <Admin />,
-        },
-        {
-          path: "/admin/user-management",
-          element: <UserManagement />,
+          element: <AdminLayout />,
+          children: [
+            {
+              path: "/admin/user-management",
+              element: <UserManagement />,
+            },
+          ],
         },
       ],
     },

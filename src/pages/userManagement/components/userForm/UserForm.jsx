@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, Input, InputNumber, notification, Select } from "antd";
+import { Button, Form, Input, notification, Select } from "antd";
 import "./index.scss";
 import { addUserApi } from "../../../../services/user";
 
