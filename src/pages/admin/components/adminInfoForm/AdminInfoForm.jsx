@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form, Input, Select } from "antd";
+import { useSelector } from "react-redux";
 
 export default function AdminInfoForm() {
+  const userState = useSelector((state) => state.userReducer);
+  const [adminInfoState, setAdminInfoState] = useState(userState.userInfo);
+  console.log(adminInfoState);
   const { Option } = Select;
   const [form] = Form.useForm();
   const onFinish = (values) => {
@@ -16,6 +20,7 @@ export default function AdminInfoForm() {
       scrollToFirstError
     >
       <Form.Item
+        initialValue={adminInfoState.hoTen}
         name="hoTen"
         rules={[
           {
@@ -25,9 +30,10 @@ export default function AdminInfoForm() {
           },
         ]}
       >
-        <Input placeholder="Nhập Họ tên" />
+        <Input />
       </Form.Item>
       <Form.Item
+        initialValue={adminInfoState.email}
         name="email"
         rules={[
           {
@@ -44,6 +50,7 @@ export default function AdminInfoForm() {
       </Form.Item>
       <Form.Item style={{ marginBottom: "0" }}>
         <Form.Item
+          initialValue={adminInfoState.taiKhoan}
           name="taiKhoan"
           style={{
             display: "inline-block",
@@ -60,6 +67,7 @@ export default function AdminInfoForm() {
           <Input placeholder="Nhập tên tài khoản" />
         </Form.Item>
         <Form.Item
+          initialValue={adminInfoState.soDT}
           name="soDt"
           style={{
             display: "inline-block",
@@ -79,52 +87,7 @@ export default function AdminInfoForm() {
 
       <Form.Item style={{ marginBottom: "0" }}>
         <Form.Item
-          name="matKhau"
-          rules={[
-            {
-              required: true,
-              message: "Vui lòng nhập mật khẩu",
-            },
-          ]}
-          hasFeedback
-          style={{
-            display: "inline-block",
-            width: "calc(50% - 8px)",
-          }}
-        >
-          <Input.Password placeholder="Nhập Mật khẩu" />
-        </Form.Item>
-
-        <Form.Item
-          name="xacNhanMatKhau"
-          dependencies={["matKhau"]}
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              message: "Vui lòng xác nhận mật khẩu",
-            },
-            ({ getFieldValue }) => ({
-              validator(_, value) {
-                if (!value || getFieldValue("matKhau") === value) {
-                  return Promise.resolve();
-                }
-                return Promise.reject(new Error("Mật khẩu không trùng khớp"));
-              },
-            }),
-          ]}
-          style={{
-            display: "inline-block",
-            width: "calc(50% - 8px)",
-            margin: "0 8px",
-          }}
-        >
-          <Input.Password placeholder="Nhập lại mật khẩu" />
-        </Form.Item>
-      </Form.Item>
-
-      <Form.Item style={{ marginBottom: "0" }}>
-        <Form.Item
+          initialValue={adminInfoState.maLoaiNguoiDung}
           name="maLoaiNguoiDung"
           rules={[{ required: true, message: "Vui lòng chọn loại!" }]}
           style={{
