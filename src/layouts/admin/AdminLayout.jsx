@@ -1,8 +1,7 @@
 //React hook
 import React, { useState } from "react";
 //Ant design
-import { UserOutlined } from "@ant-design/icons";
-import { Button, Layout, Menu, theme, notification } from "antd";
+import { Layout, Menu, theme } from "antd";
 //React router
 import { Outlet, NavLink, useLocation } from "react-router-dom";
 //reducer
@@ -10,6 +9,7 @@ import { useSelector } from "react-redux";
 
 import BreadCrumbsCustom from "../../components/breadCrumbs/BreadCrumbs";
 import Admin from "../../pages/admin/Admin";
+import WelcomeUser from "../../components/welcomeUser/WelcomeUser";
 
 export default function AuthGuard() {
   const location = useLocation();
@@ -20,7 +20,7 @@ export default function AuthGuard() {
     token: { colorBgContainer },
   } = theme.useToken();
   //layout code --end
-  const userState = useSelector((state) => state.userReducer);
+  // don't render admin info and logout button on the top right corner if the user is in admin page
 
   return (
     <Layout
@@ -71,18 +71,7 @@ export default function AuthGuard() {
             justifyContent: "end",
           }}
         >
-          {" "}
-          <div className="user-module d-flex text-dark align-items-center">
-            <UserOutlined />
-            {/* the question mark is to avoid error the first time the page is loaded */}
-
-            <p style={{ lineHeight: "100%" }}>
-              Xin chào, {userState?.userInfo?.hoTen}
-            </p>
-            <Button type="primary" danger>
-              Đăng xuất
-            </Button>
-          </div>
+          <WelcomeUser />
         </Header>
         <Content
           style={{

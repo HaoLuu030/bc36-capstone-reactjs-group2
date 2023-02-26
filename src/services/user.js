@@ -18,7 +18,7 @@ export const signUpApi = (information) => {
 
 export const fetchUserListApi = () => {
   return axiosRequest({
-    url: "/QuanLyNguoiDung/LayDanhSachNguoiDung",
+    url: "/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP03",
     method: "GET",
   });
 };
@@ -28,5 +28,20 @@ export const addUserApi = (information) => {
     url: "/QuanLyNguoiDung/ThemNguoiDung",
     method: "POST",
     data: information,
+  });
+};
+
+export const updateUserInfoApi = (information) => {
+  return axiosRequest({
+    url: "/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+    method: "PUT",
+    data: information,
+  });
+};
+
+export const fetchAccountInfoApi = () => {
+  return axiosRequest({
+    url: "/QuanLyNguoiDung/ThongTinTaiKhoan",
+    method: "POST",
   });
 };

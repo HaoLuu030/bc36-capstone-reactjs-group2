@@ -6,19 +6,12 @@ const SignUp = () => {
   const [form] = Form.useForm();
   //on submit
   const onFinish = async (values) => {
-    const { email, hoTen, matKhau, soDt, taiKhoan } = values;
     try {
-      await signUpApi({
-        taiKhoan,
-        matKhau,
-        email,
-        soDt,
-        maNhom: "GP03",
-        hoTen,
-      });
+      await signUpApi(values);
       notification.success({
         message: "Đăng ký thành công!",
       });
+      form.resetFields();
     } catch (error) {
       notification.error({
         message: error.response.data.content,

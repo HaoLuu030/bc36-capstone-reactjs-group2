@@ -1,20 +1,11 @@
 import React from "react";
 import "./index.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { deleteUserInfoAction } from "../../store/action/userAction";
-import { notification } from "antd";
+import WelcomeUser from "../welcomeUser/WelcomeUser";
 
 export default function Header() {
-  const dispatch = useDispatch();
   const userState = useSelector((state) => state.userReducer);
-  const handleLogout = () => {
-    localStorage.removeItem("USER_INFO_KEY");
-    dispatch(deleteUserInfoAction());
-    notification.success({
-      message: "Đã đăng xuất.",
-    });
-  };
   //switch between collapse icons in smaller screen
   const handleToggleCollapseIcon = () => {
     document.querySelector(".navbar-toggler").classList.toggle("opening");
@@ -77,15 +68,7 @@ export default function Header() {
       <div className="d-flex align-items-center justify-content-md-start sign-in-module">
         {" "}
         {userState.userInfo ? (
-          <>
-            <span className="d-flex align-items-center welcome-user">
-              <i className="fa fa-user user-icon pr-1"></i> Xin chào,{" "}
-              {userState.userInfo.hoTen} |
-            </span>
-            <button onClick={handleLogout} className="sign-out">
-              Đăng xuất
-            </button>
-          </>
+          <WelcomeUser />
         ) : (
           <>
             {" "}

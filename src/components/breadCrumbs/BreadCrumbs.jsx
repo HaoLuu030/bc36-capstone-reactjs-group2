@@ -1,6 +1,7 @@
 import React from "react";
 import { Breadcrumb } from "antd";
 import { NavLink, useLocation } from "react-router-dom";
+import "./index.scss";
 
 export default function BreadCrumbsCustom() {
   const location = useLocation();
