@@ -1,5 +1,6 @@
 import { Navigate, useRoutes } from "react-router-dom";
 import HomeLayout from "../layouts/homeLayout/HomeLayout";
+import Booking from "../pages/booking/Booking";
 import ComingSoon from "../pages/coming-soon/ComingSoon";
 import Home from "../pages/home/Home";
 import MovieDetail from "../pages/movie-detail/MovieDetail";
@@ -30,6 +31,10 @@ export default function Router() {
         {
           path: "/coming-soon",
           element: <ComingSoon />,
+        },
+        {
+          path: "/booking",
+          element: <Booking />,
         },
       ],
     },
