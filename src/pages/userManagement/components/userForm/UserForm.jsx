@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Form, Input, notification, Select } from "antd";
 import "./index.scss";
 import { addUserApi } from "../../../../services/user";
 
-export default function UserForm() {
+export default function UserForm(props) {
   const { Option } = Select;
   const [form] = Form.useForm();
   //close the form pop up when clicked outside the form
@@ -11,26 +11,39 @@ export default function UserForm() {
     document.querySelector(".form-background").classList.remove("active");
   });
   const onFinish = async (values) => {
-    delete values.xacNhanMatKhau;
-    values.maNhom = "GP03";
-    try {
-      console.log(values);
-      await addUserApi(values);
-      notification.success({
-        message: "Thêm thành công",
-      });
-    } catch (error) {
-      console.log(error);
-      //   notification.warning({
-      //     message: error.data.content,
-      //   });
+    // add user
+    if (!props.isUpdating) {
+      try {
+        values.maNhom = "GP03";
+        await addUserApi(values);
+        notification.success({
+          message: "Thêm thành công",
+        });
+      } catch (error) {
+        notification.warning({
+          message: error.response.data.content,
+        });
+      }
+    }
+    // update user
+    else {
     }
   };
+  const handleReset = () => {
+    if (window.confirm("Bạn có muốn reset không?")) {
+      form.resetFields();
+    }
+  };
+  useEffect(() => {
+    form.resetFields();
+  }, [props.updatedAccount]);
+  const { hoTen, email, matKhau, maLoaiNguoiDung, soDT, taiKhoan } =
+    props.updatedAccount || {};
   return (
     <div className="form-background">
       <div className="form-inner"></div>
       <div className="form-wrapper">
-        <h4>Thêm người dùng</h4>
+        <h4> {props.isUpdating ? "Cập nhật thông tin" : "Thêm người dùng"}</h4>
         <Form
           className="user-form"
           form={form}
@@ -39,6 +52,7 @@ export default function UserForm() {
           scrollToFirstError
         >
           <Form.Item
+            initialValue={hoTen}
             name="hoTen"
             rules={[
               {
@@ -51,6 +65,7 @@ export default function UserForm() {
             <Input placeholder="Nhập Họ tên" />
           </Form.Item>
           <Form.Item
+            initialValue={email}
             name="email"
             rules={[
               {
@@ -65,8 +80,9 @@ export default function UserForm() {
           >
             <Input placeholder="Nhập Email" />
           </Form.Item>
-          <Form.Item style={{ marginBottom: "0" }}>
+          <Form.Item className="my-0">
             <Form.Item
+              initialValue={taiKhoan}
               name="taiKhoan"
               style={{
                 display: "inline-block",
@@ -83,6 +99,7 @@ export default function UserForm() {
               <Input placeholder="Nhập tên tài khoản" />
             </Form.Item>
             <Form.Item
+              initialValue={soDT}
               name="soDt"
               style={{
                 display: "inline-block",
@@ -102,6 +119,7 @@ export default function UserForm() {
 
           <Form.Item style={{ marginBottom: "0" }}>
             <Form.Item
+              initialValue={matKhau}
               name="matKhau"
               rules={[
                 {
@@ -148,8 +166,9 @@ export default function UserForm() {
             </Form.Item>
           </Form.Item>
 
-          <Form.Item style={{ marginBottom: "0" }}>
+          <Form.Item className="my-0">
             <Form.Item
+              initialValue={maLoaiNguoiDung}
               name="maLoaiNguoiDung"
               rules={[{ required: true, message: "Vui lòng chọn loại!" }]}
               style={{
@@ -163,6 +182,7 @@ export default function UserForm() {
               </Select>
             </Form.Item>
             <Form.Item
+              initialValue="GP03"
               name="maNhom"
               style={{
                 display: "inline-block",
@@ -174,8 +194,23 @@ export default function UserForm() {
             </Form.Item>
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Đăng ký
+            {props.isUpdating ? (
+              <Button type="primary" htmlType="submit">
+                Cập nhật
+              </Button>
+            ) : (
+              <Button type="primary" htmlType="submit">
+                Thêm
+              </Button>
+            )}
+            <Button
+              onClick={handleReset}
+              htmlType="button"
+              type="primary"
+              danger
+              className="mr-5"
+            >
+              Reset
             </Button>
           </Form.Item>
         </Form>

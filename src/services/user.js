@@ -45,3 +45,17 @@ export const fetchAccountInfoApi = () => {
     method: "POST",
   });
 };
+
+export const fetchUserInfo = (information) => {
+  return axiosRequest({
+    url: `/QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${information}`,
+    method: "POST",
+  });
+};
+
+export const deleteUserInfo = (information) => {
+  return axiosRequest({
+    url: `/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${information}`,
+    method: "DELETE",
+  });
+};
