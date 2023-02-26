@@ -1,16 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { fetchMovieDetailApi } from "../../../../services/movie";
 import Trailer from "../../../../components/trailer/Trailer";
 import "./index.scss";
+import Showtimes from "../showtimes/Showtimes";
 
 export default function Detail(props) {
 
   const [movieDetail, setMovieDetail] = useState({});
   const params = useParams();
-  const navigate = useNavigate();
   useEffect(() => {
     getMovieDetail();
   }, []);
@@ -22,8 +22,15 @@ export default function Detail(props) {
     setMovieDetail(result.data.content);
   };
 
+  // const handleBooking = () => {
+  //   navigate(`/booking/${props.maPhim}`)
+  // }
   return (
-    <div className="row">
+    <div key={props.maPhim} className="row">
+      <nav class="navbar">
+        <NavLink className="text-dark text-decoration-none" to={`/`}>Trang chủ</NavLink>
+        <NavLink className="mx-3 text-decoration-none">Chi tiết</NavLink>
+      </nav>
       <div className="col-12">
         <div className="row">
           <div className="image col-md-12 col-lg-4">
@@ -36,7 +43,7 @@ export default function Detail(props) {
             </h5>
             <h3>Nội dung:</h3>
             <p >{movieDetail.moTa}</p>
-            <button onClick={() => navigate(`/booking/${props.maPhim}`)} className="btn btn-success">ĐẶT VÉ</button>
+            {/* <button onClick={handleBooking} className="btn btn-success">ĐẶT VÉ</button> */}
           </div>
           <div className="trailer col-lg-4">
             <h4 className="mb-3">Trailer:</h4>
@@ -48,6 +55,9 @@ export default function Detail(props) {
           </div>
         </div>
 
+      </div>
+      <div>
+        <Showtimes />
       </div>
 
     </div>

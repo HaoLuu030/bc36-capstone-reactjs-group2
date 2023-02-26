@@ -22,8 +22,6 @@
     border-radius: 30px;
     text-align: center;
 }
-
-
 @include Responsive ($SM){
     .title {
         h1 {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchTicketApi } from "../../services/ticket";
 import Seat from "./components/Seat";
 import "./index.scss";
@@ -7,25 +7,32 @@ import "./index.scss";
 export default function Booking() {
     const [tickDetail, setTicketDetail] = useState({});
     const params = useParams();
+
     useEffect(() => {
         getTicketDetail();
     }, []);
     const getTicketDetail = async () => {
         const result = await fetchTicketApi(params.id);
+        console.log(result);
         setTicketDetail(result.data.content);
     }
 
-    const renderSeats = () => {
-        return tickDetail?.danhSachGhe?.map((ele) => {
-          return (
-            <Seat key={ele.maGhe} ele={ele} />
-          );
-        });
-      };
+    // const renderSeats = () => {
+    //     return tickDetail?.danhSachGhe?.map((ele) => {
+    //       return (
+    //         <Seat key={ele.maGhe} ele={ele} />
+    //       );
+    //     });
+    //   };
 
 
   return (
-    <div className="py-5">
+    <div className="container">
+      <nav class="navbar justify-content-start">
+        <Link className="text-dark text-decoration-none" to={`/`}>Trang chủ</Link>
+        <Link className="text-dark mx-3 text-decoration-none" to={`/movie-detail/`}>Chi tiết</Link>
+        <Link className="text-decoration-none">Đặt vé</Link>
+      </nav>
         <div className="screen">
             <h2>MÀN HÌNH</h2>
         </div>
@@ -42,17 +49,17 @@ export default function Booking() {
         </div>
         <div className="col-8">
           <div style={{ width: "95%" }} className="mx-auto">
-            {renderSeats()}
+            {/* {renderSeats()} */}
             
           </div>
         </div>
         <div className="detail-booking col-4">
           <img
             style={{ width: 300, height: 400, objectFit: "cover" }}
-            src="https://movienew.cybersoft.edu.vn/hinhanh/xa-ngoai-kia-noi-loai-tom-hat_gp03.jpg"
+            src={tickDetail?.thongTinPhim?.hinhAnh}
             alt="#"
           />
-          <h4 className="mb-0">Tên phim: Xa ngoài kia nơi loài tôm hát</h4>
+          <h4 className="mb-0">Tên phim: {tickDetail?.thongTinPhim?.tenPhim}</h4>
           <h5 className="mb-0">
             Ghế được chọn:
             <div className="d-flex">
