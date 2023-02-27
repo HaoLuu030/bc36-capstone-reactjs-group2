@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { formatTimeDateDay, formatTimeDateTim } from "../../../../utils";
 import * as _ from "lodash";
 import { Divider } from "antd";
+import { NavLink } from "react-router-dom";
 
 export default function PlayTime() {
   //group playTime by days of the week
@@ -33,11 +34,11 @@ export default function PlayTime() {
               );
               return (
                 <div className="col-3">
-                  <button>
+                  <NavLink to={theaterState.playTime[idx].maLichChieu}>
                     {formatTimeDateTim(
                       theaterState.playTime[idx].ngayChieuGioChieu
                     )}
-                  </button>
+                  </NavLink>
                 </div>
               );
             })}
