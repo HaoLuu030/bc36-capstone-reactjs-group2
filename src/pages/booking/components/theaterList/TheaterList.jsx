@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setPlayTimeAction } from "../../../../store/action/theaterAction";
+import TheaterListItem from "../theaterListItem/TheaterListItem";
 
 export default function TheaterList() {
+  const dispatch = useDispatch();
   const theaterState = useSelector((state) => state.theaterReducer);
   //the list that's gonna be rendered
   const [theaterList, setTheaterList] = useState([]);
@@ -16,18 +19,16 @@ export default function TheaterList() {
   const renderTheaterList = () => {
     return theaterList?.map((elem) => {
       return (
-        <button className="col-12" key={elem.maCumRap}>
-          <div className="row">
-            <div className="col-4">
-              <img style={{ width: "100%" }} src={elem.hinhAnh} alt="" />
-            </div>
-            <div className="col-8">
-              <p>{elem.tenCumRap}</p>
-            </div>
-          </div>
-        </button>
+        <TheaterListItem
+          key={elem.maCumRap}
+          setPlayTime={setPlayTime}
+          theater={elem}
+        />
       );
     });
+  };
+  const setPlayTime = (theaterId) => {
+    dispatch(setPlayTimeAction(theaterId));
   };
   return (
     <div className="col-3">

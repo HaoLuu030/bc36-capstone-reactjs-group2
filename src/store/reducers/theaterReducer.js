@@ -1,4 +1,5 @@
 import {
+  SET_PLAY_TIME,
   SET_THEATER_BRAND_LIST,
   SET_THEATER_LIST,
 } from "../types/theaterTypes";
@@ -21,7 +22,13 @@ export const theaterReducer = (state = DEFAULT_STATE, action) => {
       );
       //get the theaterList based on the button clicked (refer to the api for more info)
       state.theaterList = state.theaterBrandList[idx].cumRapChieu;
-      console.log(state.theaterList);
+      break;
+    }
+    case SET_PLAY_TIME: {
+      const idx = state.theaterList.findIndex(
+        (elem) => elem.maCumRap === payload
+      );
+      state.playTime = state.theaterList[idx].lichChieuPhim;
       break;
     }
     default:
