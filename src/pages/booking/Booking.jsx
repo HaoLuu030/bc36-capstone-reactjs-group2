@@ -18,13 +18,18 @@ export default function Booking() {
   };
 
   const renderSeats = () => {
-    return tickDetail?.danhSachGhe?.map((ele) => {
-      return <Seat key={ele.maGhe} ele={ele} />;
+    return tickDetail?.danhSachGhe?.map((ele, idx) => {
+      return (
+        <React.Fragment>
+          <Seat key={ele.maGhe} ele={ele} />
+          {(idx + 1) % 16 === 0 && <br/> }
+        </React.Fragment>
+      );
     });
   };
 
   return (
-    <div className="container">
+    <div className="container mx-5">
       <nav class="navbar justify-content-start">
         <Link className="text-dark text-decoration-none" to={`/`}>
           Trang chủ
@@ -63,12 +68,12 @@ export default function Booking() {
             </ul>
           </div>
         </div>
-        <div className="col-8">
+        <div className="col-10">
           <div style={{ width: "95%" }} className="mx-auto">
             {renderSeats()}
           </div>
         </div>
-        <div className="detail-booking col-4">
+        <div className="detail-booking col-2">
           <img
             style={{ width: 300, height: 400, objectFit: "cover" }}
             src={tickDetail?.thongTinPhim?.hinhAnh}
