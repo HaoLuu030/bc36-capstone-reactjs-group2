@@ -1,17 +1,42 @@
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import { Button, message, notification, Table, Tag } from "antd";
+//form
+import UserForm from "./components/userForm/UserForm";
+//react hooks
 import { useEffect, useState } from "react";
+//API
 import {
   deleteUserInfo,
   fetchUserInfo,
   fetchUserListApi,
 } from "../../services/user";
-import UserForm from "./components/userForm/UserForm";
+//ant design components
+import { message, Popconfirm } from "antd";
+import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
+import { Button, notification, Table, Tag } from "antd";
 
 const UserManagement = () => {
+  const currentUser = JSON.parse(localStorage.getItem("USER_INFO_KEY"));
   const [userList, setUserList] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
   const [updatedAccount, setupdatedAccount] = useState({});
+  //confirm popUp code: for delete button
+  const handleDeleteButon = async (accountName) => {
+    try {
+      await deleteUserInfo(accountName);
+      notification.success({
+        message: "Xóa thành công!",
+      });
+      getUserList();
+    } catch (error) {
+      notification.warning({
+        message: error.response.data.content,
+      });
+    }
+  };
+  // cancel action
+  const cancel = () => {
+    message.error("Đã hủy tác vụ");
+  };
+  //table columns
   const columns = [
     {
       title: "Tài khoản",
@@ -30,6 +55,8 @@ const UserManagement = () => {
             break;
           case "KhachHang":
             color = "green";
+            break;
+          default:
             break;
         }
         return (
@@ -52,25 +79,29 @@ const UserManagement = () => {
     {
       title: "Tác vụ",
       key: "action",
-      render: (text) => {
+      render: (user) => {
         return (
           <>
             <Button
               className="button-update-user-info"
               onClick={() => {
-                handleEditButton(text.taiKhoan);
+                handleEditButton(user.taiKhoan);
               }}
               type="primary"
               icon={<EditOutlined />}
             ></Button>
-            <Button
-              onClick={() => {
-                handleDeleteButton(text.taiKhoan);
+            <Popconfirm
+              title="Xóa người dùng"
+              description="Bạn có muốn xóa người dùng này không?"
+              onConfirm={() => {
+                handleDeleteButon(user.taiKhoan);
               }}
-              type="primary"
-              danger
-              icon={<DeleteOutlined />}
-            ></Button>
+              onCancel={cancel}
+              okText="Có"
+              cancelText="Không"
+            >
+              <Button type="primary" danger icon={<DeleteOutlined />}></Button>
+            </Popconfirm>
           </>
         );
       },
@@ -78,13 +109,20 @@ const UserManagement = () => {
   ];
   const getUserList = async () => {
     const result = await fetchUserListApi();
-    setUserList([...result.data.content]);
+    //filter out current user's name
+    const filteredList = result.data.content.filter(
+      (elem) => elem.taiKhoan !== currentUser.taiKhoan
+    );
+    setUserList(filteredList);
   };
-
+  // get userList the first time the page is loaded
   useEffect(() => {
     getUserList();
   }, []);
-  //bring up the user form when clicking add or edit
+  const getAccountInfo = async (accountName) => {
+    const result = await fetchUserInfo(accountName);
+    setupdatedAccount(result.data.content);
+  };
   const openUserForm = () => {
     document.querySelector(".form-background").classList.add("active");
   };
@@ -93,37 +131,24 @@ const UserManagement = () => {
     setIsUpdating(false);
     setupdatedAccount({});
   };
-  const getAccountInfo = async (accountName) => {
-    const result = await fetchUserInfo(accountName);
-    setupdatedAccount(result.data.content);
-  };
-  // it's hard to tell the difference between which button is clicked because of the component of ant design
   const handleEditButton = (accountName) => {
     openUserForm();
     setIsUpdating(true);
     getAccountInfo(accountName);
   };
-  const handleDeleteButton = async (accountName) => {
-    if (window.confirm("Bạn có muốn xóa người dùng này không?")) {
-      try {
-        await deleteUserInfo(accountName);
-        notification.success({
-          message: "Xóa thành công!",
-        });
-      } catch (error) {
-        notification.warning({
-          message: error.response.data.content,
-        });
-      }
-    }
-  };
   return (
     <>
-      <Button onClick={handleAddButton} type="primary">
-        Thêm
-      </Button>
+      <Button
+        onClick={handleAddButton}
+        type="primary"
+        icon={<PlusOutlined />}
+      ></Button>
       <Table columns={columns} dataSource={userList} />
-      <UserForm updatedAccount={updatedAccount} isUpdating={isUpdating} />
+      <UserForm
+        getUserList={getUserList}
+        updatedAccount={updatedAccount}
+        isUpdating={isUpdating}
+      />
     </>
   );
 };

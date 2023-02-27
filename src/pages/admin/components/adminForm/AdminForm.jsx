@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Input, notification, Select } from "antd";
+import { Button, Form, Input, notification, Select, Popconfirm } from "antd";
 import { useEffect } from "react";
 import {
   fetchAccountInfoApi,
@@ -7,34 +7,31 @@ import {
 } from "../../../../services/user";
 import "./index.scss";
 import { useDispatch } from "react-redux";
-import { setUserInfoAction } from "../../../../store/action/userAction";
+import { updateUserInfoAction } from "../../../../store/action/userAction";
 
-export default function AdminInfoForm() {
+export default function AdminForm() {
   const dispatch = useDispatch();
   const [adminInfoState, setAdminInfoState] = useState({});
   //confirm password value
-  const [disabled, setDisabled] = useState(true);
   const [isChangePassword, setIsChangePassword] = useState(false);
   const { Option } = Select;
   const [form] = Form.useForm();
+  //update info upon finishing the form
   const onFinish = async (values) => {
     try {
       await updateUserInfoApi(values);
-      localStorage.setItem(
-        "USER_INFO_KEY",
-        JSON.stringify(values)
-      );
-      dispatch(setUserInfoAction(values));
       notification.success({
         message: "Cập nhật thông tin thành công!",
       });
-      handleReset();
+      dispatch(updateUserInfoAction(values));
+      form.resetFields();
     } catch (error) {
       notification.warning({
-        message: error.reponse.data.content,
+        message: error?.reponse?.data?.content,
       });
     }
   };
+  //do this instead of taking info from local storage is because the object in local storage doesnt have password
   const getAccountInfo = async () => {
     const result = await fetchAccountInfoApi();
     setAdminInfoState({ ...result.data.content });
@@ -53,7 +50,6 @@ export default function AdminInfoForm() {
   const handleChange = (e) => {
     //enable confirm password input if user is changing the password
     if (e.target.id === "password-update") {
-      setDisabled(false);
       setIsChangePassword(true);
     }
     //enable save button on input change
@@ -62,19 +58,21 @@ export default function AdminInfoForm() {
   const handleReset = () => {
     form.resetFields();
     //disable confirm password field
-    setDisabled(true);
     setIsChangePassword(false);
+    document.getElementById("admin-info-save").disabled = true;
   };
   return (
     <div className="admin-info-form" style={{ width: "50%" }}>
       <div className="admin-info-form-wrapper">
         <Form
+          //make the label stay on top of input field
           layout="vertical"
           className="user-form"
           form={form}
           name="normal-login"
           onFinish={onFinish}
           scrollToFirstError
+          //hide the asterisk
           requiredMark={false}
         >
           <Form.Item className="mb-0">
@@ -102,7 +100,7 @@ export default function AdminInfoForm() {
                 margin: "0 8px",
               }}
             >
-              <Input disabled={true} placeholder="GP03" />
+              <Input disabled placeholder="GP03" />
             </Form.Item>
           </Form.Item>
           <Form.Item className="mb-0">
@@ -199,7 +197,8 @@ export default function AdminInfoForm() {
                 }}
               >
                 <Input.Password
-                  disabled={disabled}
+                  // disable when not changing password
+                  disabled={!isChangePassword}
                   id="password-update-confirm"
                   placeholder="Nhập lại mật khẩu"
                 />
@@ -258,9 +257,15 @@ export default function AdminInfoForm() {
             >
               Lưu
             </Button>
-            <Button onClick={handleReset} htmlType="button">
-              Reset
-            </Button>
+            <Popconfirm
+              title="Reset Form"
+              description="Bạn có muốn reset không?"
+              onConfirm={handleReset}
+              okText="Có"
+              cancelText="Không"
+            >
+              <Button htmlType="button">Reset</Button>
+            </Popconfirm>
           </Form.Item>
         </Form>
       </div>

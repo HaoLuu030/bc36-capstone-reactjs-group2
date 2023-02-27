@@ -34,7 +34,7 @@ export const addUserApi = (information) => {
 export const updateUserInfoApi = (information) => {
   return axiosRequest({
     url: "/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
-    method: "PUT",
+    method: "POST",
     data: information,
   });
 };

@@ -1,0 +1,24 @@
+@import "../../design-tokens/base";
+@import "../../design-tokens/mixins";
+@import "../../design-tokens/variables";
+
+.admin-layout-header {
+  .welcome-user-container {
+    display: flex;
+    align-items: center;
+    font-size: $text-sm;
+    button {
+      color: $c1-750;
+      background-color: transparent;
+      border: none;
+      transition: all 0.5s;
+      &:hover {
+        color: $c1-500;
+      }
+    }
+  }
+}
+
+.admin-layout-footer {
+  min-height: 100px;
+}

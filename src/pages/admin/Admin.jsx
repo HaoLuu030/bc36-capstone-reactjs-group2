@@ -1,5 +1,5 @@
 import React from "react";
-import AdminInfoForm from "./components/adminInfoForm/AdminInfoForm";
+import AdminForm from "./components/adminForm/AdminForm";
 import Heading from "./components/heading/Heading";
 import Title from "./components/title/Title";
 import "./index.scss";
@@ -9,7 +9,7 @@ export default function Admin() {
     <div className="container">
       <Heading />
       <Title />
-      <AdminInfoForm />
+      <AdminForm />
     </div>
   );
 }

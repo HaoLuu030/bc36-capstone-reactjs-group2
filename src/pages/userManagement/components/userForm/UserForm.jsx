@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { Button, Form, Input, notification, Select } from "antd";
+import React, { useEffect, useState } from "react";
+import { Button, Form, Input, notification, Select, Popconfirm } from "antd";
 import "./index.scss";
-import { addUserApi } from "../../../../services/user";
-
+import { addUserApi, updateUserInfoApi } from "../../../../services/user";
 export default function UserForm(props) {
   const { Option } = Select;
   const [form] = Form.useForm();
+  const [isChangePassword, setIsChangePassword] = useState(false);
   //close the form pop up when clicked outside the form
   document.querySelector(".form-inner")?.addEventListener("click", function () {
     document.querySelector(".form-background").classList.remove("active");
@@ -19,6 +19,8 @@ export default function UserForm(props) {
         notification.success({
           message: "Thêm thành công",
         });
+        document.querySelector(".form-background").classList.remove("active");
+        props.getUserList();
       } catch (error) {
         notification.warning({
           message: error.response.data.content,
@@ -27,18 +29,40 @@ export default function UserForm(props) {
     }
     // update user
     else {
+      try {
+        await updateUserInfoApi(values);
+        notification.success({
+          message: "Cập nhật thông tin thành công!",
+        });
+        form.resetFields();
+        document.querySelector(".form-background").classList.remove("active");
+        props.getUserList();
+      } catch (error) {
+        notification.warning({
+          message: error.reponse.data.content,
+        });
+      }
     }
   };
   const handleReset = () => {
-    if (window.confirm("Bạn có muốn reset không?")) {
-      form.resetFields();
-    }
+    form.resetFields();
+    setIsChangePassword(false);
+    document.getElementById("update-info-save").disabled = true;
+    notification.success({
+      message: "Reset thành công!",
+    });
   };
   useEffect(() => {
     form.resetFields();
   }, [props.updatedAccount]);
   const { hoTen, email, matKhau, maLoaiNguoiDung, soDT, taiKhoan } =
     props.updatedAccount || {};
+  const handleChange = (e) => {
+    if (e.target.id === "button-update-password") {
+      setIsChangePassword(true);
+    }
+    document.getElementById("update-info-save").disabled = false;
+  };
   return (
     <div className="form-background">
       <div className="form-inner"></div>
@@ -62,7 +86,7 @@ export default function UserForm(props) {
               },
             ]}
           >
-            <Input placeholder="Nhập Họ tên" />
+            <Input onChange={handleChange} placeholder="Nhập Họ tên" />
           </Form.Item>
           <Form.Item
             initialValue={email}
@@ -78,7 +102,7 @@ export default function UserForm(props) {
               },
             ]}
           >
-            <Input placeholder="Nhập Email" />
+            <Input onChange={handleChange} placeholder="Nhập Email" />
           </Form.Item>
           <Form.Item className="my-0">
             <Form.Item
@@ -96,7 +120,10 @@ export default function UserForm(props) {
                 },
               ]}
             >
-              <Input placeholder="Nhập tên tài khoản" />
+              <Input
+                disabled={props.isUpdating}
+                placeholder="Nhập tên tài khoản"
+              />
             </Form.Item>
             <Form.Item
               initialValue={soDT}
@@ -113,7 +140,7 @@ export default function UserForm(props) {
                 },
               ]}
             >
-              <Input placeholder="Nhập số điện thoại" />
+              <Input onChange={handleChange} placeholder="Nhập số điện thoại" />
             </Form.Item>
           </Form.Item>
 
@@ -133,7 +160,11 @@ export default function UserForm(props) {
                 width: "calc(50% - 8px)",
               }}
             >
-              <Input.Password placeholder="Nhập Mật khẩu" />
+              <Input.Password
+                id="button-update-password"
+                onChange={handleChange}
+                placeholder="Nhập Mật khẩu"
+              />
             </Form.Item>
 
             <Form.Item
@@ -142,7 +173,7 @@ export default function UserForm(props) {
               hasFeedback
               rules={[
                 {
-                  required: true,
+                  required: isChangePassword,
                   message: "Vui lòng xác nhận mật khẩu",
                 },
                 ({ getFieldValue }) => ({
@@ -162,7 +193,10 @@ export default function UserForm(props) {
                 margin: "0 8px",
               }}
             >
-              <Input.Password placeholder="Nhập lại mật khẩu" />
+              <Input.Password
+                disabled={!isChangePassword}
+                placeholder="Nhập lại mật khẩu"
+              />
             </Form.Item>
           </Form.Item>
 
@@ -176,7 +210,7 @@ export default function UserForm(props) {
                 width: "calc(50% - 8px)",
               }}
             >
-              <Select placeholder="Chọn loại">
+              <Select onChange={handleChange} placeholder="Chọn loại">
                 <Option value="QuanTri">Quản trị viên</Option>
                 <Option value="KhachHang">Khách hàng</Option>
               </Select>
@@ -195,7 +229,12 @@ export default function UserForm(props) {
           </Form.Item>
           <Form.Item>
             {props.isUpdating ? (
-              <Button type="primary" htmlType="submit">
+              <Button
+                disabled
+                id="update-info-save"
+                type="primary"
+                htmlType="submit"
+              >
                 Cập nhật
               </Button>
             ) : (
@@ -203,15 +242,17 @@ export default function UserForm(props) {
                 Thêm
               </Button>
             )}
-            <Button
-              onClick={handleReset}
-              htmlType="button"
-              type="primary"
-              danger
-              className="mr-5"
+            <Popconfirm
+              title="Reset form"
+              description="Bạn có muốn reset form không?"
+              onConfirm={handleReset}
+              okText="Có"
+              cancelText="Không"
             >
-              Reset
-            </Button>
+              <Button htmlType="button" type="primary" danger className="mr-5">
+                Reset
+              </Button>
+            </Popconfirm>
           </Form.Item>
         </Form>
       </div>

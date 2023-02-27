@@ -4,14 +4,14 @@ import React, { useState } from "react";
 import { Layout, Menu, theme } from "antd";
 //React router
 import { Outlet, NavLink, useLocation } from "react-router-dom";
-//reducer
-import { useSelector } from "react-redux";
 
 import BreadCrumbsCustom from "../../components/breadCrumbs/BreadCrumbs";
 import Admin from "../../pages/admin/Admin";
 import WelcomeUser from "../../components/welcomeUser/WelcomeUser";
+import "./index.scss";
+import { UsergroupAddOutlined, UserOutlined } from "@ant-design/icons";
 
-export default function AuthGuard() {
+export default function AdminLayout() {
   const location = useLocation();
   //layout code --start
   const { Header, Content, Footer, Sider } = Layout;
@@ -55,15 +55,17 @@ export default function AuthGuard() {
           mode="inline"
           forceSubMenuRender={true}
         >
-          <Menu.SubMenu key="user" title="Người dùng">
-            <Menu.Item key="user-management">
-              <NavLink to="/admin/user-management">Quản lý người dùng</NavLink>
-            </Menu.Item>
-          </Menu.SubMenu>
+          <Menu.Item key="admin" icon={<UserOutlined />}>
+            <NavLink to="/admin">Admin</NavLink>
+          </Menu.Item>
+          <Menu.Item key="user" icon={<UsergroupAddOutlined />}>
+            <NavLink to="/admin/user-management">Người dùng</NavLink>
+          </Menu.Item>
         </Menu>
       </Sider>
-      <Layout className="site-layout">
+      <Layout className="site-layout admin-layout">
         <Header
+          className="admin-layout-header"
           style={{
             padding: 0,
             background: colorBgContainer,
@@ -71,7 +73,9 @@ export default function AuthGuard() {
             justifyContent: "end",
           }}
         >
-          <WelcomeUser />
+          <div className="welcome-user-container">
+            <WelcomeUser />
+          </div>
         </Header>
         <Content
           style={{
@@ -90,11 +94,12 @@ export default function AuthGuard() {
           </div>
         </Content>
         <Footer
+          className="admin-layout-footer"
           style={{
             textAlign: "center",
           }}
         >
-          Ant Design ©2023 Created by Ant UED
+          2022-2023 | Ticket Play all rights reserved
         </Footer>
       </Layout>
     </Layout>
