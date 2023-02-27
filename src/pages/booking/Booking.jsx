@@ -5,52 +5,67 @@ import Seat from "./components/Seat";
 import "./index.scss";
 
 export default function Booking() {
-    const [tickDetail, setTicketDetail] = useState({});
-    const params = useParams();
+  const [tickDetail, setTicketDetail] = useState({});
+  const params = useParams();
 
-    useEffect(() => {
-        getTicketDetail();
-    }, []);
-    const getTicketDetail = async () => {
-        const result = await fetchTicketApi(params.id);
-        console.log(result);
-        setTicketDetail(result.data.content);
-    }
+  useEffect(() => {
+    getTicketDetail();
+  }, []);
+  const getTicketDetail = async () => {
+    const result = await fetchTicketApi(params.id);
 
-    // const renderSeats = () => {
-    //     return tickDetail?.danhSachGhe?.map((ele) => {
-    //       return (
-    //         <Seat key={ele.maGhe} ele={ele} />
-    //       );
-    //     });
-    //   };
+    setTicketDetail(result.data.content);
+  };
 
+  const renderSeats = () => {
+    return tickDetail?.danhSachGhe?.map((ele) => {
+      return <Seat key={ele.maGhe} ele={ele} />;
+    });
+  };
 
   return (
     <div className="container">
       <nav class="navbar justify-content-start">
-        <Link className="text-dark text-decoration-none" to={`/`}>Trang chủ</Link>
-        <Link className="text-dark mx-3 text-decoration-none" to={`/movie-detail/`}>Chi tiết</Link>
+        <Link className="text-dark text-decoration-none" to={`/`}>
+          Trang chủ
+        </Link>
+        <Link
+          className="text-dark mx-3 text-decoration-none"
+          to={`/movie-detail/`}
+        >
+          Chi tiết
+        </Link>
         <Link className="text-decoration-none">Đặt vé</Link>
       </nav>
-        <div className="screen">
-            <h2>MÀN HÌNH</h2>
-        </div>
+      <div className="screen">
+        <h2>MÀN HÌNH</h2>
+      </div>
       <div className="row">
         <div className="col-8 mb-4">
           <div style={{ width: "95%" }} className="mx-auto">
             <ul className="choose-seat">
-                <li className="booked"> <i class="fa-solid fa-square"></i> Ghế đã chọn</li>
-                <li className="not-booked"> <i class="fa-solid fa-square"></i> Ghế trống</li>
-                <li className="being-booking"> <i class="fa-solid fa-square"></i> Ghế đang chọn</li>
-                <li className="vip"> <i class="fa-solid fa-square"></i> Ghế VIP</li>
+              <li className="booked">
+                {" "}
+                <i class="fa-solid fa-square"></i> Ghế đã chọn
+              </li>
+              <li className="not-booked">
+                {" "}
+                <i class="fa-solid fa-square"></i> Ghế trống
+              </li>
+              <li className="being-booking">
+                {" "}
+                <i class="fa-solid fa-square"></i> Ghế đang chọn
+              </li>
+              <li className="vip">
+                {" "}
+                <i class="fa-solid fa-square"></i> Ghế VIP
+              </li>
             </ul>
           </div>
         </div>
         <div className="col-8">
           <div style={{ width: "95%" }} className="mx-auto">
-            {/* {renderSeats()} */}
-            
+            {renderSeats()}
           </div>
         </div>
         <div className="detail-booking col-4">
@@ -59,7 +74,9 @@ export default function Booking() {
             src={tickDetail?.thongTinPhim?.hinhAnh}
             alt="#"
           />
-          <h4 className="mb-0">Tên phim: {tickDetail?.thongTinPhim?.tenPhim}</h4>
+          <h4 className="mb-0">
+            Tên phim: {tickDetail?.thongTinPhim?.tenPhim}
+          </h4>
           <h5 className="mb-0">
             Ghế được chọn:
             <div className="d-flex">

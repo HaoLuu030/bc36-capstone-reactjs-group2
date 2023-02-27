@@ -8,7 +8,6 @@ import "./index.scss";
 import Showtimes from "../showtimes/Showtimes";
 
 export default function Detail(props) {
-
   const [movieDetail, setMovieDetail] = useState({});
   const params = useParams();
   useEffect(() => {
@@ -17,8 +16,6 @@ export default function Detail(props) {
 
   const getMovieDetail = async () => {
     const result = await fetchMovieDetailApi(params.id);
-    console.log(params);
-    console.log(result);
     setMovieDetail(result.data.content);
   };
 
@@ -28,7 +25,9 @@ export default function Detail(props) {
   return (
     <div key={props.maPhim} className="row">
       <nav class="navbar">
-        <NavLink className="text-dark text-decoration-none" to={`/`}>Trang chủ</NavLink>
+        <NavLink className="text-dark text-decoration-none" to={`/`}>
+          Trang chủ
+        </NavLink>
         <NavLink className="mx-3 text-decoration-none">Chi tiết</NavLink>
       </nav>
       <div className="col-12">
@@ -38,11 +37,12 @@ export default function Detail(props) {
           </div>
           <div className="title pl-5 pt-0 col-md-12 col-lg-4">
             <h1>{movieDetail.tenPhim}</h1>
-            <h5>Đánh giá: {movieDetail.danhGia}/10
+            <h5>
+              Đánh giá: {movieDetail.danhGia}/10
               <i class="fa-solid fa-star"></i>
             </h5>
             <h3>Nội dung:</h3>
-            <p >{movieDetail.moTa}</p>
+            <p>{movieDetail.moTa}</p>
             {/* <button onClick={handleBooking} className="btn btn-success">ĐẶT VÉ</button> */}
           </div>
           <div className="trailer col-lg-4">
@@ -54,12 +54,10 @@ export default function Detail(props) {
             </div>
           </div>
         </div>
-
       </div>
       <div>
         <Showtimes />
       </div>
-
     </div>
   );
 }
