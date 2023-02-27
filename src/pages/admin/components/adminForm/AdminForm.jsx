@@ -23,8 +23,10 @@ export default function AdminForm() {
       notification.success({
         message: "Cập nhật thông tin thành công!",
       });
+      setAdminInfoState({ ...values, soDT: values.soDt });
       dispatch(updateUserInfoAction(values));
       form.resetFields();
+      document.getElementById("admin-info-save").disabled = true;
     } catch (error) {
       notification.warning({
         message: error?.reponse?.data?.content,

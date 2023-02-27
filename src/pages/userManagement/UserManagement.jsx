@@ -4,14 +4,15 @@ import UserForm from "./components/userForm/UserForm";
 import { useEffect, useState } from "react";
 //API
 import {
-  deleteUserInfo,
-  fetchUserInfo,
+  deleteUserInfoApi,
+  fetchUserInfoApi,
   fetchUserListApi,
+  findUserApi,
 } from "../../services/user";
 //ant design components
 import { message, Popconfirm } from "antd";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, notification, Table, Tag } from "antd";
+import { Button, notification, Table, Tag, Input } from "antd";
 
 const UserManagement = () => {
   const currentUser = JSON.parse(localStorage.getItem("USER_INFO_KEY"));
@@ -21,7 +22,7 @@ const UserManagement = () => {
   //confirm popUp code: for delete button
   const handleDeleteButon = async (accountName) => {
     try {
-      await deleteUserInfo(accountName);
+      await deleteUserInfoApi(accountName);
       notification.success({
         message: "Xóa thành công!",
       });
@@ -45,6 +46,10 @@ const UserManagement = () => {
     },
     {
       title: "Loại",
+      filters: [
+        { text: "Khách hàng", value: "KhachHang" },
+        { text: "Quản trị viên", value: "QuanTri" },
+      ],
       key: "maLoaiNguoiDung",
       dataIndex: "maLoaiNguoiDung",
       render: (tag) => {
@@ -65,6 +70,7 @@ const UserManagement = () => {
           </Tag>
         );
       },
+      onFilter: (value, record) => record.maLoaiNguoiDung.indexOf(value) === 0,
     },
     {
       title: "Email",
@@ -120,7 +126,7 @@ const UserManagement = () => {
     getUserList();
   }, []);
   const getAccountInfo = async (accountName) => {
-    const result = await fetchUserInfo(accountName);
+    const result = await fetchUserInfoApi(accountName);
     setupdatedAccount(result.data.content);
   };
   const openUserForm = () => {
@@ -136,13 +142,36 @@ const UserManagement = () => {
     setIsUpdating(true);
     getAccountInfo(accountName);
   };
+  //search box --start
+  const { Search } = Input;
+  const onSearch = async (value) => {
+    const result = await findUserApi(value);
+    setUserList(result.data.content);
+  };
+  // search box --end
   return (
     <>
-      <Button
-        onClick={handleAddButton}
-        type="primary"
-        icon={<PlusOutlined />}
-      ></Button>
+      <div className="d-flex justify-content-end mb-3">
+        <Search
+          placeholder="Nhập Sđt hoặc tài khoản"
+          onSearch={onSearch}
+          style={{
+            width: 200,
+          }}
+        />
+        <Button
+          onClick={getUserList}
+          icon={<i className="fa fa-sync"></i>}
+          type="primary"
+          className="ml-1"
+        ></Button>
+        <Button
+          className="ml-1"
+          onClick={handleAddButton}
+          type="primary"
+          icon={<i className="fa fa-plus"></i>}
+        ></Button>
+      </div>
       <Table columns={columns} dataSource={userList} />
       <UserForm
         getUserList={getUserList}

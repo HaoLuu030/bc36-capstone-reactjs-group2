@@ -46,16 +46,23 @@ export const fetchAccountInfoApi = () => {
   });
 };
 
-export const fetchUserInfo = (information) => {
+export const fetchUserInfoApi = (information) => {
   return axiosRequest({
     url: `/QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${information}`,
     method: "POST",
   });
 };
 
-export const deleteUserInfo = (information) => {
+export const deleteUserInfoApi = (information) => {
   return axiosRequest({
     url: `/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${information}`,
     method: "DELETE",
+  });
+};
+
+export const findUserApi = (information) => {
+  return axiosRequest({
+    url: `https://movienew.cybersoft.edu.vn/api/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=GP03&tuKhoa=${information}`,
+    method: "GET",
   });
 };
