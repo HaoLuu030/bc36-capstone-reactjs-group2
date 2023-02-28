@@ -13,3 +13,26 @@ export const fetchMovieDetailApi = (id) => {
     method: "GET",
   });
 };
+
+export const addMovieApi = (data) => {
+  return axiosRequest({
+    url: `/QuanLyPhim/ThemPhimUploadHinh`,
+    method: "POST",
+    data: data,
+  });
+};
+
+export const editMovieApi = (data) => {
+  return axiosRequest({
+    url: `/QuanLyPhim/CapNhatPhimUpload`,
+    method: "POST",
+    data: data,
+  });
+};
+
+export const deleteMovieApi = (id) => {
+  return axiosRequest({
+    url: `/QuanLyPhim/XoaPhim?MaPhim=${id}`,
+    method: "DELETE",
+  });
+};
