@@ -6,7 +6,7 @@ import ComingSoon from "../pages/coming-soon/ComingSoon";
 import Home from "../pages/home/Home";
 import MovieDetail from "../pages/movie-detail/MovieDetail";
 import NowPlaying from "../pages/now-playing/NowPlaying";
-import UserManagement from "../pages/userManagement/UserManagement";
+import UserManagement from "../pages/user-management/UserManagement";
 
 export default function Router() {
   const routing = useRoutes([
