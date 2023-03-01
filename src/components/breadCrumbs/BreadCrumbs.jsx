@@ -24,6 +24,9 @@ export default function BreadCrumbsCustom() {
       case "edit-movie": {
         return "Sửa phim";
       }
+      case "movie-playtime-schedule": {
+        return "Đặt lịch chiếu";
+      }
       default: {
         return movieName;
       }

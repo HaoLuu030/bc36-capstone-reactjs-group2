@@ -4,11 +4,13 @@ import "./index.scss";
 import { addUserApi, updateUserInfoApi } from "../../../../services/user";
 export default function UserForm(props) {
   const { Option } = Select;
+  const [disableSave, setDisableSave] = useState(true);
   const [form] = Form.useForm();
   const [isChangePassword, setIsChangePassword] = useState(false);
   //close the form pop up when clicked outside the form
   document.querySelector(".form-inner")?.addEventListener("click", function () {
     document.querySelector(".form-background").classList.remove("active");
+    setDisableSave(true);
   });
   const onFinish = async (values) => {
     // add user
@@ -47,7 +49,7 @@ export default function UserForm(props) {
   const handleReset = () => {
     form.resetFields();
     setIsChangePassword(false);
-    document.getElementById("update-info-save").disabled = true;
+    setDisableSave(true);
     notification.success({
       message: "Reset thành công!",
     });
@@ -61,7 +63,7 @@ export default function UserForm(props) {
     if (e.target.id === "button-update-password") {
       setIsChangePassword(true);
     }
-    document.getElementById("update-info-save").disabled = false;
+    setDisableSave(false);
   };
   return (
     <div className="form-background">
@@ -210,7 +212,7 @@ export default function UserForm(props) {
                 width: "calc(50% - 8px)",
               }}
             >
-              <Select onChange={handleChange} placeholder="Chọn loại">
+              <Select onClick={handleChange} placeholder="Chọn loại">
                 <Option value="QuanTri">Quản trị viên</Option>
                 <Option value="KhachHang">Khách hàng</Option>
               </Select>
@@ -230,7 +232,7 @@ export default function UserForm(props) {
           <Form.Item>
             {props.isUpdating ? (
               <Button
-                disabled
+                disabled={disableSave}
                 id="update-info-save"
                 type="primary"
                 htmlType="submit"

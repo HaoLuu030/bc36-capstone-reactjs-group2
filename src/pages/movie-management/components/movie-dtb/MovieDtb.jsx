@@ -28,6 +28,9 @@ export default function MovieDtb() {
       }
     }
   };
+  const handleScheduleButton = (id) => {
+    navigate(`/admin/movie-management/movie-playtime-schedule/${id}`);
+  };
   useEffect(() => {
     getMovieList();
   }, []);
@@ -80,6 +83,9 @@ export default function MovieDtb() {
             icon={<i className="fa fa-trash"></i>}
           ></Button>
           <Button
+            onClick={() => {
+              handleScheduleButton(record.maPhim);
+            }}
             type="default"
             style={{ color: "green" }}
             icon={<i className="fa fa-calendar-alt"></i>}
