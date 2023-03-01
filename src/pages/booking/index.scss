@@ -34,4 +34,9 @@
 .detail-booking h4 {
     font-weight: $text-semiBold;
     color: $c1-650;
+    font-size: $text-sm;
+    padding-top: 20px;
+}
+.detail-booking h5{
+    font-size: $text-base;
 }

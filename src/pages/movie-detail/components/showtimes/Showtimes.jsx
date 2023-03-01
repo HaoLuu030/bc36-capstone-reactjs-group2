@@ -57,8 +57,7 @@ export default function Showtimes() {
                                             })
                                         }
                                     </div>
-                                </div>
-                                
+                                </div>                              
                             </div>
                         )
                     })}

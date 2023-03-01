@@ -16,12 +16,13 @@ export default function Seat(props) {
   }
   const handleSelectSeat = () => {
     setIsSelected(!isSelected);
+    props.handleSelected(props.ele);
   }
   return (
     <button 
     onClick={handleSelectSeat}
     disabled={props.ele.daDat}
-    style={{ width: 50, height: 50, padding: 0 }} 
+    style={{ width: 30, height: 30, padding: 0 }} 
     className={`mr-1 mb-1 btn ${populateClassName()}`}>{props.ele.tenGhe}</button>
   )
 }

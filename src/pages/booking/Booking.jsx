@@ -1,11 +1,15 @@
+import { set } from "lodash";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchTicketApi } from "../../services/ticket";
 import Seat from "./components/Seat";
 import "./index.scss";
+import * as _ from 'lodash';
 
 export default function Booking() {
   const [tickDetail, setTicketDetail] = useState({});
+  const [selectedSeatList, setSelectedSeatList] = useState([]);
+
   const params = useParams();
 
   useEffect(() => {
@@ -21,13 +25,28 @@ export default function Booking() {
     return tickDetail?.danhSachGhe?.map((ele, idx) => {
       return (
         <React.Fragment>
-          <Seat key={ele.maGhe} ele={ele} />
-          {(idx + 1) % 16 === 0 && <br/> }
+          <Seat key={ele.maGhe} ele={ele} handleSelected={handleSelected} />
+          {(idx + 1) % 16 === 0 && <br />}
         </React.Fragment>
       );
     });
   };
 
+  const handleSelected = (seat) => {
+    const data = [...selectedSeatList];
+    const idx = data.findIndex((ele) => ele.maGhe === seat.maGhe);
+    
+    if (idx !== -1) {
+      data.splice(idx, 1);
+    } else {
+      data.push(seat);
+    }
+  
+    setSelectedSeatList(data);
+  }
+  useEffect(() => {
+    console.log(selectedSeatList);
+  }, [selectedSeatList]);
   return (
     <div className="container mx-5">
       <nav class="navbar justify-content-start">
@@ -68,28 +87,34 @@ export default function Booking() {
             </ul>
           </div>
         </div>
-        <div className="col-10">
+        <div className="col-lg-8">
           <div style={{ width: "95%" }} className="mx-auto">
             {renderSeats()}
           </div>
         </div>
-        <div className="detail-booking col-2">
+        <div className="detail-booking col-lg-4">
           <img
-            style={{ width: 300, height: 400, objectFit: "cover" }}
+            style={{ width: 200, height: 300, objectFit: "cover" }}
             src={tickDetail?.thongTinPhim?.hinhAnh}
             alt="#"
           />
           <h4 className="mb-0">
             Tên phim: {tickDetail?.thongTinPhim?.tenPhim}
           </h4>
-          <h5 className="mb-0">
-            Ghế được chọn:
-            <div className="d-flex">
-              <p className="badge badge-danger mr-2 mb-0">13</p>
-              <p className="badge badge-danger mr-2 mb-0">14</p>
+          <div className="row">
+            <div className="col-5">
+              Ghế được chọn:
             </div>
-          </h5>
-          <h5>Tổng tiền: 40000</h5>
+            <div className="col-7 px-0">
+              {selectedSeatList.map((ele) => {
+                return (
+                  <p key={ele.maGhe} className="badge badge-danger mr-2 mb-0">{ele.tenGhe}</p>
+                )
+              })}
+              
+            </div>
+          </div>
+          <h5>Tổng tiền: {_.sumBy(selectedSeatList, "giaVe").toLocaleString()} VND</h5>
           <button className="btn btn-success">ĐẶT VÉ</button>
         </div>
       </div>
