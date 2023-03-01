@@ -1,21 +1,29 @@
 import React from "react";
+import "./index.scss";
 
 export default function TheaterBrandItem(props) {
+  const handleClick = (e) => {
+    document.querySelectorAll(".theater-brand-item").forEach((elem) => {
+      elem.classList.remove("active");
+      e.currentTarget.classList.add("active");
+    });
+    props.setTheaterList(props.theaterBrand.maHeThongRap);
+  };
   return (
     <button
-      onClick={() => {
-        props.setTheaterList(props.theaterBrand.maHeThongRap);
-      }}
-      className="col-12"
+      style={{ width: "100%" }}
+      onClick={handleClick}
       key={props.theaterBrand.maHeThongRap}
+      className="theater-brand-item py-2"
     >
-      <div className="row">
+      <div className="row align-items-center px-2">
         <div className="col-4">
-          <img
-            style={{ width: "100%" }}
-            src={props.theaterBrand.logo}
-            alt={props.theaterBrand.tenHeThongRap}
-          />
+          <div className="img-container">
+            <img
+              src={props.theaterBrand.logo}
+              alt={props.theaterBrand.tenHeThongRap}
+            />
+          </div>
         </div>
         <div className="col-8">
           <p>{props.theaterBrand.tenHeThongRap}</p>

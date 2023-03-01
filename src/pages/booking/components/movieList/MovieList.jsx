@@ -18,9 +18,13 @@ export default function MovieList() {
     });
   };
   return (
-    <div className="col-3 movie-list-booking px-2">
-      MovieList
-      <div className="row">{renderMovieList()}</div>
+    <div className="col-12 col-lg-4">
+      <div className="movie-list-column">
+        <div className="title-booking">
+          <p>Chọn phim</p>
+        </div>
+        <div className="movie-list-booking">{renderMovieList()}</div>
+      </div>
     </div>
   );
 }

@@ -54,7 +54,7 @@ export default function Header() {
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/booking">
-              Mua vé
+              Mua vé nhanh
             </NavLink>
           </li>
           <li className="nav-item">

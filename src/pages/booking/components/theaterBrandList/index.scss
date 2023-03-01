@@ -2,18 +2,18 @@
 @import "../../../../design-tokens/mixins";
 @import "../../../../design-tokens/variables";
 
-.movie-list-booking {
+.theater-brand-list {
   @include ItemContainerBooking();
   .img-container {
     img {
-      height: 100px;
-      width: 80px;
+      height: 150px;
+      width: 150px;
     }
   }
 }
 
 @include Responsive($LG) {
-  .movie-list-booking {
+  .theater-brand-list {
     height: auto;
     overflow: auto;
   }
