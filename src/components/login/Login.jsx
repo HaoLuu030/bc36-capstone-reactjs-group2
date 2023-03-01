@@ -5,8 +5,10 @@ import "./index.scss";
 import { loginApi } from "../../services/user";
 import { useDispatch } from "react-redux";
 import { setUserInfoAction } from "../../store/action/userAction";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   //after clicking submit/login
   const onFinish = async (values) => {
@@ -17,9 +19,16 @@ const Login = () => {
         JSON.stringify(result.data.content)
       );
       dispatch(setUserInfoAction(result.data.content));
-      document
-        .querySelector(".background-login-module")
-        .classList.remove("active");
+      //turn off login module if the one logged in is the user
+      if (result.data.content.maLoaiNguoiDung === "KhachHang") {
+        document
+          .querySelector(".background-login-module")
+          .classList.remove("active");
+      }
+      // navigate to admin if the one logged in is admin
+      else {
+        navigate("/admin");
+      }
       notification.success({
         message: "Đăng nhập thành công!",
       });

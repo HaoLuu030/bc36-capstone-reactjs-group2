@@ -1,7 +1,7 @@
 @import "../../design-tokens/variables";
 
 .sign-up-form {
-  // normal input
+  // custom normal inputs field of ant design
   input {
     &:hover,
     &:focus {
@@ -12,7 +12,7 @@
       outline: none;
     }
   }
-  //fix input with wrapper outside
+  //custom inputs with wrapper outside
   .ant-input-affix-wrapper {
     &:hover,
     &.ant-input-affix-wrapper-focused {
@@ -22,10 +22,6 @@
   }
   .sign-up-form-button {
     background-color: $c1-500;
-    // height: 50px;
-    // span {
-    //   line-height: 50px;
-    // }
     &:hover {
       background-color: $c1-600;
     }
