@@ -1,0 +1,19 @@
+@import "../../../../design-tokens/base";
+@import "../../../../design-tokens/mixins";
+@import "../../../../design-tokens/variables";
+
+.admin-info-heading {
+  .admin-avatar {
+    p {
+      color: #e91e63;
+      width: 100px;
+      height: 100px;
+      background-color: black;
+      text-align: center;
+      line-height: 100px;
+      font-size: $text-2xl;
+      border-radius: 50%;
+      font-weight: bold;
+    }
+  }
+}

@@ -1,23 +1,16 @@
-import axios from "axios";
-import { BASE_URL, TOKEN_CYBERSOFT } from "../constants";
+import { axiosRequest } from "../configs/axios.config";
 
 export const fetchMovieList = () => {
-  return axios({
-    url: `${BASE_URL}/QuanLyPhim/LayDanhSachPhim?maNhom=GP03`,
+  return axiosRequest({
+    url: "/QuanLyPhim/LayDanhSachPhim?maNhom=GP03",
     method: "GET",
-    headers: {
-      TokenCybersoft: TOKEN_CYBERSOFT,
-    },
   });
 };
 
 export const fetchMovieDetailApi = (id) => {
-  return axios({
-    url: `${BASE_URL}/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`,
+  return axiosRequest({
+    url: `/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`,
     method: "GET",
-    headers: {
-      TokenCybersoft: TOKEN_CYBERSOFT,
-    },
   });
 };
 

@@ -1,31 +1,17 @@
 import { Button, Checkbox, Form, Input, notification } from "antd";
 import { signUpApi } from "../../services/user";
 import "./index.scss";
-// const formItemLayout = {
-//   wrapperCol: {
-//     span: 24,
-//     offset: 0,
-//   },
-// };
 
 const SignUp = () => {
   const [form] = Form.useForm();
   //on submit
   const onFinish = async (values) => {
-    const { email, hoTen, matKhau, soDt, taiKhoan } = values;
-    console.log({ email, hoTen, matKhau, soDt, taiKhoan, maNhom: "GP03" });
     try {
-      await signUpApi({
-        taiKhoan,
-        matKhau,
-        email,
-        soDt,
-        maNhom: "GP03",
-        hoTen,
-      });
+      await signUpApi(values);
       notification.success({
         message: "Đăng ký thành công!",
       });
+      form.resetFields();
     } catch (error) {
       notification.error({
         message: error.response.data.content,
