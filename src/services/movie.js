@@ -13,3 +13,13 @@ export const fetchMovieDetailApi = (id) => {
     method: "GET",
   });
 };
+
+export const fetchPlayingDetailApi = (information) => {
+  return axios({
+    url: `${BASE_URL}/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${information}`,
+    method: "GET",
+    headers: {
+      TokenCybersoft: TOKEN_CYBERSOFT,
+    },
+  });
+};

@@ -1,7 +1,8 @@
 import { Navigate, useRoutes } from "react-router-dom";
+import HomeLayout from "../layouts/homeLayout/HomeLayout";
+import Booking from "../pages/booking/Booking";
 import AuthGuard from "../guards/AuthGuard";
 import AdminLayout from "../layouts/admin/AdminLayout";
-import HomeLayout from "../layouts/home/HomeLayout";
 import ComingSoon from "../pages/coming-soon/ComingSoon";
 import Home from "../pages/home/Home";
 import MovieDetail from "../pages/movie-detail/MovieDetail";
@@ -33,6 +34,10 @@ export default function Router() {
         {
           path: "/coming-soon",
           element: <ComingSoon />,
+        },
+        {
+          path: "/booking",
+          element: <Booking />,
         },
       ],
     },

@@ -1,0 +1,21 @@
+@import "../../design-tokens/base";
+@import "../../design-tokens/mixins";
+@import "../../design-tokens/variables";
+
+.title-booking {
+  margin: 0;
+  padding: 0;
+  background-color: $c1-500;
+  p {
+    text-align: center;
+    margin-bottom: 0;
+    color: $c1-50;
+    text-transform: uppercase;
+    font-size: $text-sm;
+  }
+}
+
+.unavailable {
+  padding: 20px;
+  text-align: center;
+}
