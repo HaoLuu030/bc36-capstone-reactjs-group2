@@ -20,6 +20,7 @@ import {
 } from "../../services/movie";
 import { useForm } from "antd/es/form/Form";
 import moment from "moment";
+import { useSelector } from "react-redux";
 
 const { TextArea } = Input;
 export default function MovieForm() {

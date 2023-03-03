@@ -32,7 +32,7 @@ export const editMovieApi = (data) => {
 
 export const deleteMovieApi = (id) => {
   return axiosRequest({
-    url: `/QuanLyPhim/XoaPhim?MaPhim=${id}`,
+    url: `/QuanLyPhim/XP?MaPhim=${id}`,
     method: "DELETE",
   });
 };

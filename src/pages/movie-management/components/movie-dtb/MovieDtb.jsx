@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Button, notification, Space, Table } from "antd";
 import { deleteMovieApi, fetchMovieList } from "../../../../services/movie";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSelectedMovieAction } from "../../../../store/action/movieActions";
 
 export default function MovieDtb() {
   const navigate = useNavigate();
