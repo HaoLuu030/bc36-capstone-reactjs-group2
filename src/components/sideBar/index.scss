@@ -46,12 +46,11 @@
         font-size: $text-sm;
       }
       .star-rating {
-        font-size: 20px;
-        color: rgb(240, 248, 255, 0.5);
-        .fa-star {
-          &.checked {
-            color: $c1-500;
-          }
+        font-size: $text-lg;
+        color: $c1-500;
+
+        li {
+          cursor: pointer;
         }
       }
     }
