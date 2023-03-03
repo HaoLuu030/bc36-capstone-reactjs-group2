@@ -33,10 +33,6 @@ const UserManagement = () => {
       });
     }
   };
-  // cancel action
-  const cancel = () => {
-    message.error("Đã hủy tác vụ");
-  };
   //table columns
   const columns = [
     {
@@ -102,7 +98,6 @@ const UserManagement = () => {
               onConfirm={() => {
                 handleDeleteButon(user.taiKhoan);
               }}
-              onCancel={cancel}
               okText="Có"
               cancelText="Không"
             >
