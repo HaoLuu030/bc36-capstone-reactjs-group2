@@ -42,7 +42,8 @@
   border: 0 1px;
   border: 1px solid black;
   height: 300px;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 @mixin ItemBooking() {

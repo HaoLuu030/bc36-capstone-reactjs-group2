@@ -6,7 +6,6 @@
   @include ItemContainerBooking();
   .img-container {
     img {
-      height: 150px;
       width: 150px;
     }
   }
@@ -16,5 +15,11 @@
   .theater-brand-list {
     height: auto;
     overflow: auto;
+    overflow-x: hidden;
+    .img-container {
+      img {
+        width: 80px;
+      }
+    }
   }
 }

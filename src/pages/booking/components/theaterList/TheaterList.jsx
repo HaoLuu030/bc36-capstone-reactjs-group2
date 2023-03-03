@@ -38,7 +38,7 @@ export default function TheaterList() {
     dispatch(setPlayTimeAction(theaterId));
   };
   return (
-    <div className="col-12 col-md-5 col-lg-4 mt-5 mt-lg-0">
+    <div className="col-12 col-lg-4 mt-5 mt-lg-0">
       <div className="theater-list-column">
         <div className="title-booking">
           <p>Chọn suất chiếu</p>

@@ -35,7 +35,7 @@ export default function TheaterBrandList() {
     );
   };
   return (
-    <div className="col-12 col-md-5 col-lg-4 mt-5 mt-md-0">
+    <div className="col-12 col-lg-4 mt-5 mt-lg-0">
       <div className="theater-brand-list-column">
         <div className="title-booking">
           <p>Chọn rạp</p>
