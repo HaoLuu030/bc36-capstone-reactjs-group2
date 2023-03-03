@@ -14,8 +14,8 @@
 @include Responsive($LG) {
   .theater-list {
     height: auto;
-    overflow: auto;
-
+    overflow-x: hidden;
+    overflow-y: visible;
     .img-container {
       img {
         width: 80px;
