@@ -79,7 +79,6 @@ export default function CarouselSlide(props) {
           autoplaySpeed={2000}
           slidesToScroll={1}
           slidesToShow={4}
-          // autoplay
           dots={false}
           draggable={true}
           responsive={carouselResponsive}

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
-import LoginAdmin from "../pages/loginAdmin/LoginAdmin";
+import LoginAdmin from "../pages/login-admin/LoginAdmin";
 
 export default function AuthGuard() {
   const userState = useSelector((state) => state.userReducer);

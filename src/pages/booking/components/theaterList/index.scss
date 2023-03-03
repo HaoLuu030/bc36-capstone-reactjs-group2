@@ -1,0 +1,25 @@
+@import "../../../../design-tokens/base";
+@import "../../../../design-tokens/mixins";
+@import "../../../../design-tokens/variables";
+
+.theater-list {
+  @include ItemContainerBooking();
+  .img-container {
+    img {
+      width: 150px;
+    }
+  }
+}
+
+@include Responsive($LG) {
+  .theater-list {
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: visible;
+    .img-container {
+      img {
+        width: 80px;
+      }
+    }
+  }
+}

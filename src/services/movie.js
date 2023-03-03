@@ -36,3 +36,9 @@ export const deleteMovieApi = (id) => {
     method: "DELETE",
   });
 };
+export const fetchPlayingDetailApi = (information) => {
+  return axiosRequest({
+    url: `/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${information}`,
+    method: "GET",
+  });
+};

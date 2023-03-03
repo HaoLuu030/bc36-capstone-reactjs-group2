@@ -7,13 +7,20 @@ export default function MovieList() {
   //get the movie list from a custom hook
   const movieList = useMovieList();
   const renderMovieList = (type) => {
+    console.log(movieList);
     //render movies based on premire status, using slice to limit the amount of movies shown
-    return movieList
-      .filter((element) => (element[type] ? true : false))
-      .slice(0, 4)
-      .map((element) => {
-        return <Movie key={element.maPhim} movie={element} />;
-      });
+    return movieList.filter(elem => elem[type]).length === 0 ? (
+      <div className="unavailable">
+        <p>Thông tin đang được cập nhật</p>
+      </div>
+    ) : (
+      movieList
+        .filter((element) => (element[type] ? true : false))
+        .slice(0, 4)
+        .map((element) => {
+          return <Movie key={element.maPhim} movie={element} />;
+        })
+    );
   };
   return (
     <div className="background-home">

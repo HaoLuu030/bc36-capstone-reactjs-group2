@@ -1,0 +1,17 @@
+@import "../../../../design-tokens/base";
+@import "../../../../design-tokens/mixins";
+@import "../../../../design-tokens/variables";
+
+.movie-item-booking {
+  @include ItemBooking();
+  width: 100%;
+  .img-container {
+    img {
+      width: 100%;
+    }
+  }
+  &:last-of-type {
+    border-bottom: 0;
+  }
+}
+
