@@ -2,13 +2,11 @@
 @import "../../../../design-tokens/variables";
 @import "../../../../design-tokens/mixins";
 
-.nav-link {
-   border: 1px solid $c1-745;
-   color: $c1-750;
-   font-weight: $text-bold;
-}
-.info h5{
-$text-semiBold: 600;
-font-weight: $text-semiBold;
-    
+.show-time {
+  border: 1px solid black;
+  .schedule-title {
+    h3 {
+      color: $c1-500;
+    }
+  }
 }

@@ -23,40 +23,43 @@ export default function Detail(props) {
   //   navigate(`/booking/${props.maPhim}`)
   // }
   return (
-    <div key={props.maPhim} className="row">
-      <nav class="navbar">
-        <NavLink className="text-dark text-decoration-none" to={`/`}>
-          Trang chủ
-        </NavLink>
-        <NavLink className="mx-3 text-decoration-none">Chi tiết</NavLink>
-      </nav>
-      <div className="col-12">
-        <div className="row">
-          <div className="image col-md-12 col-lg-4">
+    <div className="movie-detail">
+      <div className="container">
+        {" "}
+        <div key={props.maPhim} className="row">
+          <div className="img-container col-12 col-lg-4 d-flex justify-content-center">
             <img width={320} height={480} src={movieDetail.hinhAnh} alt="" />
           </div>
-          <div className="title pl-5 pt-0 col-md-12 col-lg-4">
-            <h1>{movieDetail.tenPhim}</h1>
-            <h5>
-              Đánh giá: {movieDetail.danhGia}/10
-              <i class="fa-solid fa-star"></i>
-            </h5>
-            <h3>Nội dung:</h3>
-            <p>{movieDetail.moTa}</p>
-            {/* <button onClick={handleBooking} className="btn btn-success">ĐẶT VÉ</button> */}
-          </div>
-          <div className="trailer col-lg-4">
-            <h4 className="mb-3">Trailer:</h4>
-            <div className="trailer1 trailer-inner">
-              <div className="trailer-wrapper">
-                <Trailer />
+          <div className="movie-detail-body">
+            <div className="pt-3 col-md-12 col-lg-8">
+              <div className="title">
+                <h1>{movieDetail.tenPhim}</h1>
+              </div>
+              <div className="rating">
+                <h5>
+                  Đánh giá: <b>{movieDetail.danhGia}</b>/10
+                  <i class="fa-solid fa-star"></i>
+                </h5>
+              </div>
+              <div className="content">
+                <h3>Nội dung:</h3>
+                <p>{movieDetail.moTa}</p>
+              </div>
+              <div className="trailer">
+                <h4 className="mb-3">Trailer:</h4>
+                <div className="trailer1 trailer-inner">
+                  <div className="trailer-wrapper">
+                    <Trailer className="" />
+                  </div>
+                </div>
               </div>
             </div>
+
+            {/* <button onClick={handleBooking} className="btn btn-success">ĐẶT VÉ</button> */}
           </div>
+
+          <Showtimes />
         </div>
-      </div>
-      <div>
-        <Showtimes />
       </div>
     </div>
   );
