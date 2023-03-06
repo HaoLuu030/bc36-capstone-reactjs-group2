@@ -2,67 +2,150 @@
 @import "../../../../design-tokens/variables";
 @import "../../../../design-tokens/mixins";
 
-.title h1 {
-    color: $c1-500;
-    font-weight: $text-semiBold;
-}
-
-.title h3 {
-    color: $c1-500;
-}
-.title i{
-    color: rgb(236, 236, 31);
-}
-
-.trailer h4 {
-    color: $c1-50;
-    border: none;
-    background-color: $c1-500;
-    width: 90px;
-    border-radius: 30px;
-    text-align: center;
-}
-@include Responsive ($SM){
-    .title {
-        h1 {
-            font-size: $text-lg;
-        }
-        h3{
-            font-size: $text-sm;
-        }
+.movie-detail {
+  .img-container {
+    img {
+      width: 350px;
     }
+  }
+  .movie-detail-body {
+    b {
+      color: $c1-500;
+    }
+    .title {
+      h1 {
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+        text-overflow: ellipsis;
+        font-size: $text-lg;
+        color: $c1-500;
+      }
+    }
+    .rating,
+    .playing-date,
+    .content {
+      b {
+        font-size: $text-base;
+      }
+    }
+    .rating {
+      .score {
+        color: $c1-500;
+        font-size: $text-lg;
+        font-weight: bold;
+      }
+      i {
+        color: yellow;
+      }
+    }
+    .content {
+      p:first-child {
+        padding-bottom: 5px;
+        margin-bottom: 0;
+      }
+    }
+  }
+  .trailer {
+    .trailer-inner {
+      width: 100%;
+      .trailer-wrapper {
+        width: 100%;
+        iframe {
+          width: 90%;
+          height: 250px;
+          margin: auto;
+          display: block;
+        }
+      }
+    }
+  }
+  .ant-tabs {
+    & .ant-tabs-tab {
+      text-transform: capitalize;
+      &.ant-tabs-tab-active {
+        & .ant-tabs-tab-btn {
+          color: $c1-500;
+        }
+      }
+      &:hover {
+        color: $c1-500;
+      }
+    }
+    .ant-tabs-ink-bar {
+      background-color: $c1-500;
+    }
+  }
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
 }
+
 @include Responsive($MD) {
-    .image {
-        img {
-            height: 620px;
-            width: 520px;
-        }
-    }
-    .title {
-        padding-top: 50px;
+  .movie-detail {
+    .movie-detail-body {
+      .title {
         h1 {
-            font-size: $text-xl;
+          font-size: $text-lg;
+          white-space: normal;
         }
-        h3{
-            font-size: $text-md;
+      }
+      .rating,
+      .playing-date,
+      .content {
+        p {
+          font-size: $text-sm;
         }
+        b {
+          font-size: $text-md;
+        }
+      }
+      .content {
+        p {
+          font-size: $text-sm;
+        }
+      }
     }
+    .trailer {
+      .trailer-inner {
+        .trailer-wrapper {
+          iframe {
+            width: 80%;
+            height: 300px;
+          }
+        }
+      }
+    }
+    .ant-tabs {
+      & .ant-tabs-tab {
+        font-size: $text-sm;
+      }
+    }
+
+    .ant-tabs-ink-bar {
+      background-color: $c1-500;
+    }
+  }
 }
+
 @include Responsive($LG) {
-    .image {
-        img {
-            height: 480px;
-            width: 320px;
-        }
+  .movie-detail {
+    .img-container {
+      img {
+        width: 300px;
+      }
     }
-    .title {
-        padding-top: 50px;
-        h1 {
-            font-size: $text-2xl;
+    .trailer {
+      .trailer-inner {
+        .trailer-wrapper {
+          iframe {
+            margin: 0;
+          }
         }
-        h3{
-            font-size: $text-lg;
-        }
+      }
     }
+    .movie-detail-body {
+    }
+  }
 }

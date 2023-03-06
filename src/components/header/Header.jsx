@@ -16,22 +16,22 @@ export default function Header() {
   };
   return (
     <nav className="navbar navbar-expand-lg navbar-movie px-0 align-items-lg-center">
-      <NavLink className="navbar-brand" to={"/home"}>
-        <img src="/logo_white.png" alt="logo" style={{ width: "250px" }} />
-      </NavLink>
-      <button
-        className="navbar-toggler d-lg-none"
-        type="button"
-        data-toggle="collapse"
-        data-target="#collapsibleNavId"
-        aria-controls="collapsibleNavId"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-        onClick={handleToggleCollapseIcon}
-      >
-        <i className="fa fa-bars"></i>
-        <i className="fa fa-times"></i>
-      </button>
+        <NavLink className="navbar-brand" to={"/home"}>
+          <img src="/logo_white.png" alt="logo" style={{ width: "250px" }} />
+        </NavLink>
+        <button
+          className="navbar-toggler d-lg-none"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapsibleNavId"
+          aria-controls="collapsibleNavId"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          onClick={handleToggleCollapseIcon}
+        >
+          <i className="fa fa-bars"></i>
+          <i className="fa fa-times"></i>
+        </button>
 
       <div
         className="collapse navbar-collapse justify-content-start mt-3"

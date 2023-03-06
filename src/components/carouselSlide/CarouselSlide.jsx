@@ -40,7 +40,7 @@ export default function CarouselSlide(props) {
         return (
           <>
             <h4>
-              <i name="fa fa-fire"></i> Dang chieu{" "}
+              <i name="fa fa-fire"></i> Phim Đang Chiếu{" "}
               <i className="fa fa-fire"></i>
             </h4>
           </>

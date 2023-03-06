@@ -1,5 +1,6 @@
 import { Navigate, useRoutes } from "react-router-dom";
 import HomeLayout from "../layouts/homeLayout/HomeLayout";
+import Booking from "../pages/booking/Booking";
 import QuickBooking from "../pages/quickBooking/QuickBooking";
 import MovieForm from "../components/movieForm/MovieForm";
 import AuthGuard from "../guards/AuthGuard";
@@ -33,6 +34,10 @@ export default function Router() {
         {
           path: "/now-playing",
           element: <NowPlaying />,
+        },
+        {
+          path: "/booking/:id",
+          element: <Booking />,
         },
         {
           path: "/coming-soon",

@@ -1,0 +1,53 @@
+@import "../../../../design-tokens/base";
+@import "../../../../design-tokens/variables";
+@import "../../../../design-tokens/mixins";
+
+.show-time {
+  .show-time-heading {
+    .schedule-title {
+      p {
+        font-weight: bold;
+        color: $c1-500;
+      }
+    }
+  }
+  .show-time-body {
+    .theater-item-title {
+      .address {
+        display: none;
+      }
+    }
+    border: 1px solid black;
+  }
+}
+
+@include Responsive($MD) {
+  .show-time {
+    .show-time-heading {
+      .schedule-title {
+        p {
+          font-size: $text-lg;
+        }
+      }
+    }
+    .show-time-body {
+      .theater-item-title {
+        .address {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@include Responsive($LG) {
+  .show-time {
+    .show-time-heading {
+      .schedule-title {
+        p {
+          font-size: $text-2xl;
+        }
+      }
+    }
+  }
+}

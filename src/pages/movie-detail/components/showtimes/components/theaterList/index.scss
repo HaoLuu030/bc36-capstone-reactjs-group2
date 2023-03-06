@@ -1,0 +1,56 @@
+@import "../../../../../../design-tokens/base";
+@import "../../../../../../design-tokens/mixins";
+@import "../../../../../../design-tokens/variables";
+
+.show-time-body {
+  .theater-list {
+    width: 100%;
+    height: 100%;
+    .theater-item {
+      position: relative;
+      text-align: left;
+      background-color: transparent;
+      border: none;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $c1-745;
+
+      &:focus {
+        outline: none;
+      }
+      .img-container {
+        img {
+          width: 50px;
+        }
+      }
+      .theater-item-body {
+        .theater-item-title {
+          h5 {
+            font-size: $text-xs;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include Responsive($MD) {
+  .show-time-body {
+    .theater-list {
+      .theater-item {
+        .img-container {
+          img {
+            width: 50px;
+          }
+        }
+        .theater-item-body {
+          .theater-item-title {
+            h5 {
+              font-size: $text-md;
+            }
+          }
+        }
+      }
+    }
+  }
+}

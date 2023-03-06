@@ -1,0 +1,42 @@
+@import "../../design-tokens/base";
+@import "../../design-tokens/mixins";
+@import "../../design-tokens/variables";
+
+.screen {
+    color: #fff;;
+    font-weight: $text-bold;
+    border: 2px solid;
+    background-color: #969696;
+    width: 60%;
+    text-align: center;
+    margin: 30px 0;
+    border: 1px solid #fff;
+    box-shadow: 5px 5px 0 rgb(0 0 0 / 10%);
+    border-radius: 30px;
+}
+.choose-seat li {
+    list-style: none;
+    display: inline;
+    padding: 20px;
+}
+.booked i {
+    color: $c1-745;
+}
+.not-booked i {
+    color: green;
+}
+.being-booking i {
+    color: red;
+}
+.vip i {
+    color: rgba(255, 234, 0, 0.887);
+}
+.detail-booking h4 {
+    font-weight: $text-semiBold;
+    color: $c1-650;
+    font-size: $text-sm;
+    padding-top: 20px;
+}
+.detail-booking h5{
+    font-size: $text-base;
+}
