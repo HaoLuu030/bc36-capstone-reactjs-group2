@@ -14,8 +14,15 @@
       border: none;
       opacity: 0.5;
       transition: all 0.5s;
-      padding-bottom: 2px;
-
+      border-bottom: 0.5px solid $c1-745;
+      &:last-child {
+        border: none;
+      }
+      .img-container {
+        img {
+          width: 70%;
+        }
+      }
       &::after {
         content: "";
         position: absolute;

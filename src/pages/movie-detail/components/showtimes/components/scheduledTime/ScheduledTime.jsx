@@ -5,8 +5,14 @@ import "./index.scss";
 
 export default function ScheduledTime(props) {
   return (
-    <NavLink className="show-time-item mx-1 p-1 p-md-2">
+    <NavLink
+      to={`/booking/${props.scheduledTime.maLichChieu}`}
+      className="show-time-item mx-1 p-0 p-md-1"
+    >
       {moment(props.scheduledTime.ngayChieuGioChieu).format("LT")}
+      <span className="date">
+        {moment(props.scheduledTime.ngayChieuGioChieu).format("L")}
+      </span>
     </NavLink>
   );
 }

@@ -11,7 +11,7 @@ const DEFAULT_STATE = {
   movieSchedulingDetail: {},
   theaterList: [],
   scheduledTimeList: [],
-  selectedDate: "01/03/2023",
+  selectedDate: undefined,
 };
 
 export const movieReducer = (state = DEFAULT_STATE, action) => {

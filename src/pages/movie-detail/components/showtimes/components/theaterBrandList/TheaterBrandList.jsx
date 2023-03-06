@@ -29,13 +29,11 @@ export default function TheaterBrandList() {
           onClick={(e) => {
             handleClick(e, elem.maHeThongRap);
           }}
-          className="movie-brand-item"
+          className="movie-brand-item w-100 py-2"
         >
-          <img
-            style={{ width: "100%" }}
-            src={elem.logo}
-            alt={elem.tenHeThongRap}
-          />
+          <div className="img-container">
+            <img src={elem.logo} alt={elem.tenHeThongRap} />
+          </div>
         </button>
       );
     });

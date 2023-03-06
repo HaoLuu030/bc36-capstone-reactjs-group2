@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { fetchTicketApi } from "../../services/ticket";
 import Seat from "./components/Seat";
 import "./index.scss";
-import * as _ from 'lodash';
+import * as _ from "lodash";
 
 export default function Booking() {
   const [tickDetail, setTicketDetail] = useState({});
@@ -35,32 +35,20 @@ export default function Booking() {
   const handleSelected = (seat) => {
     const data = [...selectedSeatList];
     const idx = data.findIndex((ele) => ele.maGhe === seat.maGhe);
-    
+
     if (idx !== -1) {
       data.splice(idx, 1);
     } else {
       data.push(seat);
     }
-  
+
     setSelectedSeatList(data);
-  }
+  };
   useEffect(() => {
     console.log(selectedSeatList);
   }, [selectedSeatList]);
   return (
     <div className="container mx-5">
-      <nav class="navbar justify-content-start">
-        <Link className="text-dark text-decoration-none" to={`/`}>
-          Trang chủ
-        </Link>
-        <Link
-          className="text-dark mx-3 text-decoration-none"
-          to={`/movie-detail/`}
-        >
-          Chi tiết
-        </Link>
-        <Link className="text-decoration-none">Đặt vé</Link>
-      </nav>
       <div className="screen">
         <h2>MÀN HÌNH</h2>
       </div>
@@ -102,19 +90,20 @@ export default function Booking() {
             Tên phim: {tickDetail?.thongTinPhim?.tenPhim}
           </h4>
           <div className="row">
-            <div className="col-5">
-              Ghế được chọn:
-            </div>
+            <div className="col-5">Ghế được chọn:</div>
             <div className="col-7 px-0">
               {selectedSeatList.map((ele) => {
                 return (
-                  <p key={ele.maGhe} className="badge badge-danger mr-2 mb-0">{ele.tenGhe}</p>
-                )
+                  <p key={ele.maGhe} className="badge badge-danger mr-2 mb-0">
+                    {ele.tenGhe}
+                  </p>
+                );
               })}
-              
             </div>
           </div>
-          <h5>Tổng tiền: {_.sumBy(selectedSeatList, "giaVe").toLocaleString()} VND</h5>
+          <h5>
+            Tổng tiền: {_.sumBy(selectedSeatList, "giaVe").toLocaleString()} VND
+          </h5>
           <button className="btn btn-success">ĐẶT VÉ</button>
         </div>
       </div>

@@ -3,15 +3,35 @@
 @import "../../../../../../design-tokens/variables";
 
 .show-time-item {
-  border: 1px solid $c1-750;
-  border: 1px solid $c1-750;
-  //   padding: 2px;
+  position: relative;
+  border: 1px solid $c1-500;
   border-radius: 5px;
   text-decoration: none;
   color: $c1-500;
-  background-color: $c1-750;
+  background-color: $c1-50;
+  transition: all 0.5s;
+  span {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+  }
   &:focus {
     text-decoration: none;
+  }
+  &:hover {
+    border-color: $c1-750;
+    background-color: $c1-750;
+    color: $c1-500;
+    text-decoration: none;
+    span {
+      visibility: visible;
+    }
   }
 }
 
