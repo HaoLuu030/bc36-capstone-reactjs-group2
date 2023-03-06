@@ -12,7 +12,7 @@ const DEFAULT_STATE = {
   movieSchedulingDetail: {},
   theaterList: [],
   scheduledTimeList: [],
-  selectedDate: undefined,
+  selectedDate: null,
   selectedMovie: {},
 };
 
@@ -21,6 +21,7 @@ export const movieReducer = (state = DEFAULT_STATE, action) => {
   switch (type) {
     case SET_TRAILER_LINK:
       state.trailerLink = payload;
+      break;
     case SET_SELECTED_MOVIE:
       state.selectedMovie = payload;
       break;
@@ -28,6 +29,7 @@ export const movieReducer = (state = DEFAULT_STATE, action) => {
       state.theaterList = [];
       state.scheduledTimeList = [];
       state.movieSchedulingDetail = payload;
+      break;
     case SET_THEATER: {
       state.scheduledTimeList = [];
       const idx = state.movieSchedulingDetail.heThongRapChieu.findIndex(
@@ -47,6 +49,7 @@ export const movieReducer = (state = DEFAULT_STATE, action) => {
     }
     case SET_SELECTED_DATE:
       state.selectedDate = payload;
+
       break;
 
     default:
