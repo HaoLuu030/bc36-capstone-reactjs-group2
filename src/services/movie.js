@@ -14,12 +14,31 @@ export const fetchMovieDetailApi = (id) => {
   });
 };
 
+export const addMovieApi = (data) => {
+  return axiosRequest({
+    url: `/QuanLyPhim/ThemPhimUploadHinh`,
+    method: "POST",
+    data: data,
+  });
+};
+
+export const editMovieApi = (data) => {
+  return axiosRequest({
+    url: `/QuanLyPhim/CapNhatPhimUpload`,
+    method: "POST",
+    data: data,
+  });
+};
+
+export const deleteMovieApi = (id) => {
+  return axiosRequest({
+    url: `/QuanLyPhim/XP?MaPhim=${id}`,
+    method: "DELETE",
+  });
+};
 export const fetchPlayingDetailApi = (information) => {
-  return axios({
-    url: `${BASE_URL}/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${information}`,
+  return axiosRequest({
+    url: `/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${information}`,
     method: "GET",
-    headers: {
-      TokenCybersoft: TOKEN_CYBERSOFT,
-    },
   });
 };

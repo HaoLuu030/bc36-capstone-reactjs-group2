@@ -3,7 +3,7 @@ import React, { useState } from "react";
 //Ant design
 import { Layout, Menu, theme } from "antd";
 //React router
-import { Outlet, NavLink, useLocation } from "react-router-dom";
+import { Outlet, NavLink, useLocation, useParams } from "react-router-dom";
 
 import BreadCrumbsCustom from "../../components/breadCrumbs/BreadCrumbs";
 import Admin from "../../pages/admin/Admin";
@@ -61,6 +61,20 @@ export default function AdminLayout() {
           <Menu.Item key="user" icon={<UsergroupAddOutlined />}>
             <NavLink to="/admin/user-management">Người dùng</NavLink>
           </Menu.Item>
+          <Menu.SubMenu
+            key="movie"
+            icon={<i className="fa fa-film"></i>}
+            title="Phim"
+          >
+            <Menu.Item icon={<i className="fa fa-folder"></i>}>
+              <NavLink to="/admin/movie-management">Quản lý phim</NavLink>
+            </Menu.Item>
+            <Menu.Item icon={<i className="fa fa-folder-plus"></i>}>
+              <NavLink to={"/admin/movie-management/add-movie"}>
+                Thêm phim
+              </NavLink>
+            </Menu.Item>
+          </Menu.SubMenu>
         </Menu>
       </Sider>
       <Layout className="site-layout admin-layout">

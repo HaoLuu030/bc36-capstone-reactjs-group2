@@ -14,7 +14,7 @@
 @include Responsive($LG) {
   .theater-brand-list {
     height: auto;
-    overflow: auto;
+    overflow-y: visible;
     overflow-x: hidden;
     .img-container {
       img {
