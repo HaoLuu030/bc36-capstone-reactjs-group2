@@ -1,7 +1,7 @@
 import { Navigate, useRoutes } from "react-router-dom";
+import HomeLayout from "../layouts/homeLayout/HomeLayout";
+import QuickBooking from "../pages/quickBooking/QuickBooking";
 import MovieForm from "../components/movieForm/MovieForm";
-import HomeLayout from "../layouts/home/HomeLayout";
-import Booking from "../pages/booking/Booking";
 import AuthGuard from "../guards/AuthGuard";
 import AdminLayout from "../layouts/admin/AdminLayout";
 import ComingSoon from "../pages/coming-soon/ComingSoon";
@@ -39,8 +39,8 @@ export default function Router() {
           element: <ComingSoon />,
         },
         {
-          path: "/booking",
-          element: <Booking />,
+          path: "/quick-booking",
+          element: <QuickBooking />,
         },
       ],
     },
