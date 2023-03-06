@@ -1,6 +1,7 @@
 import {
   SET_MOVIE_SCHEDULING_DETAIL,
   SET_SCHEDULED_TIME,
+  SET_SELECTED_DATE,
   SET_THEATER,
   SET_TRAILER_LINK,
 } from "../types/movieTypes";
@@ -29,6 +30,13 @@ export const setTheaterAction = (payload) => {
 export const setScheduledTimeAction = (payload) => {
   return {
     type: SET_SCHEDULED_TIME,
+    payload,
+  };
+};
+
+export const setSelectedDateAction = (payload) => {
+  return {
+    type: SET_SELECTED_DATE,
     payload,
   };
 };

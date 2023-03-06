@@ -10,20 +10,21 @@ import "./index.scss";
 
 export default function TheaterBrandList() {
   const dispatch = useDispatch();
-  const [movieBrandList, setMovieBrandList] = useState([]);
+  const [theaterBrandList, setTheaterBrandList] = useState([]);
   const params = useParams();
   const getMovieDetail = async () => {
     const result = await fetchMovieShowtimesApi(params.id);
-    setMovieBrandList(result.data.content.heThongRapChieu);
+    setTheaterBrandList(result.data.content.heThongRapChieu);
     dispatch(setMovieSchedulingDetailAction(result.data.content));
   };
   useEffect(() => {
     getMovieDetail();
   }, []);
-  const renderMovieBrandList = () => {
-    return movieBrandList?.map((elem) => {
+  const rendertheaterBrandList = () => {
+    return theaterBrandList?.map((elem) => {
       return (
         <button
+          key={elem.maHeThongRaps}
           id={elem.maHeThongRap}
           onClick={(e) => {
             handleClick(e, elem.maHeThongRap);
@@ -48,7 +49,7 @@ export default function TheaterBrandList() {
   };
   return (
     <div className="col-2 p-0">
-      <div className="movie-brand-list p-0">{renderMovieBrandList()}</div>
+      <div className="movie-brand-list p-0">{rendertheaterBrandList()}</div>
     </div>
   );
 }

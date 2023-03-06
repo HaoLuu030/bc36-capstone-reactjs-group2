@@ -3,10 +3,26 @@
 @import "../../../../design-tokens/mixins";
 
 .show-time {
-  border: 1px solid black;
-  .schedule-title {
-    h3 {
-      color: $c1-500;
+  .show-time-heading {
+    .schedule-title {
+      h3 {
+        color: $c1-500;
+      }
+    }
+  }
+  .show-time-body {
+    border: 1px solid black;
+  }
+}
+
+@include Responsive($MD) {
+  .show-time {
+    .show-time-heading {
+      .schedule-title {
+        h3 {
+          font-size: $text-2xl;
+        }
+      }
     }
   }
 }

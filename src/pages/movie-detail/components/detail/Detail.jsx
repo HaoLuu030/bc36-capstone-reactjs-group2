@@ -1,13 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { fetchMovieDetailApi } from "../../../../services/movie";
 import Trailer from "../../../../components/trailer/Trailer";
 import "./index.scss";
 import Showtimes from "../showtimes/Showtimes";
+import { setTrailerLinkAction } from "../../../../store/action/movieActions";
+import { useDispatch } from "react-redux";
 
 export default function Detail(props) {
+  const dispatch = useDispatch();
   const [movieDetail, setMovieDetail] = useState({});
   const params = useParams();
   useEffect(() => {
@@ -17,6 +20,7 @@ export default function Detail(props) {
   const getMovieDetail = async () => {
     const result = await fetchMovieDetailApi(params.id);
     setMovieDetail(result.data.content);
+    dispatch(setTrailerLinkAction(result.data.content.trailer));
   };
 
   // const handleBooking = () => {
@@ -27,30 +31,19 @@ export default function Detail(props) {
       <div className="container">
         {" "}
         <div key={props.maPhim} className="row">
-          <div className="img-container col-12 col-lg-4 d-flex justify-content-center">
-            <img width={320} height={480} src={movieDetail.hinhAnh} alt="" />
+          <div className="col-12 col-lg-4 d-flex justify-content-center">
+            <div className="img-container">
+              {" "}
+              <img src={movieDetail.hinhAnh} alt="" />
+            </div>
           </div>
-          <div className="movie-detail-body">
-            <div className="pt-3 col-md-12 col-lg-8">
-              <div className="title">
-                <h1>{movieDetail.tenPhim}</h1>
-              </div>
-              <div className="rating">
-                <h5>
-                  Đánh giá: <b>{movieDetail.danhGia}</b>/10
-                  <i class="fa-solid fa-star"></i>
-                </h5>
-              </div>
-              <div className="content">
-                <h3>Nội dung:</h3>
-                <p>{movieDetail.moTa}</p>
-              </div>
-              <div className="trailer">
-                <h4 className="mb-3">Trailer:</h4>
-                <div className="trailer1 trailer-inner">
-                  <div className="trailer-wrapper">
-                    <Trailer className="" />
-                  </div>
+
+          <div className="pt-3 pt-lg-0 pl-lg-3 col-md-12 col-lg-8">
+            <div className="trailer">
+              <h4 className="mb-3">Trailer:</h4>
+              <div className="trailer1 trailer-inner">
+                <div className="trailer-wrapper">
+                  <Trailer className="" />
                 </div>
               </div>
             </div>

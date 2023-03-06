@@ -2,36 +2,53 @@
 @import "../../../../../../design-tokens/mixins";
 @import "../../../../../../design-tokens/variables";
 
-.show-time {
+.show-time-body {
   .theater-list {
     width: 100%;
     height: 100%;
-    border-right: 1px solid black;
     .theater-item {
       position: relative;
       text-align: left;
       background-color: transparent;
       border: none;
-      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $c1-745;
       &:focus {
         outline: none;
       }
-      h5 {
-        font-size: $text-xs;
-        font-weight: bold;
+      .img-container {
+        img {
+          width: 50px;
+        }
       }
-      p {
-        font-size: $text-xs;
+      .theater-item-body {
+        .theater-item-title {
+          h5 {
+            font-size: $text-xs;
+            font-weight: bold;
+          }
+        }
       }
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: -6px;
-        left: 50%;
-        transform: translateX(-50%);
-        height: 2px;
-        width: 90%;
-        background-color: $c1-745;
+    }
+  }
+}
+
+@include Responsive($MD) {
+  .show-time-body {
+    .theater-list {
+      .theater-item {
+        .img-container {
+          img {
+            width: 100px;
+          }
+        }
+        .theater-item-body {
+          .theater-item-title {
+            h5 {
+              font-size: $text-md;
+            }
+          }
+        }
       }
     }
   }

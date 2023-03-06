@@ -3,6 +3,11 @@
 @import "../../../../design-tokens/mixins";
 
 .movie-detail {
+  .img-container {
+    img {
+      width: 350px;
+    }
+  }
   .movie-detail-body {
     .title {
       h1 {
@@ -45,6 +50,61 @@
             height: 250px;
             margin: auto;
             display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include Responsive($MD) {
+  .movie-detail {
+    .movie-detail-body {
+      .title {
+        h1 {
+          font-size: $text-2xl;
+          white-space: normal;
+        }
+      }
+      .rating {
+        h5 {
+          font-size: $text-lg;
+        }
+        b {
+          font-size: $text-2xl;
+        }
+      }
+      .content {
+        h3 {
+          font-size: $text-2xl;
+        }
+        p {
+          font-size: $text-md;
+        }
+      }
+      .trailer {
+        h4 {
+          font-size: $text-2xl;
+        }
+      }
+    }
+  }
+}
+
+@include Responsive($LG) {
+  .movie-detail {
+    .img-container {
+      img {
+        width: 300px;
+      }
+    }
+    .movie-detail-body {
+      .trailer {
+        .trailer-inner {
+          .trailer-wrapper {
+            iframe {
+              margin: 0;
+            }
           }
         }
       }
