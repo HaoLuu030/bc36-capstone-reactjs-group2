@@ -1,6 +1,6 @@
-@import "../../../../design-tokens/base";
-@import "../../../../design-tokens/mixins";
-@import "../../../../design-tokens/variables";
+@import "../../design-tokens/base";
+@import "../../design-tokens/mixins";
+@import "../../design-tokens/variables";
 
 .side-bar {
   visibility: hidden;
@@ -46,12 +46,11 @@
         font-size: $text-sm;
       }
       .star-rating {
-        font-size: 20px;
-        color: rgb(240, 248, 255, 0.5);
-        .fa-star {
-          &.checked {
-            color: $c1-500;
-          }
+        font-size: $text-lg;
+        color: $c1-500;
+
+        li {
+          cursor: pointer;
         }
       }
     }

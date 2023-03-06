@@ -1,11 +1,17 @@
-import axios from "axios";
-import { BASE_URL, TOKEN_CYBERSOFT } from "../constants";
+import { axiosRequest } from "../configs/axios.config";
+
+import { axiosRequest } from "../configs/axios.config";
+
+export const createPlayScheduleApi = (information) => {
+  return axiosRequest({
+    url: "/QuanLyDatVe/TaoLichChieu",
+    method: "POST",
+    data: information,
+  });
+};
 export const fetchTicketApi = (id) => {
-  return axios({
-    url: `${BASE_URL}/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`,
+  return axiosRequest({
+    url: `/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`,
     method: "GET",
-    headers: {
-      TokenCybersoft: TOKEN_CYBERSOFT,
-    },
   });
 };

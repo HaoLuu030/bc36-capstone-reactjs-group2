@@ -4,6 +4,7 @@ import {
   SET_SELECTED_DATE,
   SET_THEATER,
   SET_TRAILER_LINK,
+  SET_SELECTED_MOVIE,
 } from "../types/movieTypes";
 
 const DEFAULT_STATE = {
@@ -12,6 +13,7 @@ const DEFAULT_STATE = {
   theaterList: [],
   scheduledTimeList: [],
   selectedDate: undefined,
+  selectedMovie: {},
 };
 
 export const movieReducer = (state = DEFAULT_STATE, action) => {
@@ -19,7 +21,8 @@ export const movieReducer = (state = DEFAULT_STATE, action) => {
   switch (type) {
     case SET_TRAILER_LINK:
       state.trailerLink = payload;
-
+    case SET_SELECTED_MOVIE:
+      state.selectedMovie = payload;
       break;
     case SET_MOVIE_SCHEDULING_DETAIL:
       state.theaterList = [];

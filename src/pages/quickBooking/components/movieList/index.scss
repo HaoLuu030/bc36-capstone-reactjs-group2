@@ -1,0 +1,20 @@
+@import "../../../../design-tokens/base";
+@import "../../../../design-tokens/mixins";
+@import "../../../../design-tokens/variables";
+
+.movie-list-booking {
+  @include ItemContainerBooking();
+  .img-container {
+    img {
+      height: 100px;
+      width: 80px;
+    }
+  }
+}
+
+@include Responsive($LG) {
+  .movie-list-booking {
+    height: auto;
+    overflow: auto;
+  }
+}

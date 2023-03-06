@@ -4,7 +4,7 @@
 }
 
 @mixin Button($basePadding, $fontSize, $color, $backgroundColor) {
-  padding: $basePadding * 1px $basePadding * 3px;
+  padding: $basePadding * 1px $basePadding * 2px;
   font-size: $fontSize;
   color: $color;
   background-color: $backgroundColor;
@@ -36,6 +36,35 @@
   z-index: 999;
   background-color: $c1-745;
   opacity: 0;
+}
+
+@mixin ItemContainerBooking() {
+  border: 0 1px;
+  border: 1px solid black;
+  height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+@mixin ItemBooking() {
+  background-color: transparent;
+  height: auto;
+  border-bottom: 0.5px solid $c1-750;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  transition: all 0.5s;
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.5);
+  }
+  &:focus {
+    outline: none;
+  }
+  &.active {
+    background-color: rgba(128, 128, 128, 0.5);
+    color: $c1-500;
+    font-weight: $text-bold;
+  }
 }
 
 @mixin Responsive($breakPoint) {

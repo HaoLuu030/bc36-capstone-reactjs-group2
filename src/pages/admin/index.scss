@@ -1,0 +1,17 @@
+@import "../../design-tokens/base";
+@import "../../design-tokens/mixins";
+@import "../../design-tokens/variables";
+
+.admin-info-heading {
+  .admin-avatar {
+    i {
+      font-size: $text-2xl;
+      background: $c1-500;
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+      border-radius: 25px;
+    }
+  }
+}

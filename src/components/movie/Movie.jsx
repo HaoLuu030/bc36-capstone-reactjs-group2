@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { setTrailerLinkAction } from "../../store/action/movieActions";
 import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
+import "./index.scss";
 
 export default function Movie(props) {
   const navigate = useNavigate();
@@ -18,8 +19,7 @@ export default function Movie(props) {
   };
   return (
     <div
-      key={props.movie.maPhim}
-      className={`pt-3 px-2 p-lg-2 col-6 col-md-4 col-lg-3 ${
+      className={`pt-3 px-2 p-lg-2 col-6 col-md-3 ${
         props.sideBar ? "col-xl-4" : ""
       }
       )}`}
