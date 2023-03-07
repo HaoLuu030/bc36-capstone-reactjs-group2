@@ -1,6 +1,6 @@
 import moment from "moment";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ScheduledTime from "../scheduledTime/ScheduledTime";
 import "./index.scss";
 
@@ -17,7 +17,7 @@ export default function TheaterList() {
   const renderTheaterList = () => {
     //if no day is being selected, show all the show times
     if (!movieState.selectedDate) {
-      return movieState?.theaterList.map((elem, idx) => {
+      return movieState?.theaterList.map((elem) => {
         return (
           <div
             key={elem.maCumRap}
@@ -40,6 +40,7 @@ export default function TheaterList() {
         );
       });
     }
+
     //get rid of theaters that don't have the date specified
     const filteredTheaterList = movieState?.theaterList?.filter((elem) =>
       checkValidDate(elem)

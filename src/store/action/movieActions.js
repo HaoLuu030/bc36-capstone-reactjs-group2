@@ -38,6 +38,7 @@ export const setScheduledTimeAction = (payload) => {
 export const setSelectedDateAction = (payload) => {
   return {
     type: SET_SELECTED_DATE,
+    payload,
   };
 };
 // save the information of the movie we're working with (i.e. editing, setting schedule)

@@ -7,6 +7,7 @@ import { fetchMovieDetailApi } from "../../services/movie";
 export default function BreadCrumbsCustom() {
   const [movieName, setMovieName] = useState("");
   const location = useLocation();
+  console.log(location.pathname.split("/")[1]);
   const mapBreadCrumbTitle = (crumb) => {
     switch (crumb) {
       case "admin": {
@@ -27,6 +28,12 @@ export default function BreadCrumbsCustom() {
       case "movie-playtime-schedule": {
         return "Đặt lịch chiếu";
       }
+      case "home": {
+        return "Trang chủ";
+      }
+      case "movie-detail": {
+        return "Chi tiết phim";
+      }
       default: {
         return movieName;
       }
@@ -35,17 +42,30 @@ export default function BreadCrumbsCustom() {
   //keep track of each crumb
   let currentLink = "";
   //the filter function is to filter out any empty string in case there's a trailing "/" at the end of the path
-  const crumbs = location.pathname
-    .split("/")
-    .filter((crumb) => crumb !== "")
-    .map((crumb) => {
-      currentLink += `/${crumb}`;
-      return (
-        <Breadcrumb.Item key={crumb}>
-          <NavLink to={currentLink}>{mapBreadCrumbTitle(crumb)}</NavLink>
-        </Breadcrumb.Item>
-      );
-    });
+  const crumbs =
+    location.pathname.split("/")[1] === "admin"
+      ? location.pathname
+          .split("/")
+          .filter((crumb) => crumb !== "")
+          .map((crumb) => {
+            currentLink += `/${crumb}`;
+            return (
+              <Breadcrumb.Item key={crumb}>
+                <NavLink to={currentLink}>{mapBreadCrumbTitle(crumb)}</NavLink>
+              </Breadcrumb.Item>
+            );
+          })
+      : ["home"]
+          .concat(location.pathname.split("/"))
+          .filter((crumb) => crumb !== "")
+          .map((crumb) => {
+            currentLink += `/${crumb}`;
+            return (
+              <Breadcrumb.Item key={crumb}>
+                <NavLink to={currentLink}>{mapBreadCrumbTitle(crumb)}</NavLink>
+              </Breadcrumb.Item>
+            );
+          });
   const params = useParams();
   const getMovieDetail = async (id) => {
     const result = await fetchMovieDetailApi(id);

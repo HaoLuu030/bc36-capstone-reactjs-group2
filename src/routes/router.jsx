@@ -1,5 +1,5 @@
 import { Navigate, useRoutes } from "react-router-dom";
-import HomeLayout from "../layouts/homeLayout/HomeLayout";
+import HomeLayout from "../layouts/home/HomeLayout";
 import Booking from "../pages/booking/Booking";
 import QuickBooking from "../pages/quickBooking/QuickBooking";
 import MovieForm from "../components/movieForm/MovieForm";

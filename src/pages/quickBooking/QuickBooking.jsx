@@ -6,11 +6,13 @@ import "./index.scss";
 
 export default function QuickBooking() {
   return (
-    <div className="container">
-      <div className="row justify-content-around">
-        <MovieList />
-        <TheaterBrandList />
-        <TheaterList />
+    <div className="quick-booking">
+      <div className="container">
+        <div className="row justify-content-around">
+          <MovieList />
+          <TheaterBrandList />
+          <TheaterList />
+        </div>
       </div>
     </div>
   );

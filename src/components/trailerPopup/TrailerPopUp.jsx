@@ -14,7 +14,7 @@ export default function TrailerPopUp() {
           <button className="button-close-trailer">
             <i className="fa fa-times"></i>
           </button>
-          <Trailer autoplay={true}/>
+          <Trailer autoplay={true} />
         </div>
       </div>
     </div>

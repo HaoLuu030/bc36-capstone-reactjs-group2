@@ -2,23 +2,27 @@
 @import "../../../../design-tokens/mixins";
 @import "../../../../design-tokens/variables";
 
-.theater-brand-list {
-  @include ItemContainerBooking();
-  .img-container {
-    img {
-      width: 150px;
+.quick-booking {
+  .theater-brand-list {
+    @include ItemContainerBooking();
+    .img-container {
+      img {
+        width: 150px;
+      }
     }
   }
 }
 
 @include Responsive($LG) {
-  .theater-brand-list {
-    height: auto;
-    overflow-y: visible;
-    overflow-x: hidden;
-    .img-container {
-      img {
-        width: 80px;
+  .quick-booking {
+    .theater-brand-list {
+      height: auto;
+      overflow-y: visible;
+      overflow-x: hidden;
+      .img-container {
+        img {
+          width: 80px;
+        }
       }
     }
   }

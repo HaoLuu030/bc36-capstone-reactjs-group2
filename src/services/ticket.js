@@ -1,7 +1,5 @@
 import { axiosRequest } from "../configs/axios.config";
 
-import { axiosRequest } from "../configs/axios.config";
-
 export const createPlayScheduleApi = (information) => {
   return axiosRequest({
     url: "/QuanLyDatVe/TaoLichChieu",
