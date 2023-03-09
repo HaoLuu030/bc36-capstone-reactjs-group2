@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setTheaterAction } from "../../../../store/action/theaterAction";
+import { setTheaterListActionQB } from "../../../../store/action/theaterActionQB";
 import TheaterBrandItem from "../theaterBrandItem/TheaterBrandItem";
 import "./index.scss";
 
 export default function TheaterBrandList() {
   const dispatch = useDispatch();
-  const theaterState = useSelector((state) => state.theaterReducer);
+  const theaterState = useSelector((state) => state.theaterReducerQB);
   const [theaterBrandList, setTheaterBrandList] = useState([]);
   const setTheaterList = (id) => {
-    dispatch(setTheaterAction(id));
+    dispatch(setTheaterListActionQB(id));
   };
   useEffect(() => {
     setTheaterBrandList(theaterState.theaterBrandList);
