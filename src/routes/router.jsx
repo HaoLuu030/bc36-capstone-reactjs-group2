@@ -12,6 +12,7 @@ import MovieManagement from "../pages/movie-management/MovieManagement";
 import MoviePlayTimeSchedule from "../pages/moviePlayTimeSchedule/MoviePlayTimeSchedule";
 import NowPlaying from "../pages/now-playing/NowPlaying";
 import UserManagement from "../pages/user-management/UserManagement";
+import PageNotFound from "../pages/page-not-found/PageNotFound";
 
 export default function Router() {
   const routing = useRoutes([
@@ -87,6 +88,10 @@ export default function Router() {
           ],
         },
       ],
+    },
+    {
+      path: "*",
+      element: <PageNotFound />,
     },
   ]);
   return routing;

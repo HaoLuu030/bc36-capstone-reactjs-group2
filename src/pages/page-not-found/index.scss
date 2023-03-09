@@ -1,0 +1,46 @@
+@import "../../design-tokens/base";
+@import "../../design-tokens/mixins";
+@import "../../design-tokens/variables";
+
+.not-found {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background-color: $c1-750;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $c1-500;
+  .content {
+    h1 {
+      margin: 0;
+      font-size: 8rem;
+    }
+    h2 {
+      margin: 0;
+      font-size: 6rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
+@include Responsive($MD) {
+  .not-found {
+    .content {
+      h1 {
+        margin: 0;
+        font-size: 10rem;
+      }
+      h2 {
+        margin: 0;
+        font-size: 8rem;
+      }
+      p {
+        font-size: 2rem;
+      }
+    }
+  }
+}
