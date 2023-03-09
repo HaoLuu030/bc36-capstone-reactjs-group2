@@ -13,6 +13,7 @@ import MoviePlayTimeSchedule from "../pages/moviePlayTimeSchedule/MoviePlayTimeS
 import NowPlaying from "../pages/now-playing/NowPlaying";
 import UserManagement from "../pages/user-management/UserManagement";
 
+
 export default function Router() {
   const routing = useRoutes([
     {
