@@ -49,6 +49,7 @@ export default function MovieForm() {
     file && formData.append("File", file, file.name);
     if (params.id) {
       try {
+        console.log(params.id);
         formData.append("maPhim", params.id);
         await editMovieApi(formData);
         notification.success({

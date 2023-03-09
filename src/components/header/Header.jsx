@@ -58,11 +58,6 @@ export default function Header() {
               Phim sắp chiếu
             </NavLink>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Rạp
-            </a>
-          </li>
         </ul>
       </div>
       <div className="d-flex align-items-center justify-content-md-start sign-in-module">

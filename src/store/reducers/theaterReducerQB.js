@@ -1,8 +1,8 @@
 import {
-  SET_PLAY_TIME,
-  SET_THEATER_BRAND_LIST,
-  SET_THEATER_LIST,
-} from "../types/theaterTypes";
+  SET_PLAY_TIME_QB,
+  SET_THEATER_BRAND_LIST_QB,
+  SET_THEATER_LIST_QB,
+} from "../types/theaterTypesQB";
 
 const DEFAULT_STATE = {
   theaterBrandList: [],
@@ -10,21 +10,24 @@ const DEFAULT_STATE = {
   playTime: [],
 };
 
-export const theaterReducer = (state = DEFAULT_STATE, action) => {
+export const theaterReducerQB = (state = DEFAULT_STATE, action) => {
   const { type, payload } = action;
   switch (type) {
-    case SET_THEATER_BRAND_LIST:
+    case SET_THEATER_BRAND_LIST_QB:
+      console.log("set theater brand");
       state.theaterBrandList = payload;
+
       break;
-    case SET_THEATER_LIST: {
+    case SET_THEATER_LIST_QB: {
       const idx = state.theaterBrandList.findIndex(
         (elem) => elem.maHeThongRap === payload
       );
+
       //get the theaterList based on the button clicked (refer to the api for more info)
       state.theaterList = state.theaterBrandList[idx].cumRapChieu;
       break;
     }
-    case SET_PLAY_TIME: {
+    case SET_PLAY_TIME_QB: {
       const idx = state.theaterList.findIndex(
         (elem) => elem.maCumRap === payload
       );
