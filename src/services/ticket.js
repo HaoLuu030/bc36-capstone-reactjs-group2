@@ -13,3 +13,11 @@ export const fetchTicketApi = (id) => {
     method: "GET",
   });
 };
+
+export const bookTicketApi = (data) => {
+  return axiosRequest({
+    url: "/QuanLyDatVe/DatVe",
+    method: "POST",
+    data: data,
+  });
+};

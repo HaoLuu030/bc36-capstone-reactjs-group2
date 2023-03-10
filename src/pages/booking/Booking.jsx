@@ -1,16 +1,17 @@
-import { set } from "lodash";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { fetchTicketApi } from "../../services/ticket";
+import {useNavigate, useParams } from "react-router-dom";
+import { bookTicketApi, fetchTicketApi } from "../../services/ticket";
 import Seat from "./components/Seat";
 import "./index.scss";
 import * as _ from "lodash";
+import {notification } from "antd";
 
 export default function Booking() {
   const [tickDetail, setTicketDetail] = useState({});
   const [selectedSeatList, setSelectedSeatList] = useState([]);
 
   const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getTicketDetail();
@@ -47,6 +48,24 @@ export default function Booking() {
   useEffect(() => {
     console.log(selectedSeatList);
   }, [selectedSeatList]);
+
+  const bookTicket = async () => {
+    console.log(selectedSeatList);
+    const data = {
+        maLichChieu: params.id,
+        danhsachVe: selectedSeatList.map(ele => {
+          return {
+            maGhe: ele.maGhe,
+            giaVe: ele.giaVe,
+          };
+        }),
+    };
+    await bookTicketApi(data);
+    notification.success({
+      message: "Đặt vé thành công!",
+    });
+    navigate("/");
+  };
   return (
     <div className="container mx-5">
       <div className="screen">
@@ -104,7 +123,7 @@ export default function Booking() {
           <h5>
             Tổng tiền: {_.sumBy(selectedSeatList, "giaVe").toLocaleString()} VND
           </h5>
-          <button className="btn btn-success">ĐẶT VÉ</button>
+          <button onClick={bookTicket} className="btn btn-success">ĐẶT VÉ</button>
         </div>
       </div>
     </div>

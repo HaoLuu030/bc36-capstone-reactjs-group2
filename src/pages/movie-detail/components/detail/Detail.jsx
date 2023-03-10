@@ -24,10 +24,6 @@ export default function Detail(props) {
     setMovieDetail(result.data.content);
     dispatch(setTrailerLinkAction(result.data.content.trailer));
   };
-
-  // const handleBooking = () => {
-  //   navigate(`/booking/${props.maPhim}`)
-  // }
   const items = [
     {
       key: "overview",
@@ -85,7 +81,6 @@ export default function Detail(props) {
           </div>
 
           <div className="pt-3 pt-lg-0 pl-lg-5 col-md-12 col-lg-8">
-            {/* <button onClick={handleBooking} className="btn btn-success">ĐẶT VÉ</button> */}
             <Tabs
               className="detail-tabs"
               defaultActiveKey="overview"
