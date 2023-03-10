@@ -1,10 +1,10 @@
-import { set } from "lodash";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 import { bookTicketApi, fetchTicketApi } from "../../services/ticket";
 import Seat from "./components/Seat";
 import "./index.scss";
 import * as _ from "lodash";
+import {notification } from "antd";
 
 export default function Booking() {
   const [tickDetail, setTicketDetail] = useState({});
@@ -61,7 +61,9 @@ export default function Booking() {
         }),
     };
     await bookTicketApi(data);
-    alert("Đặt vé thành công!");
+    notification.success({
+      message: "Đặt vé thành công!",
+    });
     navigate("/");
   };
   return (

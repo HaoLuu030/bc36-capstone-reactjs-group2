@@ -12,6 +12,8 @@ import MovieManagement from "../pages/movie-management/MovieManagement";
 import MoviePlayTimeSchedule from "../pages/moviePlayTimeSchedule/MoviePlayTimeSchedule";
 import NowPlaying from "../pages/now-playing/NowPlaying";
 import UserManagement from "../pages/user-management/UserManagement";
+import Guard from "../guards/Guard";
+
 
 
 export default function Router() {
@@ -37,8 +39,15 @@ export default function Router() {
           element: <NowPlaying />,
         },
         {
-          path: "/booking/:id",
-          element: <Booking />,
+          path: "/",
+          element: <Guard/>,
+          children:[
+            {
+              path: "/booking/:id",
+              element: <Booking />,
+            },
+          ],
+
         },
         {
           path: "/coming-soon",
