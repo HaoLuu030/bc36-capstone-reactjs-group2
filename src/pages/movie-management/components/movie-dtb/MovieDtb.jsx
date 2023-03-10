@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, notification, Space, Table } from "antd";
 import { deleteMovieApi, fetchMovieList } from "../../../../services/movie";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setSelectedMovieAction } from "../../../../store/action/movieActions";
+import { LoadingContext } from "../../../../contexts/loading/LoadingContext";
 
 export default function MovieDtb() {
   const navigate = useNavigate();
   const [movieList, setMovieList] = useState([]);
+  const [_, setLoadingState] = useContext(LoadingContext);
   const getMovieList = async () => {
+    setLoadingState({ isLoading: true });
     const result = await fetchMovieList();
     setMovieList(result.data.content);
+    setLoadingState({ isLoading: false });
   };
   const handleEditButton = (id) => {
     navigate(`/admin/movie-management/edit-movie/${id}`);
