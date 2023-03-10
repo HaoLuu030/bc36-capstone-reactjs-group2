@@ -1,7 +1,7 @@
 //form
 import UserForm from "./components/userForm/UserForm";
 //react hooks
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 //API
 import {
   deleteUserInfoApi,
@@ -10,11 +10,13 @@ import {
   findUserApi,
 } from "../../services/user";
 //ant design components
-import { message, Popconfirm } from "antd";
-import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
+import { Popconfirm } from "antd";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, notification, Table, Tag, Input } from "antd";
+import { LoadingContext } from "../../contexts/loading/LoadingContext";
 
 const UserManagement = () => {
+  const [_, setLoadingState] = useContext(LoadingContext);
   const currentUser = JSON.parse(localStorage.getItem("USER_INFO_KEY"));
   const [userList, setUserList] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
@@ -109,12 +111,14 @@ const UserManagement = () => {
     },
   ];
   const getUserList = async () => {
+    setLoadingState({ isLoading: true });
     const result = await fetchUserListApi();
     //filter out current user's name
     const filteredList = result.data.content.filter(
       (elem) => elem.taiKhoan !== currentUser.taiKhoan
     );
     setUserList(filteredList);
+    setLoadingState({ isLoading: false });
   };
   // get userList the first time the page is loaded
   useEffect(() => {

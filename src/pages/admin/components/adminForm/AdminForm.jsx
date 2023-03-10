@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Form, Input, notification, Select, Popconfirm } from "antd";
 import { useEffect } from "react";
 import {
@@ -8,10 +8,12 @@ import {
 import "./index.scss";
 import { useDispatch } from "react-redux";
 import { updateUserInfoAction } from "../../../../store/action/userAction";
+import { LoadingContext } from "../../../../contexts/loading/LoadingContext";
 
 export default function AdminForm() {
   const dispatch = useDispatch();
   const [adminInfoState, setAdminInfoState] = useState({});
+  const [_, setLoadingState] = useContext(LoadingContext);
   //confirm password value
   const [isChangePassword, setIsChangePassword] = useState(false);
   const { Option } = Select;
@@ -35,8 +37,10 @@ export default function AdminForm() {
   };
   //do this instead of taking info from local storage is because the object in local storage doesnt have password
   const getAccountInfo = async () => {
+    setLoadingState({ isLoading: true });
     const result = await fetchAccountInfoApi();
     setAdminInfoState({ ...result.data.content });
+    setLoadingState({ isLoading: false });
   };
 
   useEffect(() => {
