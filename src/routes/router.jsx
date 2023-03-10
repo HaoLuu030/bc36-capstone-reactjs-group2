@@ -13,8 +13,7 @@ import MoviePlayTimeSchedule from "../pages/moviePlayTimeSchedule/MoviePlayTimeS
 import NowPlaying from "../pages/now-playing/NowPlaying";
 import UserManagement from "../pages/user-management/UserManagement";
 import Guard from "../guards/Guard";
-
-
+import PageNotFound from "../pages/page-not-found/PageNotFound";
 
 export default function Router() {
   const routing = useRoutes([
@@ -40,14 +39,13 @@ export default function Router() {
         },
         {
           path: "/",
-          element: <Guard/>,
-          children:[
+          element: <Guard />,
+          children: [
             {
               path: "/booking/:id",
               element: <Booking />,
             },
           ],
-
         },
         {
           path: "/coming-soon",
@@ -97,6 +95,10 @@ export default function Router() {
           ],
         },
       ],
+    },
+    {
+      path: "*",
+      element: <PageNotFound />,
     },
   ]);
   return routing;

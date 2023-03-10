@@ -1,12 +1,14 @@
 import { combineReducers, createStore } from "redux";
 import { movieReducer } from "./reducers/movieReducer";
-import { theaterReducer } from "./reducers/theaterReducer";
+import { theaterReducerQB } from "./reducers/theaterReducerQB";
 import { userReducer } from "./reducers/userReducer";
+import { theaterReducerST } from "./reducers/theaterReducerST";
 
 const rootReducer = combineReducers({
   movieReducer,
   userReducer,
-  theaterReducer,
+  theaterReducerQB,
+  theaterReducerST,
 });
 
 export const store = createStore(

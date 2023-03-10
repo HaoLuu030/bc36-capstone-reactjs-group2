@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setPlayTimeAction } from "../../../../store/action/theaterAction";
+import { setPlayTimeActionQB } from "../../../../store/action/theaterActionQB";
 import TheaterListItem from "../theaterListItem/TheaterListItem";
 import "./index.scss";
 
 export default function TheaterList() {
   const dispatch = useDispatch();
-  const theaterState = useSelector((state) => state.theaterReducer);
+  const theaterState = useSelector((state) => state.theaterReducerQB);
   //the list that's gonna be rendered
   const [theaterList, setTheaterList] = useState([]);
   //change state when the list in store is changed
@@ -35,7 +35,7 @@ export default function TheaterList() {
     );
   };
   const setPlayTime = (theaterId) => {
-    dispatch(setPlayTimeAction(theaterId));
+    dispatch(setPlayTimeActionQB(theaterId));
   };
   return (
     <div className="col-12 col-lg-4 mt-5 mt-lg-0">

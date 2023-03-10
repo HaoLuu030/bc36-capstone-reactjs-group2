@@ -7,10 +7,7 @@ export default function TheaterListItem(props) {
   const renderPlayTime = () => {
     return props.theater.lichChieuPhim.map((elem) => {
       return (
-        <NavLink
-          to={`/home/booking/${elem.maLichChieu}`}
-          className="play-time-item"
-        >
+        <NavLink to={`/booking/${elem.maLichChieu}`} className="play-time-item">
           {formatTimeDateTim(elem.ngayChieuGioChieu)}
         </NavLink>
       );

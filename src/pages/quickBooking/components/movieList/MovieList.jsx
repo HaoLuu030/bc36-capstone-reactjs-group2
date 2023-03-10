@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useMovieList } from "../../../../hooks/useMovieList";
 import { fetchPlayingDetailApi } from "../../../../services/movie";
-import { setTheaterBrandAction } from "../../../../store/action/theaterAction";
+import { setTheaterBrandActionQB } from "../../../../store/action/theaterActionQB";
 import MovieItem from "../movieItem/MovieItem";
 import "./index.scss";
 export default function MovieList() {
@@ -10,7 +10,9 @@ export default function MovieList() {
   const playingMovieList = useMovieList().filter((elem) => elem.dangChieu);
   const getPlayingDetail = async (id) => {
     const playingDetail = await fetchPlayingDetailApi(id);
-    dispatch(setTheaterBrandAction(playingDetail.data.content.heThongRapChieu));
+    dispatch(
+      setTheaterBrandActionQB(playingDetail.data.content.heThongRapChieu)
+    );
   };
   const renderMovieList = () => {
     return playingMovieList.map((elem) => {

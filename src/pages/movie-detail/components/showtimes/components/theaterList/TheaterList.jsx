@@ -1,13 +1,13 @@
 import moment from "moment";
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ScheduledTime from "../scheduledTime/ScheduledTime";
 import "./index.scss";
 
 export default function TheaterList() {
+  const [theaterList, setTheaterList] = useState([]);
+  const movieState = useSelector((state) => state.theaterReducerST);
   //check if a theater has a certain date
-
-  const movieState = useSelector((state) => state.movieReducer);
   const checkValidDate = (theater) => {
     const scheduledTimes = theater.lichChieuPhim.map((elem) => {
       return moment(elem.ngayChieuGioChieu).format("L");
@@ -46,9 +46,9 @@ export default function TheaterList() {
       checkValidDate(elem)
     );
     if (filteredTheaterList.length === 0) {
-      return "Chưa có lịch chiếu khả dụng";
+      return "Không có lịch chiếu cho ngày này";
     }
-    return filteredTheaterList.map((elem, idx) => {
+    return filteredTheaterList.map((elem) => {
       return (
         <div
           key={elem.maCumRap}
