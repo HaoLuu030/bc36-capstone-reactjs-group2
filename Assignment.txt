@@ -9,4 +9,5 @@ Add movie page: Hào
 Movie detail page: Sương, Hào (fix layout)
 Loading page: Sương, Hào (fix layout, add the loading page to other pages)
 Booking page: Sương
+Deployment: Hào
 Video recording: Hào
