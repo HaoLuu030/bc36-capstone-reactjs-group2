@@ -1,0 +1,12 @@
+Home page: Hào
+Now-playing movies page: Hào
+Up-coming movies page: Hào
+Admin page: Hào
+Movie management page: Hào
+User management page: Hào
+Quick booking page: Hào
+Add movie page: Hào
+Movie detail page: Sương, Hào (fix layout)
+Loading page: Sương, Hào (fix layout, add the loading page to other pages)
+Booking page: Sương
+Video recording: Hào

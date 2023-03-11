@@ -15,9 +15,6 @@ export default function CarouselSlide(props) {
         <div className="px-2 py-2" key={elem.maPhim}>
           <div className="card card-movie">
             <img className="card-img-top" src={elem.hinhAnh} />
-            <a className="get-ticket-carousel-bottom" type="primary">
-              Đặt vé ngay
-            </a>
           </div>
         </div>
       );
