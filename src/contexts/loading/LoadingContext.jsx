@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import "./index.scss";
 
 const DEFAULT_STATE = {
-  isLoading: true,
+  isLoading: false,
 };
 
 export const LoadingContext = createContext(DEFAULT_STATE);
@@ -18,7 +18,6 @@ export const LoadingProvider = (props) => {
     document.querySelector("body").style.height = state.isLoading
       ? "100vh"
       : "auto";
-    console.log(document.querySelector("body"));
   }, [state.isLoading]);
 
   return (
