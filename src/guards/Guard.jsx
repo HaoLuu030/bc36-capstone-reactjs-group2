@@ -9,14 +9,12 @@ export default function Guard() {
 
   useEffect(() => {
     if (!userState.userInfo) {
-      //   alert("Đăng nhập để tiếp tục vào trang.");
       notification.error({
         message: "Vui lòng đăng nhập để đặt vé",
       });
       navigate("/");
       return;
     }
-    
   }, []);
 
   return <Outlet />;
