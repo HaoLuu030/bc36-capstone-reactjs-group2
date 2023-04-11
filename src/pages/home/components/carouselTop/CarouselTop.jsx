@@ -7,12 +7,12 @@ import { CarouselImage } from "./styled";
 import { fetchMovieBanners } from "../../../../services/banner";
 
 export default function CarouselTop() {
-  const carouselRef = useRef();
   const [movieBanners, setMovieBanners] = useState([]);
   const getMovieBanner = async () => {
     const result = await fetchMovieBanners();
     setMovieBanners(result.data.content);
   };
+  /*get movie banner data after the component has been rendered*/
   useEffect(() => {
     getMovieBanner();
   }, []);
@@ -20,15 +20,16 @@ export default function CarouselTop() {
   const renderBanner = () => {
     return movieBanners.map((elem) => {
       return (
-        <CarouselImage
+        <img
           key={elem.maBanner}
+          src={elem.hinhAnh}
+          alt={`Banner ${elem.maBanner}`}
           className="carousel-item"
-          backgroundImage={elem.hinhAnh}
-        ></CarouselImage>
+        />
       );
     });
   };
-
+  const carouselRef = useRef();
   return (
     <div className="carousel-top">
       <Carousel

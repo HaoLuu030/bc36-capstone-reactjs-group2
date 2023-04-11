@@ -5,12 +5,13 @@
   min-width: 200px;
   position: relative;
   .carousel-items {
+    display: none;
     .carousel-item {
-      height: 80vh;
       width: 100vw;
     }
   }
   .button-carousel {
+    display: none;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
