@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import WelcomeUser from "../welcomeUser/WelcomeUser";
 import Logo from "./components/logo/Logo";
 import ToggleButton from "./components/toggle-button/ToggleButton";
+import Navbar from "./components/navbar/Navbar";
 
 export default function Header() {
   const userState = useSelector((state) => state.userReducer);
@@ -16,36 +17,9 @@ export default function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-movie px-0 align-items-lg-center">
       <Logo />
-      
       <ToggleButton />
+      <Navbar />
 
-      <div
-        className="collapse navbar-collapse justify-content-start mt-3"
-        id="collapsibleNavId"
-      >
-        <ul className="navbar-nav nav-items">
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/home">
-              Trang chủ
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/quick-booking">
-              Mua vé nhanh
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/now-playing">
-              Phim đang chiếu
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/coming-soon">
-              Phim sắp chiếu
-            </NavLink>
-          </li>
-        </ul>
-      </div>
       <div className="d-flex align-items-center justify-content-md-start sign-in-module">
         {" "}
         {userState.userInfo ? (
