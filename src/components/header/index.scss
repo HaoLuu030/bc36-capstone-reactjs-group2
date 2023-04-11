@@ -42,16 +42,7 @@
       .nav-item {
         position: relative;
         a {
-          font-size: $text-md;
-          font-weight: $text-semiBold;
-          color: $c1-50;
-          padding: 5px 10px;
-          &:hover {
-            color: $c1-500;
-          }
-          &.active {
-            color: $c1-500;
-          }
+          @include NavItem;
         }
       }
     }

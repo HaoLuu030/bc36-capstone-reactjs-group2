@@ -1,5 +1,7 @@
 import React from "react";
-
+{
+  /* only show when the nav bar is collasped */
+}
 function ToggleButton() {
   //switch between x (cross) and 3 bar icon in smaller screen
   const handleToggleCollapseIcon = () => {
