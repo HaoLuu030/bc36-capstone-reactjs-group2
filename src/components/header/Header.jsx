@@ -3,10 +3,11 @@ import "./index.scss";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import WelcomeUser from "../welcomeUser/WelcomeUser";
+import Logo from "./components/logo/Logo";
 
 export default function Header() {
   const userState = useSelector((state) => state.userReducer);
-  //switch between collapse icons in smaller screen
+  //switch between x (cross) and 3 bar icon in smaller screen
   const handleToggleCollapseIcon = () => {
     document.querySelector(".navbar-toggler").classList.toggle("opening");
   };
@@ -16,9 +17,7 @@ export default function Header() {
   };
   return (
     <nav className="navbar navbar-expand-lg navbar-movie px-0 align-items-lg-center">
-      <NavLink className="navbar-brand" to={"/home"}>
-        <img src="/logo_white.png" alt="logo" style={{ width: "250px" }} />
-      </NavLink>
+      <Logo />
       <button
         className="navbar-toggler d-lg-none"
         type="button"
