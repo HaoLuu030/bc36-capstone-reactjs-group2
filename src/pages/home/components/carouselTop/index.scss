@@ -1,5 +1,6 @@
 @import "../../../../design-tokens/variables";
 @import "../../../../design-tokens/mixins";
+@import "../../../../design-tokens/base";
 
 .carousel-top {
   min-width: 200px;
@@ -8,6 +9,7 @@
     display: none;
     .carousel-item {
       width: 100vw;
+      object-fit: cover;
     }
   }
   .button-carousel {
@@ -39,6 +41,31 @@
     }
     &.button-right {
       right: 0;
+    }
+  }
+}
+
+@include Responsive($MD) {
+  .carousel-top {
+    .carousel-items {
+      display: block;
+      .carousel-item {
+        height: 450px;
+      }
+    }
+    .button-carousel {
+      display: block;
+    }
+  }
+}
+
+@include Responsive($MD) {
+  .carousel-top {
+    .carousel-items {
+      display: block;
+      .carousel-item {
+        height: 400px;
+      }
     }
   }
 }

@@ -33,7 +33,7 @@ export default function CarouselTop() {
   return (
     <div className="carousel-top">
       <Carousel
-        slidesToShow={1}
+        slidesToShow={2}
         dots={false}
         autoplay
         adaptiveHeight
