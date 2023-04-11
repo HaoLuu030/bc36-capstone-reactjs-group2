@@ -4,13 +4,11 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import WelcomeUser from "../welcomeUser/WelcomeUser";
 import Logo from "./components/logo/Logo";
+import ToggleButton from "./components/toggle-button/ToggleButton";
 
 export default function Header() {
   const userState = useSelector((state) => state.userReducer);
-  //switch between x (cross) and 3 bar icon in smaller screen
-  const handleToggleCollapseIcon = () => {
-    document.querySelector(".navbar-toggler").classList.toggle("opening");
-  };
+
   // bring up login module when clicked
   const handleOpenLoginModule = () => {
     document.querySelector(".background-login-module").classList.add("active");
@@ -18,19 +16,8 @@ export default function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-movie px-0 align-items-lg-center">
       <Logo />
-      <button
-        className="navbar-toggler d-lg-none"
-        type="button"
-        data-toggle="collapse"
-        data-target="#collapsibleNavId"
-        aria-controls="collapsibleNavId"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-        onClick={handleToggleCollapseIcon}
-      >
-        <i className="fa fa-bars"></i>
-        <i className="fa fa-times"></i>
-      </button>
+      
+      <ToggleButton />
 
       <div
         className="collapse navbar-collapse justify-content-start mt-3"
