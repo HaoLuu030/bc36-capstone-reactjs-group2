@@ -20,7 +20,6 @@ import {
 } from "../../services/movie";
 import { useForm } from "antd/es/form/Form";
 import moment from "moment";
-import { useSelector } from "react-redux";
 
 const { TextArea } = Input;
 export default function MovieForm() {
@@ -49,7 +48,6 @@ export default function MovieForm() {
     file && formData.append("File", file, file.name);
     if (params.id) {
       try {
-        console.log(params.id);
         formData.append("maPhim", params.id);
         await editMovieApi(formData);
         notification.success({

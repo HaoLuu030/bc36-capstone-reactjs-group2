@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px 15px;
+  width: 100%;
+}
+
+.show-time-body .theater-list {
+  width: 100%;
+  height: 100%;
+}
+.show-time-body .theater-list .theater-item {
+  position: relative;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(28, 28, 28, 0.5);
+}
+.show-time-body .theater-list .theater-item:focus {
+  outline: none;
+}
+.show-time-body .theater-list .theater-item .img-container img {
+  width: 50px;
+}
+.show-time-body .theater-list .theater-item .theater-item-body .theater-item-title h5 {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  .show-time-body .theater-list .theater-item .img-container img {
+    width: 50px;
+  }
+  .show-time-body .theater-list .theater-item .theater-item-body .theater-item-title h5 {
+    font-size: 20px;
+  }
+}/*# sourceMappingURL=index.css.map */r {
+  height: 100%;
+}
+.show-time .movie-brand-list .movie-brand-item:focus {
+  outline: none;
+}/*# sourceMappingURL=index.css.map */k;
+}
+.movie-detail .ant-tabs .ant-tabs-tab {
+  text-transform: capitalize;
+}
+.movie-detail .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #e91e63;
+}
+.movie-detail .ant-tabs .ant-tabs-tab:hover {
+  color: #e91e63;
+}
+.movie-detail .ant-tabs .ant-tabs-ink-bar {
+  background-color: #e91e63;
+}
+.movie-detail.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .movie-detail .movie-detail-body .title h1 {
+    font-size: 25px;
+    white-space: normal;
+  }
+  .movie-detail .movie-detail-body .rating p,
+  .movie-detail .movie-detail-body .playing-date p,
+  .movie-detail .movie-detail-body .content p {
+    font-size: 18px;
+  }
+  .movie-detail .movie-detail-body .rating b,
+  .movie-detail .movie-detail-body .playing-date b,
+  .movie-detail .movie-detail-body .content b {
+    font-size: 20px;
+  }
+  .movie-detail .movie-detail-body .content p {
+    font-size: 18px;
+  }
+  .movie-detail .trailer .trailer-inner .trailer-wrapper iframe {
+    width: 80%;
+    height: 300px;
+  }
+  .movie-detail .ant-tabs .ant-tabs-tab {
+    font-size: 18px;
+  }
+  .movie-detail .ant-tabs-ink-bar {
+    background-color: #e91e63;
+  }
+}
+@media screen and (min-width: 992px) {
+  .movie-detail .img-container img {
+    width: 300px;
+  }
+  .movie-detail .trailer .trailer-inner .trailer-wrapper iframe {
+    margin: 0;
+  }
+}/*# sourceMappingURL=index.css.map */px;
+  }
+  .title-status a {
+    font-size: 20px;
+  }
+}/*# sourceMappingURL=index.css.map */ont-size: 23px;
+  }
+}/*# sourceMappingURL=index.css.map */
