@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import LoginAdmin from "../pages/login-admin/LoginAdmin";
 import { userType } from "../enums";
 
-/protect admin routes from unauthenticated people/;
+/*protect admin page from unauthenticated user*/ 
 export default function AuthGuard() {
   const userState = useSelector((state) => state.userReducer);
   if (
