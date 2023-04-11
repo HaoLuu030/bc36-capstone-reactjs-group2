@@ -1,6 +1,6 @@
-@import "../../../../../../design-tokens/base";
-@import "../../../../../../design-tokens/mixins";
-@import "../../../../../../design-tokens/variables";
+@import "../../../../design-tokens/base";
+@import "../../../../design-tokens/mixins";
+@import "../../../../design-tokens/variables";
 
 .nav-items {
   .nav-item {
@@ -19,7 +19,7 @@
   }
 }
 
-@include Responsive($MD) {
+@include Responsive($LG) {
   .nav-items {
     .nav-item {
       button,

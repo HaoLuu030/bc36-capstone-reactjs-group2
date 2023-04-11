@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import SignUpButtonMobile from "./components/sign-up-button-mobile/SignUpButtonMobile";
+import SignUpButtonMobile from "../sign-up-button-mobile/SignUpButtonMobile";
 
 function Navbar() {
   return (
