@@ -5,9 +5,9 @@ import Menu from "./components/menu/Menu";
 import useViewPort from "../../hooks/useViewPort";
 import { DESKTOP, TABLET } from "../../constants";
 import ToggleButton from "./components/toggle-button/ToggleButton";
+import withViewPort from "../../HOCs/withViewPort";
 
-export default function Header() {
-  const viewPort = useViewPort();
+function Header({ viewPort }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-movie d-flex justify-content-center">
       <Logo />
@@ -20,3 +20,5 @@ export default function Header() {
     </nav>
   );
 }
+
+export default withViewPort(Header);

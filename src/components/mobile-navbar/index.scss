@@ -1,0 +1,32 @@
+@import "../../design-tokens/variables";
+.mobile-navbar {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: $c1-750;
+  height: 50px;
+  gap: 30px;
+  transition: all 0.2s;
+  transform-origin: bottom;
+  &.hide {
+    transform: scaleY(0);
+  }
+  &.show {
+    transform: scaleY(100%);
+  }
+  .mobile-nav-item {
+    background-color: $c1-100;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: $c1-500;
+    font-size: $text-lg;
+    text-align: center;
+    line-height: 40px;
+
+    &.active {
+      background-color: $c1-500;
+      color: $c1-100;
+    }
+  }
+}
