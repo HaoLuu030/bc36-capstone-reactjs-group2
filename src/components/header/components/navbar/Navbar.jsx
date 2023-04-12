@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import SignUpButtonMobile from "../sign-up-button-mobile/SignUpButtonMobile";
 
 function Navbar() {
   return (
@@ -28,9 +27,6 @@ function Navbar() {
           <NavLink className="nav-link" to="/coming-soon">
             Phim sắp chiếu
           </NavLink>
-        </li>
-        <li className="nav-item">
-          <SignUpButtonMobile />
         </li>
       </ul>
     </div>

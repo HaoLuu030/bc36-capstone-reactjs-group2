@@ -14,7 +14,7 @@ export default function WelcomeUser() {
     });
   };
   return (
-    <>
+    <React.Fragment>
       <span className="d-flex align-items-center welcome-user">
         <i className="fa fa-user user-icon pr-1"></i> Xin chào,{" "}
         {userState.userInfo.hoTen} |
@@ -22,6 +22,6 @@ export default function WelcomeUser() {
       <button onClick={handleLogout} className="sign-out">
         Đăng xuất
       </button>
-    </>
+    </React.Fragment>
   );
 }
