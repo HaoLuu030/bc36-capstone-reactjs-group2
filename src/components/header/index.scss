@@ -1,6 +1,9 @@
 @import "../../design-tokens/_variables.scss";
 @import "../../design-tokens/mixins";
 
+header {
+  background-color: $c1-800;
+}
 .navbar-movie {
   background-color: $c1-800;
   position: relative;

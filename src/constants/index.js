@@ -3,5 +3,8 @@ const TOKEN_CYBERSOFT =
 
 const BASE_URL = "https://movienew.cybersoft.edu.vn/api";
 
+const MOBILE = "MOBILE";
+const TABLET = "TABLET";
+const DESKTOP = "DESKTOP";
 
-export {TOKEN_CYBERSOFT, BASE_URL};
+export { TOKEN_CYBERSOFT, BASE_URL, MOBILE, TABLET, DESKTOP };
